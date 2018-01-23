@@ -1,14 +1,21 @@
 
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Learning Analytics Dashboard</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.6.4.js"></script>
+</head>
+ <title>Learning Analytics Dashboard</title>
   <meta charset="utf-8" name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
- 
-    <script src="http://d26b395fwzu5fz.cloudfront.net/3.3.0/keen.min.js"></script>
+
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
   <script src="//d26b395fwzu5fz.cloudfront.net/keen-analysis-1.2.2.js"></script>
-   
+
 
   <link href="//d26b395fwzu5fz.cloudfront.net/keen-dataviz-1.1.3.css" rel="stylesheet" />
   <script src="//d26b395fwzu5fz.cloudfront.net/keen-dataviz-1.1.3.js"></script>
@@ -17,38 +24,84 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" rel="stylesheet" type="text/css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
- 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 
 </head>
-<body class="application">
-<div class="navbar navbar-inverse navbar-fixed-top" style="height:800;" role="navigation">
-          <a class="navbar-brand" style="margin-top:10px" href="http://socialmedialab.ca/"><img alt="Social Media Lab" height="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/Social_Media_Lab_Ryerson_TRSM_logo2016-1.png" >
-</a>
-   <a class="navbar-brand" href="./"><h2>Learning Analytics Dashboard</h2><h4>Hashtag: #bus5569F17</h4></a> 
-   <br><br><br><br><br> 
-  </div>  
 
-<div >
-    <br><br><br><br<br>
-    <font size=4 weight=bold>Posting Frequency
-    <div class="row">
+    
+<body class="application">
+
+
+<div class="navbar navbar-inverse navbar-fixed-top" style="height:800;" role="navigation">
+<table class="top_links"><tr><td>
+          <a class="navbar-brand" style="margin-top:10px" href="http://socialmedialab.ca/"><img alt="Social Media Lab" h
+eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/Social_Media_Lab_Ryerson_TRSM_logo2016-1
+.png" >
+</a>
+
+
+<!-- ADD YOUR HASHTAG IN THE LINE BELOW -->
+<a class="navbar-brand" href="./"><h2>Learning Analytics Dashboard</h2><h4>Hashtag: COURSE_HASHTAG</h4></a>
+
+
+</td>
+
+<td align=right valign=bottom>
+</td></tr>
+</table>
+
+<br><br><br>
+</div> 
+
+
+<div id="content">
+   
+ <br><br> <br>
+   <font size=4 weight=bold>Dashboard shows tweets for the past <b><span></span></b><form name="frm1" id="frm1">
+
+
+<select id="selectitem" name="catid" onChange="doReload(this.value); ">
+        <option value="null">Select timeframe</option>
+        <option value="this_1_week"  >1 week</option>
+        <option value="this_2_weeks"  >2 weeks</option>
+        <option value="this_3_weeks" >3 weeks</option>
+        <option value="this_4_weeks" >1 month</option>
+        <option value="this_8_weeks" >2 months</option>
+        <option value="this_12_weeks">3 months</option>
+        <option value="this_16_weeks" >4 months</option>
+</select>
+
+
+<noscript>
+<input type='submit'>
+</noscript>
+</form><br><br> 
+   <font size=4 weight=bold>Posting Frequency
+    <div  class="row">
       <div class="col-sm-8">
         <div class="chart-wrapper">
-            <div class="chart-stage" id="total_chart">
+          <div class="chart-number"> [1] <b>Total posts</b> (<span></span>)</div>   
+           <div class="chart-stage" id="total_chart">
             </div>
-          <div class="chart-stage" id="post_line">
+         <div class="chart-stage" id="post_line">
           </div>
           <div class="chart-notes">
-             The total number of tweets each day using the hashtag #bus5569F17  
+             
+		
+		<!-- ADD YOUR HASHTAG IN THE LINE BELOW -->
+		The total number of tweets during <span></span> using the hashtag COURSE_HASHTAG  
+
           </div>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="chart-wrapper">
-          <div class="chart-stage" id="hour_chart">
+           <div class="chart-number">[2]<b> Total number of posts each hour</b> </div>
+  <div class="chart-stage" id="hour_chart">
           </div>
           <div class="chart-notes">
-          The total number of tweets each  hour using the hashtag #bus5569F17
+            <!-- ADD YOUR HASHTAG IN THE LINE BELOW -->
+	    The total number of tweets each hour using the hashtag COURSE_HASHTAG 
            </div>
         </div>
       </div>
@@ -57,10 +110,11 @@
    <div class="row">
       <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-          <div class="chart-stage" id="con_chart">
+          <div class="chart-number">[3]<b> Content types </b> (<span></span>) </div> 
+ <div class="chart-stage" id="con_chart">
           </div>
           <div class="chart-notes">
-             Users can post various content, including hashtags, urls, user handles, multi-media or regular text. 
+            Users can post various content, including hashtags, urls, user handles, multi-media or regular text. 
             The height of the graph represents the whole number of tweets for a particular day. Each coloured segment or <i>stack</i> represents a category (in this case the number of tweets with urls, hashtags, media, or user handles) that make up parts of the whole.   
 
 </div>
@@ -68,7 +122,8 @@
       </div>
     <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-            <div class="chart-stage" id="eng_chart">
+           <div class="chart-number">[4]<b> Engagement type </b>(<span></span>)</div>  
+  <div class="chart-stage" id="eng_chart">
           </div>
           <div class="chart-notes">
              Twitter users can create an original post, or retweet or reply to an existing tweet. The height of each bar represents the whole number of tweets for a particular day. Each coloured segment or <i>stack</i> represents a category (in this case the number of tweets that are replies, retweets, or original) that make up parts of the whole. 
@@ -77,6 +132,9 @@
       </div>
            <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
+
+	<!-- ADD YOUR HASHTAG IN THE LINE BELOW -->
+   <div class="chart-number">[5]<b> Sentiment type </b>(<span></span>)<br> <a target="_blank" href="../sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></div>
           <div class="chart-stage" id="spline_chart">
           </div>
           <div class="chart-notes">
@@ -91,7 +149,10 @@
 <div class="row">
      <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-          <div class="chart-stage" id="sub_chart">
+
+        <!-- ADD YOUR HASHTAG IN THE LINE BELOW -->	
+          <div class="chart-number">[6]<b> Subjectivity type</b> (<span></span>)<br> <a target="_blank" href="../sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by subjectivity type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></div> 
+ <div class="chart-stage" id="sub_chart">
           </div>
           <div class="chart-notes">
              Subjectivity is the degree of factuality or opinionated language in tweets. To calculate the subjectivity of sentences, we use the <a href="http://www.nltk.org/api/nltk.sentiment.html">NLTK subjectivity classifier</a>, trained on the Subjectivity Dataset (Pang & Lee, 2004).
@@ -100,16 +161,19 @@
       </div>
    <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-          <div class="chart-stage" id="hashtag_table">
+          <div class="chart-number">[7]<b> Top 10 Hashtags </b>(<span></span>) </div>
+  <div class="chart-stage" id="hashtag_table">
           </div>
           <div class="chart-notes">
-             Hashtags contained in the tweet (excluding #bus5569F17)<br><br><br>
+	  <!-- ADD YOUR HASHTAG IN THE LINE BELOW -->
+             Hashtags contained in the tweet (excluding #COURSE_HASHTAG)<br><br><br>
           </div>
         </div>
       </div>
       <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-          <div class="chart-stage" id="ne_chart" >
+          <div class="chart-number">[8]<b> Top 10 named entities </b> (<span></span>)</div> 
+ <div class="chart-stage" id="ne_chart" >
           </div>
           <div class="chart-notes">
            Named entities are proper names of persons, places, or organizations<br><br><br>
@@ -117,14 +181,14 @@
         </div>
       </div>
     </div>
-  </div>
  
 
    User Information 
   <div class="row">
   <div class="col-sm-12 col-md-3">
         <div class="chart-wrapper">
-          <div class="chart-stage" id="column_chart" >
+           <div class="chart-number">[9]<b> Top 10 contributors </b>(<span></span>)</div>
+  <div class="chart-stage" id="column_chart" >
           </div>
           <div class="chart-notes">
               Twitter users who post, retweet or reply most frequently 
@@ -133,6 +197,9 @@
       </div>
       <div class="col-sm- col-md-3">
         <div class="chart-wrapper">
+
+	<!-- ADD YOUR HASHTAG IN THE LINE BELOW -->
+  <div class="chart-number">[10]<b> Top 10 most negative</b> (<span></span>)<br> <a target="_blank" href="../sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></div>
           <div class="chart-stage" id="sentbar_chart" >
           </div>
           <div class="chart-notes" >
@@ -142,6 +209,9 @@
       </div>
       <div class="col-sm-12 col-md-3">
         <div class="chart-wrapper">
+
+	<!-- ADD YOUR HASHTAG IN THE LINE BELOW -->
+ <div class="chart-number">[11]<b> Top 10 most positive</b> (<span></span>)<br> <a target="_blank" href="../sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></div>
           <div class="chart-stage" id="subbar_chart">
           </div>
           <div class="chart-notes">
@@ -151,6 +221,7 @@
       </div>
        <div class="col-sm-12 col-md-3">
         <div class="chart-wrapper">
+  <div class="chart-number">[12]<b> Top 10 most mentioned</b> (<span></span>)</div>
           <div class="chart-stage" id="mentions_chart">
           </div>
           <div class="chart-notes">
@@ -162,50 +233,119 @@
   </div>
   </div>
 
-   <div class="row">
-  <div class="col-sm-6 col-md-12">
+ <div class="row">
+ <div class="col-sm-6 col-md-12">
+ <div class="chart-wrapper"> 
+
+	<!-- ADD YOUR HASHTAG IN THE LINE BELOW -->
+ <div class="chart-number">[13]<b> All tweets for today </b><a target="_blank" href="https://twitter.com/search?q=%23COURSE_HASHTAG&src=typd&lang=en">See previous tweets for the hashtag COURSE_HASHTAG <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></div> 
+ <div class="chart-stage">
+ <div style="height:400px; overflow:auto;">
+ <table  width=100% id=mytable >
+  <tbody> </b> 
+	<tr>
+	 <th>User handle</th>
+	 <th>Full text</th>
+	 <th>Time sent</th>
+	</tr>
+  </tbody>
+  </table>
+   </div>
+  </div>
+ </div>
+</div>  
+
+<div style="visibility:visible;" class="col-sm-6 col-md-12">
         <div class="chart-wrapper">
-          <div class="chart-stage" id="text_ext" >
-          </div>
-          <div class="chart-notes">
-              Full text of all Twitter posts today using the course hashtag 
+     <div class="chart-stage" id="text_ext" >
           </div>
         </div>
       </div>
-
     </div>
-  </div>
-  </div> 
-
-
-  </div>
-  </div>
-
-  </div>
+ </div>
+ </div> 
+ </div>
+ </div>
+ </div>
 
 </div>
-   <!-- <p class="small text-muted">Built with &#9829; by Nadia</a></p>
--->
-  <script>
+
+
+<script type='text/javascript'>
+
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+function doReload(catid){
+
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */
+  document.location = 'https://dashboard.socialmediadata.org/COURSE_HASHTAG/index.html?catid=' + catid;
+};
+
+
+
+function formatTime (val) {
+    
+    if (val == "this_1_week") {
+       time_html= "1 week";
+      }
+    else if (val == "this_2_weeks") {
+      time_html= "2 weeks";
+      }
+    else if (val == "this_3_weeks") {
+      time_html ="3 weeks"; 
+      }
+    else if (val == "this_4_weeks") {
+     time_html ="1 month"; 
+     }
+    else if (val == "this_8_weeks") {
+     time_html ="2 months";
+     }
+    else if (val == "this_12_weeks") {
+     time_html ="3 months";
+     }
+    else if (val == "this_16_weeks") {
+     time_html ="4 months";
+     }	
+
+   var sel=document.getElementById('content').getElementsByTagName('span');
+   for (var i=0; i<sel.length; i++) {
+	sel[i].innerHTML=time_html; 
+   }
+}
+
+
+
+var mytime=getUrlParameter("catid");
+
+if (!mytime || mytime=="null") {
+  mytime="this_1_week";}
+
+formatTime(mytime);
+
 var client = new Keen({
        projectId: "595658e654532c69a434e36c",
         readKey: "561BB911CF7338D0713A81E057B8F15AEB2B0FEB99AA9593DB28C6CDA36474BAF23DAC275023D2BF91D4FE581A4D5267AFD693E87AB45748EFFCEDE14F6A372203692DADA7A9F821E9217A6BC8B1265917D602A0C64331EB523FB64976FE5202"
      });  
 
 
-
 var postchart = new Keen.Dataviz()
   .el('#post_line')
   .type("area")
   .height(300)
-  .title("Posts (last 7 days)")
+  .title(" ")
   .prepare();
 
 var postquery= new Keen.Query("count", {
-    event_collection: 'bus5569F17',
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */ 
+    event_collection: 'COURSE_HASHTAG',
     interval: "daily",
-    timeframe: 'previous_7_days',
-    refresh_rate:3600,
+    timeframe: mytime,
+    refresh_rate:28000,
     timezone: "US/Eastern"
   });
 
@@ -220,14 +360,16 @@ client.run(postquery, function(err, res){
 var totalchart = new Keen.Dataviz()
   .el('#total_chart')
   .type("metric")
-  .title("Total posts this term")
-  .width(180)
+  .title(" ")
+  .width(230)
+  .height(140)
 ;
 
 var totalquery= new Keen.Query("count",{
-   event_collection: "bus5569F17",
-   timeframe: "this_2_years",
-   refresh_rate:3600,
+  /* ADD YOUR HASHTAG IN THE LINE BELOW */ 
+   event_collection: "COURSE_HASHTAG",
+   timeframe: mytime,
+   refresh_rate:28000,
    timezone: "US/Eastern" });
 
 client
@@ -243,15 +385,17 @@ var hourchart = new Keen.Dataviz()
   .el('#hour_chart')
   .type("bar")
   .height(450)
-  .title("Total posts made today, per hour")
+  .title(" ")
   .colors(['purple'])
   .prepare();
 
 var hourquery= new Keen.Query("count", {
-    event_collection: 'bus5569F17',
-    interval: "hourly",
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */
+    event_collection: 'COURSE_HASHTAG',
     timeframe: 'this_1_days',
-    refresh_rate:3600,
+    interval: 'hourly',
+    target_property: "created_at",
+    refresh_rate:28000,
     timezone: "US/Eastern"
   });
 
@@ -260,16 +404,13 @@ client.run(hourquery, function(err, res){
       .data(res)
       .render();
     });
-
-
-
-
 Keen.ready(function(){
 
 var sq1 = new Keen.Query("count", {
-  event_collection: "bus5569F17",
-  timeframe: 'previous_7_days',
-  refresh_rate: 3600,
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */
+  event_collection: "COURSE_HASHTAG",
+  timeframe: mytime,
+  refresh_rate: 28000,
   timezone: "US/Eastern",
   interval: 'daily',
   target_property: 'sentiment_range',
@@ -283,9 +424,11 @@ var sq1 = new Keen.Query("count", {
 });
 
 var sq2 = new Keen.Query("count", {
-  event_collection: "bus5569F17",
-  timeframe: 'previous_7_days',
-  refresh_rate: 3600,
+
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */
+  event_collection: "COURSE_HASHTAG",
+  timeframe: mytime,
+  refresh_rate: 28000,
   timezone: "US/Eastern",
   interval: 'daily',
   target_property: 'sentiment_range',
@@ -299,10 +442,11 @@ var sq2 = new Keen.Query("count", {
 });
 
 var sq3 = new Keen.Query("count", {
-  event_collection: "bus5569F17",
-  timeframe: 'previous_7_days',
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */
+  event_collection: "COURSE_HASHTAG",
+  timeframe: mytime,
   timezone: "US/Eastern",
-  refresh_rate: 3600,
+  refresh_rate: 28000,
   interval: 'daily',
   target_property: 'sentiment_range',
   filters: [
@@ -318,10 +462,10 @@ var sq3 = new Keen.Query("count", {
 
 var sentchart = new Keen.Dataviz()
   .el('#spline_chart')
-  .title('Sentiment type (last 7 days)')
+  .title(' ')
   .height(300)
   .type("spline")
-  .colors(['red','green','blue'])
+  .colors(['green','red','blue'])
   .prepare();
 
 client.run([sq1, sq2, sq3 ], function(err, res) {
@@ -347,9 +491,10 @@ client.run([sq1, sq2, sq3 ], function(err, res) {
 
 
 var retweet = new Keen.Query("count", {
-  event_collection: "bus5569F17",
-  timeframe: 'previous_7_days',
-  refresh_rate: 3600,
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */ 
+   event_collection: "COURSE_HASHTAG",
+  timeframe: mytime,
+  refresh_rate: 28000,
   timezone: "US/Eastern",
   interval: 'daily',
   filters: [
@@ -362,9 +507,10 @@ var retweet = new Keen.Query("count", {
 });
 
 var replies = new Keen.Query("count", {
-  event_collection: "bus5569F17",
-  timeframe: 'previous_7_days',
-  refresh_rate:3600,
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */
+  event_collection: "COURSE_HASHTAG",
+  timeframe: mytime,
+  refresh_rate:28000,
   timezone: "US/Eastern",
   interval: 'daily',
   filters: [
@@ -385,9 +531,10 @@ var replies = new Keen.Query("count", {
 
 
 var origpost = new Keen.Query("count", {
-  event_collection: "bus5569F17",
-  timeframe: 'previous_7_days',
-  refresh_rate: 3600,
+  /* ADD YOUR HASHTAG IN THE LINE BELOW */ 
+  event_collection: "COURSE_HASHTAG",
+  timeframe: mytime,
+  refresh_rate: 28000,
   timezone: "US/Eastern",
   interval: 'daily',
   filters: [
@@ -410,7 +557,7 @@ var origpost = new Keen.Query("count", {
 
 var engchart = new Keen.Dataviz()
   .el('#eng_chart')
-  .title('Engagement type (last 7 days) ')
+  .title(' ')
   .height(300)
   .type("bar")
   .stacked(true)
@@ -433,41 +580,12 @@ client.run([retweet, replies, origpost ], function(err, res) {
     .render();
 });
 
-var userquery = new Keen.Query("count", {
-        group_by: "username",
-        refresh_rate: 3600,
-        event_collection: "bus5569F17",
-        timezone: "US/Eastern",
-        timeframe: "this_7_days"
-    });
-
-var columnchart = new Keen.Dataviz()
-      .chartType('horizontal-bar')
-      .el(document.getElementById('column_chart'))
-      .height(300)
-      .colors(['purple'])
-      .title ('Top 10 contributors (last 7 days)');
-    client.run(userquery, function(err, res){
-        columnchart
-        .data(res)
-       .parseRequest(this)
-        .call(function(){
-           this.dataset.sortRows("desc", function(row){
-              return row[1];
-            });
-
-           this.dataset.filterRows(function(row, index){
-             return index < 11;
-            });
-
-           })
-          .render();
-        });
 
 var con1 = new Keen.Query("count", {
-  event_collection: "bus5569F17",
-  timeframe: 'previous_7_days',
-  refresh_rate: 3600,
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */
+  event_collection: "COURSE_HASHTAG",
+  timeframe: mytime,
+  refresh_rate: 28000,
   timezone: "US/Eastern",
   interval: 'daily',
   filters: [
@@ -480,9 +598,10 @@ var con1 = new Keen.Query("count", {
 });
 
 var con2 = new Keen.Query("count", {
-  event_collection: "bus5569F17",
-  timeframe: 'previous_7_days',
-  refresh_rate: 3600,
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */
+  event_collection: "COURSE_HASHTAG",
+  timeframe: mytime,
+  refresh_rate: 28000,
   timezone: "US/Eastern",
   interval: 'daily',
   filters: [
@@ -495,9 +614,10 @@ var con2 = new Keen.Query("count", {
 });
 
 var con3 = new Keen.Query("count", {
-  event_collection: "bus5569F17",
-  timeframe: 'previous_7_days',
-  refresh_rate: 3600,
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */
+  event_collection: "COURSE_HASHTAG",
+  timeframe: mytime,
+  refresh_rate: 28000,
   timezone: "US/Eastern",
   interval: 'daily',
   filters: [
@@ -511,9 +631,10 @@ var con3 = new Keen.Query("count", {
 
 
 var con4 = new Keen.Query("count", {
-  event_collection: "bus5569F17",
-  timeframe: 'previous_7_days',
-  refresh_rate: 3600,
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */ 
+  event_collection: "COURSE_HASHTAG",
+  timeframe: mytime,
+  refresh_rate: 28000,
   timezone: "US/Eastern",
   interval: 'daily',
   filters: [
@@ -527,19 +648,8 @@ var con4 = new Keen.Query("count", {
 
 var conchart = new Keen.Dataviz()
   .el('#con_chart')
-  .title('Content types (last 7 days)')
   .height(300)
-  .chartOptions({
-axis: {
-x: {
-type: 'timeseries',
-tick: {
-count: 4,
-format: '%m-%d'
-}
-}
-}
-})
+  .title("  ")
   .type("area")
   .stacked(true)
   .colors(['red','green','blue','orange'])
@@ -565,53 +675,13 @@ client.run([con1, con2, con3, con4], function(err, res) {
 
 
 Keen.ready(function() {
-  var sq2 = new Keen.Query("count", {
-     event_collection: "bus5569F17",
-     timeframe: 'this_7_days',
-     refresh_rate: 3600,
-     group_by: "username",
-     target_property: 'sentiment_range',
-     filters: [
-          {
-            property_name: "sentiment_range",
-            operator : "eq",
-            property_value : "positive"
-          }
-        ]
-    });
-
-  var subbarchart = new Keen.Dataviz()
-      .type('horizontal-bar')
-      .el(document.getElementById('subbar_chart'))
-      .height(300)
-      .colors(['green'])
-      .title  ('Top 10 users with highest number of positive tweets (last 7 days)'); 
-
-
-
-
-  client.run(sq2,  function(err, res) {
-       subbarchart
-         .data(res)
-         .parseRequest(this)
-         .call(function(){
-             this.dataset.sortRows("desc", function(row){
-              return row[1];
-            });
-            this.dataset.filterRows(function(row, index){
-             return index < 11;
-            });
-           })
-       .render();
-      });
-});
-
-Keen.ready(function() {
   var neq = new Keen.Query("count", {
-     event_collection: "bus5569F17",
-     timeframe: 'this_7_days',
+  
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */
+     event_collection: "COURSE_HASHTAG",
+     timeframe: mytime,
      timezone: "US/Eastern",
-     refresh_rate: 300,
+     refresh_rate: 28000,
      group_by: "named_entities",
      filters: [
     {
@@ -638,7 +708,7 @@ Keen.ready(function() {
       .type('pie')
       .el(document.getElementById('ne_chart'))
       .height(300)
-      .title ('Top 10 most frequently mentioned named entities (last 7 days)');
+      .title (' ');
 
 
   client.run(neq,  function(err, res) {
@@ -659,27 +729,17 @@ Keen.ready(function() {
 
 Keen.ready(function(){
   var tablequery = new Keen.Query("count", {
-        group_by: "hashtag1",
-        event_collection: "bus5569F17",
-        refresh_rate: 3600,
-        timeframe: "this_7_days",
+        group_by: ["hashtag2"],
+       /* ADD YOUR HASHTAG IN THE LINE BELOW */ 
+	event_collection: "COURSE_HASHTAG",
+        refresh_rate: 28000,
+        timeframe: mytime,
         filters: [
           {
-            property_name: "hashtag1",
+            property_name: "hashtag2",
             operator : "not_contains",
             property_value : "None"
-          },
-  {
-            property_name: "hashtag1",
-            operator : "not_contains",
-            property_value : "bus5569F17"
-          },
-  {
-            property_name: "hashtag1",
-            operator : "not_contains",
-            property_value : "BUS5569F17"
           }
-
 
         ]
     });
@@ -688,7 +748,7 @@ Keen.ready(function(){
       .chartType('table')
       .el(document.getElementById('hashtag_table'))
       .height(300)
-      .title ('Top 10 most frequent hashtags (last 7 days)');
+      .title (' ');
     client.run(tablequery, function(err, res){
         table
         .data(res)
@@ -712,11 +772,12 @@ Keen.ready(function(){
 Keen.ready(function(){
 
 var subq1 = new Keen.Query("count", {
-  event_collection: "bus5569F17",
-  timeframe: 'previous_7_days',
+  /* ADD YOUR HASHTAG IN THE LINE BELOW */
+   event_collection: "COURSE_HASHTAG",
+  timeframe: mytime,
   timezone: "US/Eastern",
   interval: 'daily',
-  refresh_rate: 3600,
+  refresh_rate: 28000,
   target_property: 'subjectivity_range',
   filters: [
           {
@@ -728,11 +789,13 @@ var subq1 = new Keen.Query("count", {
 });
 
 var subq2 = new Keen.Query("count", {
-  event_collection: "bus5569F17",
-  timeframe: 'previous_7_days',
+
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */ 
+  event_collection: "COURSE_HASHTAG",
+  timeframe: mytime,
   timezone: "US/Eastern",
   interval: 'daily',
-  refresh_rate:3600,
+  refresh_rate:28000,
   target_property: 'subjectivity_range',
   filters: [
           {
@@ -743,12 +806,9 @@ var subq2 = new Keen.Query("count", {
         ]
 });
 
-
-
-
 var subchart = new Keen.Dataviz()
   .el('#sub_chart')
-  .title('Subjectivity type (last 7 days)')
+  .title(' ')
   .height(300)
   .type("spline")
   .colors(['blue','pink'])
@@ -765,61 +825,64 @@ client.run([subq1, subq2 ], function(err, res) {
       this.dataset.appendColumn('Non opinionated', ds2.selectColumn(1).slice(1));
     })
     .render();
-});
-});
-
-/*
-Keen.ready(function(){
-
-    var retweet_sent = new Keen.Query("count", {
-    event_collection: "bus5569F17",
-    refresh_rate: 3600,
-    filters: [
-    {
-        "operator": "not_contains",
-        "property_name": "sentiment_range",
-        "property_value": "null"
-    },
-    {
-        "operator": "not_contains",
-        "property_name": "retweeted",
-        "property_value":  "null" 
-    }
-],
-    group_by: [
-    "sentiment_range","retweeted"
-],
-    timeframe: "this_7_days",
-    timezone: "US/Eastern"
+   });
 });
 
-   var sent2chart = new Keen.Dataviz()
-    .el('#sent2_chart')
-    .title('Sentiment by tweet type (last 7 days)')
-    .height(300)
-    .type("horizontal-bar")
-    .chartOptions({isStacked:true})
-    .colors(['blue','red','green']);
+Keen.ready(function() {
 
-   client.run([retweet_sent], function(err, res) {
-     sent2chart 
-      .data(res)
-      .labels([ "Neutral Retweet", "Neutral Original", "Postive Retweet", "Positive Original", "Negative Retweet","Negative Original" ])
-    
-      .call(function() {
-      })
-      .render();
-  });
+var userquery = new Keen.Query("count", {
+        group_by: "username",
+        refresh_rate: 28000,
+       /* ADD YOUR HASHTAG IN THE LINE BELOW */ 
+	event_collection: "COURSE_HASHTAG",
+timezone: "US/Eastern",
+        timeframe: mytime,
+ filters: [
+          {
+            property_name: "retweeted",
+            operator: "eq",
+            property_value :"false" 
+          },
+  {
+    property_name: "text",
+    operator: "exists",
+    property_value: true
+  }        
+]
+    });
 
+var columnchart = new Keen.Dataviz()
+      .chartType('horizontal-bar')
+      .el(document.getElementById('column_chart'))
+      .height(330)
+      .colors(['purple'])
+      .title (' ');
+
+client.run(userquery, function(err, res){
+        columnchart
+        .data(res)
+       .parseRequest(this)
+        .call(function(){
+           this.dataset.sortRows("desc", function(row){
+              return row[1];
+            });
+
+           this.dataset.filterRows(function(row, index){
+             return index < 11;
+            });
+
+           })
+          .render();
+       });
 });
 
-*/
 
 Keen.ready(function() {
   var sentq2 = new Keen.Query("count", {
-     event_collection: "bus5569F17",
-     timeframe: 'this_7_days',
-     refresh_rate: 3600,
+   /* ADD YOUR HASHTAG IN THE LINE BELOW */ 
+    event_collection: "COURSE_HASHTAG",
+     timeframe: mytime,
+     refresh_rate: "28000",
      group_by: "username",
      target_property: 'sentiment_range',
      filters: [
@@ -827,16 +890,22 @@ Keen.ready(function() {
             property_name: "sentiment_range",
             operator : "eq",
             property_value : "negative"
-          }
-        ]
-    });
+          },
+{
+            property_name: "text",
+            operator : "exists",
+            property_value : true 
+}
+   ]
+
+  });
 
   var sentbarchart = new Keen.Dataviz()
       .type('horizontal-bar')
       .el(document.getElementById('sentbar_chart'))
-      .height(300)
+      .height(330)
       .colors(['red'])
-      .title  ('Top 10 users with highest number of negative tweets (last 7 days)');
+      .title  (' ');
 
   client.run(sentq2,  function(err, res) {
        sentbarchart
@@ -852,13 +921,62 @@ Keen.ready(function() {
            })
        .render();
       });
+  
+  var sq2 = new Keen.Query("count", {
+  /* ADD YOUR HASHTAG IN THE LINE BELOW */
+     event_collection: "COURSE_HASHTAG",
+     timeframe: mytime,
+     refresh_rate: "28000",
+     group_by: "username",
+     target_property: 'sentiment_range',
+     filters: [
+          {
+            property_name: "sentiment_range",
+            operator : "eq",
+            property_value : "positive"
+          },
+          {
+            property_name: "text",
+            operator: "exists",
+            property_value : true
+          }
+        ] 
+
+   });
+
+  var subbarchart = new Keen.Dataviz()
+      .type('horizontal-bar')
+      .el(document.getElementById('subbar_chart'))
+      .height(330)
+      .colors(['green'])
+      .title  (' ');
+
+  client.run(sq2,  function(err, res) {
+       subbarchart
+         .data(res)
+         .parseRequest(this)
+         .call(function(){
+             this.dataset.sortRows("desc", function(row){
+              return row[1];
+            });
+            this.dataset.filterRows(function(row, index){
+             return index < 11;
+            });
+           })
+       .render();
+      });
 });
 
+
+
+
 Keen.ready(function() {
-  var mentions = new Keen.Query("count", {
-     event_collection: "bus5569F17",
-     timeframe: 'this_1_days',
-     refresh_rate: 3600,
+     var mentions = new Keen.Query("count", {
+
+ /* ADD YOUR HASHTAG IN THE LINE BELOW */
+     event_collection: "COURSE_HASHTAG",
+     timeframe: mytime,
+     refresh_rate: "28000",
      group_by: ["mentions1"],
      filters: [
           {
@@ -873,15 +991,14 @@ Keen.ready(function() {
         }
 
      ]    
-});
+   });
 
   var mentbarchart = new Keen.Dataviz()
       .type('horizontal-bar')
       .el(document.getElementById('mentions_chart'))
-      .height(300)
+      .height(330)
       .colors(['blue'])
-      .title  ('Top 10 user mentioned in others\' tweets  (last 7 days)');
-
+      .title  (' ');
 
   client.run(mentions,  function(err, res) {
        mentbarchart
@@ -900,41 +1017,67 @@ Keen.ready(function() {
 });
 
 
-Keen.ready(function() {
   var textq = new Keen.Query("extraction", {
-     event_collection: "bus5569F17",
-     timeframe: 'this_1_days',
-     refresh_rate: 3600,
-     property_names: ["username","text"],
+    
+     /* ADD YOUR HASHTAG IN THE LINE BELOW */
+     event_collection: "COURSE_HASHTAG",
+     timeframe: "this_1_days",
+     refresh_rate: "28000",
+     property_names: ["username","text","keen.timestamp"],
      timezone:"US/Eastern"
     });
 
   var textchart = new Keen.Dataviz()
      .el(document.getElementById('text_ext'))
-     .height(330)
      .type('table')
-     .title('Full text of today\'s tweets')
+     .height(20)
+     .title(' ')
      .prepare();
-
+  
   client.run(textq, function(err, res) {
       textchart
       .data(res)
       .parseRequest(this)
       .call(function(){
-             this.dataset.sortRows("desc", function(row){
-              return row[1];
-           });
-           this.dataset.filterRows(function(row, index){
-             return index < 11;
+      x =new Array();
+      for (i=1;i<this.dataset.matrix.length;i++){
+	 x[i]= new Array();
+      	 x[i][0]="<a target=_blank href=https://twitter.com/search?q=%40"+this.dataset.matrix[i][0]+"&src=typd&lang=en>"+this.dataset.matrix[i][0]+"</a>";
+ 	 x[i][1]=this.dataset.matrix[i][1];
+	 x[i][2]=this.dataset.matrix[i][2];
+	} 
+      x.shift();
+      this.dataset.sortRows("desc", function(row){
+		return row[2];
+            }); 
+          this.dataset.filterRows(function(row, index){
+             return index < 31;
            });
           })
        .render();
-    });
-});
+       $('#mytable').find("tr").after(
+      tabelajzing( x)
+  ); 	
+     });
+
+ function tabelajzing(a){ 
+    // takes (key, value) pairs from and array and returns
+    // corresponding html, i.e. [ [1,2], [3,4], [5,6] ] 
+      return [
+        "<tr>\n<th>",
+        a.map(function (e, i) {
+          return e.join("</th>\n<td>")
+        }).join("</td></tr>\n<tr>\n<th>"),
+        "</td>\n</tr>\n"
+      ].join("")
+    }
+
 
 
 </script>
+
 </body>
+
 </html>
 
 

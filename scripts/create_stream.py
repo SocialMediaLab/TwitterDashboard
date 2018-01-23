@@ -20,24 +20,30 @@ from textblob import TextBlob
 import argparse
 import cgi
 import re
+import ConfigParser as configparser
 from nltk.tag import StanfordNERTagger
 from nltk.tokenize import word_tokenize
 
 
-#print "Content-type: text/html"
-
-#arguments=cgi.FieldStorage()
-#for i in arguments.keys():
-#    print arguments[i].value
-
 
 #use program arguments as twitter query
-#parser = argparse.ArgumentParser(description='Provide twitter query: keywords, @user_handle, #hashtags')
-#parser.add_argument('twitter_query', metavar='N', type=str, nargs='+', help='provide a query for twitter')
-#args = parser.parse_args()
+parser = argparse.ArgumentParser(description='Provide twitter query: keywords, @user_handle, #hashtags')
+parser.add_argument('-q', '--query', type=str, default=[], nargs='+', help='provide a query for twitter')
+parser.add_argument('-c', '--config', dest='config',type=argparse.FileType(mode='r'))
+args = parser.parse_args()
+query =[]
+for arg in args.query:
+	arg = "#%s"%arg
+        query.append(str(arg))	
+print (query)
 
+here = os.path.realpath('./config/dashboard.config')
 
-
+if args.config:
+   config_file=args.config
+   config = configparser.ConfigParser(defaults = {'here': here})
+   config.read(args.config)
+exit()
 
 #extract all environment variables
 access_token = os.environ.get('ACCESS_TOKEN')
@@ -268,15 +274,17 @@ def test_rate_limit(api, wait=True, buffer=.1):
     return True
 
 if __name__ == '__main__':
-    while True:
+     if len(sys.argv)>1:
+	print str(sys.argv)
+     else:
+	print "Please provide a hashtag to establish a query"
+     exit() 
+     while True:
       try:
           stream_listener = StreamListener()
           stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-          
-      		
-
-
-	  stream.filter(track=["#edchat","#EdChat","#EDCHAT"], stall_warnings=True)
+	  stream.filter(track=["#trumpsucks"], stall_warnings=True) 
+	  #stream.filter(track=[str(sys.argv)], stall_warnings=True)
       except AttributeError as ae:
           if "NoneType" or "ReadTimeoutError" in ae:
               pass
