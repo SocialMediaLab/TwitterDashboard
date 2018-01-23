@@ -283,8 +283,7 @@ if __name__ == '__main__':
       try:
           stream_listener = StreamListener()
           stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-	  stream.filter(track=["#trumpsucks"], stall_warnings=True) 
-	  #stream.filter(track=[str(sys.argv)], stall_warnings=True)
+	  stream.filter(track=[str(sys.argv)], stall_warnings=True)
       except AttributeError as ae:
           if "NoneType" or "ReadTimeoutError" in ae:
               pass
