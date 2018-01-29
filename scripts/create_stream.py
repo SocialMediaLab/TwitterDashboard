@@ -35,16 +35,16 @@ query =[]
 for arg in args.query:
 	arg = "#%s"%arg
         query.append(str(arg))	
-print (query)
 
-here = os.path.realpath('./config/dashboard.config')
+print str(query[0]);
+"""
+here = os.path.realpath('../config/dashboard.config')
 
 if args.config:
    config_file=args.config
    config = configparser.ConfigParser(defaults = {'here': here})
    config.read(args.config)
-exit()
-
+"""
 #extract all environment variables
 access_token = os.environ.get('ACCESS_TOKEN')
 access_token_secret = os.environ.get('ACCESS_TOKEN_SECRET')
@@ -53,6 +53,7 @@ consumer_secret = os.environ.get('CONSUMER_SECRET')
 keen.project_id = os.environ.get('KEEN_PROJECT_ID')
 keen.write_key = os.environ.get('KEEN_WRITE_KEY')
 keen.read_key = os.environ.get('KEEN_READ_KEY')
+
 
 def get_sentiment(text):
     blob = TextBlob(text)
@@ -150,11 +151,11 @@ def create_events (tweet):
      else:
           mentions2="None"
      if len(tweet['entities']['hashtags']) >= 1:
-          hashtag1=tweet['entities']['hashtags'][0]['text']
+          hashtag1=tweet['entities']['hashtags'][0]['text'].lower()
      else:
           hashtag1="None"
      if len(tweet['entities']['hashtags']) >= 2:
-          hashtag2=tweet['entities']['hashtags'][1]['text']
+          hashtag2=tweet['entities']['hashtags'][1]['text'].lower()
      else:
           hashtag2="None"
      if len(tweet['entities']['urls']) == 1:
@@ -180,13 +181,8 @@ def create_events (tweet):
      terms=get_wordcounts(tweet['text'])
      named_entities=get_namedentities(tweet['text'].encode('ascii','ignore'))
 
-     #MODIFY 1 of 2
-     #MODIFY THE LINE BELOW TO ASSIGN EVENTS TO THE APPROPRIATE STREAM
-     #CHANGE THE "keen.add_event("XXXXXXXX", {" TO "keen.add_event("BUS1477", {" OR WHATEVER HASHTAG FOR THE DASHBOARD
-    
-
-
-     keen.add_event("XXXXXX",{
+     
+     keen.add_event(query[0][1:],{
                 "ID":tweet['id_str'],
                 "text":tweet['text'].encode('ascii','ignore'),
                 "username":tweet['user']['screen_name'],
@@ -206,7 +202,6 @@ def create_events (tweet):
                 "replied_to":tweet['in_reply_to_screen_name'],
                 "media":media
        })
-
 
 
 class StreamListener(tweepy.StreamListener):
@@ -274,16 +269,13 @@ def test_rate_limit(api, wait=True, buffer=.1):
     return True
 
 if __name__ == '__main__':
-     if len(sys.argv)>1:
-	print str(sys.argv)
-     else:
+     if len(sys.argv)==0:
 	print "Please provide a hashtag to establish a query"
-     exit() 
      while True:
       try:
           stream_listener = StreamListener()
           stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-	  stream.filter(track=[str(sys.argv)], stall_warnings=True)
+	  stream.filter(track=[query[0]], stall_warnings=True)
       except AttributeError as ae:
           if "NoneType" or "ReadTimeoutError" in ae:
               pass
