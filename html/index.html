@@ -336,8 +336,9 @@ legend_flag=inOptions[3];
         var selectedItem = chart.getSelection()[0];
           if (selectedItem) {
            target = data.getValue(selectedItem.row, 0); 
-             //SPECIAL CASE OF ADDING POUND SYMBOL FOR ONE PIE CHART
+             //SPECIAL CASE OF ADDING HASHTAG SYMBOL FOR HASHTAG PIE CHART
              if (chartId=='hashtag_chart'){ 
+			console.log ("HELLO");
 			target='#'+target;} 
              if (type== 'BarChart') {
 		 linkString ="https://twitter.com/search?f=tweets&q=%40"+target+"%20%23"+myhashtag+"&src=typd ";}
@@ -374,16 +375,47 @@ function tabelajzing(a){
      }
 
 
+function readConfigFile() {
+  var path="/config/"+myhashtag+".config";
+  var result=null;
+  var params={};
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open('GET', path, false);
+  xmlhttp.send();
+
+  if (xmlhttp.status==200)  {
+	result=xmlhttp.responseText;
+  }
+  var all= result.split('\n'); 
+  console.log(all);
+  for (i=0;i<all.length;i++){
+      if (all[i].includes("KEEN_PROJECT_ID") ) {
+	params['KEEN_PROJECT_ID']=all[i].split("=")[1];}
+      else if (all[i].includes("KEEN_READ_KEY")) { 
+	params['KEEN_READ_KEY']=all[i].split("=")[1];}
+      }
+ return params;
+}
+
+
 var mytime=getUrlParameter("catid");
 var myhashtag= window.location.href.split('/')[3];
+
+//document.getElementById("hashSection").innerHTML = myhashtag;
+
 if (!mytime || mytime=="null") {
   mytime="this_1_week";}
 
 formatTime(mytime);
-var goodlist=[];
+
+allConfig=readConfigFile();
+file_projectId=allConfig['KEEN_PROJECT_ID'].replace(/"/g,"");
+file_readKey=allConfig['KEEN_READ_KEY'].replace(/"/g,"");
+
+
 var client = new Keen({
-       projectId: "595658e654532c69a434e36c",
-        readKey: "561BB911CF7338D0713A81E057B8F15AEB2B0FEB99AA9593DB28C6CDA36474BAF23DAC275023D2BF91D4FE581A4D5267AFD693E87AB45748EFFCEDE14F6A372203692DADA7A9F821E9217A6BC8B1265917D602A0C64331EB523FB64976FE5202"
+       projectId: file_projectId,
+       readKey: file_readKey 
      });  
 
 
