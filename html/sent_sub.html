@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.6.4.js"></script>
+   <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+ <title>Learning Analytics Dashboard</title>
+  <meta charset="utf-8" name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script src="http://d26b395fwzu5fz.cloudfront.net/3.3.0/keen.min.js"></script>
+  <script src="//d26b395fwzu5fz.cloudfront.net/keen-analysis-1.2.2.js"></script>
+
+
+  <link href="//d26b395fwzu5fz.cloudfront.net/keen-dataviz-1.1.3.css" rel="stylesheet" />
+  <script src="//d26b395fwzu5fz.cloudfront.net/keen-dataviz-1.1.3.js"></script>
+  <link rel="stylesheet" type="text/css" href="../assets/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../assets/css/keen-dashboards.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" rel="stylesheet" type="text/css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
+  
+</head>
+
+    
+<body class="application">
+<div id="content">
+<div class="navbar navbar-inverse navbar-fixed-top" style="height:800;" role="navigation">
+          <a class="navbar-brand" style="margin-top:10px" href="http://socialmedialab.ca/"><img alt="Social Media Lab" h
+eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/Social_Media_Lab_Ryerson_TRSM_logo2016-1
+.png" >
+</a>
+   <a class="navbar-brand"><h2>Learning Analytics Dashboard</h2><h4>Hashtag: #COURSE_HASHTAG<span></span></h4></a>
+   <br><br><br><br><br>
+</div> 
+
+
+<div>
+   
+ <br><br> <br>
+   <font size=4 weight=bold>Examples of sentiment and subjectivity classification 
+    <div  class="row">
+      <div class="col-sm-12">
+        <div class="chart-wrapper">
+	   <div class="chart-number"><font size=4 color="#154360">  <b>Sentiment classification</b></div>
+         <div class="chart-stage" id="sent_list">
+          </div>
+          <div class="chart-notes">
+           Sentiment describes the emotionality of the tweet, and whether it is positive, negative or neutral. 
+We use the NLTK SentimentAnalyzer , a Python package to implement and facilitate Sentiment Analysis tasks using NLTK features and classifiers.  
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">  
+    <div class="col-sm-12">
+        <div class="chart-wrapper">
+        	 <div class="chart-number"><font size=4 color="#154360"> <b>Subjectivity Classification</b></font> </div>     
+	 <div class="chart-stage" id="sub_list">
+          </div>
+          <div class="chart-notes">
+Subjectivity is the degree of factuality or opinionated language in tweets. To calculate the subjectivity of sentences, we use the NLTK subjectivity classifier, trained on the Subjectivity Dataset (Pang & Lee, 2004).         
+      </div>
+        </div>
+      </div>
+   </div>
+  </div>
+
+</div>
+</div>
+
+<script type='text/javascript'>
+
+function writeSource(val) {
+   if (val == "learning"){ val="edchat";} 
+   var sel=document.getElementById('content').getElementsByTagName('span');
+   for (var i=0; i<sel.length; i++) {
+        sel[i].innerHTML=val;
+   }
+}
+
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+var source=getUrlParameter("source");
+
+if (!source || source=="null") {
+  alert("Could not find the source stream");}
+
+writeSource(source);
+
+var client = new Keen({
+   projectId: "595658e654532c69a434e36c",
+   readKey: "561BB911CF7338D0713A81E057B8F15AEB2B0FEB99AA9593DB28C6CDA36474BAF23DAC275023D2BF91D4FE581A4D5267AFD693E87AB45748EFFCEDE14F6A372203692DADA7A9F821E9217A6BC8B1265917D602A0C64331EB523FB64976FE5202"
+     });  
+
+Keen.ready(function() {
+  var textq = new Keen.Query("extraction", {
+     event_collection: source,
+     timeframe: 'this_1_days',
+     refresh_rate: "28000",
+     propertyNames: ["sentiment_range","text"], 
+     filters: [{"operator":"eq","property_name":"retweeted","property_value":"false"}],
+     timezone:"US/Eastern"
+    });
+
+  var textchart = new Keen.Dataviz()
+     .el(document.getElementById('sent_list'))
+     .height(330)
+     .type('table')
+     .title(' ')
+     .prepare();
+
+  client.run(textq, function(err, res) {
+      textchart
+      .data(res)
+      .parseRequest(this)
+      .sortGroups('asc')
+      .call(function(){
+             this.dataset.sortRows("desc", function(row){
+              return row[2];
+            }); 
+          
+          this.dataset.filterRows(function(row, index){
+             return index < 21;
+           });
+          
+          })
+       .render();
+    });
+});
+
+
+Keen.ready(function() {
+  var textq = new Keen.Query("extraction", {
+     event_collection: source,
+     timeframe: 'this_1_days',
+     refresh_rate: "28000",
+     propertyNames: ["subjectivity_range","text"],
+     filters: [{"operator":"eq","property_name":"retweeted","property_value":"false"}],
+     timezone:"US/Eastern"
+   
+
+   });
+
+  var textchart = new Keen.Dataviz()
+     .el(document.getElementById('sub_list'))
+     .height(330)
+     .type('table')
+     .title(' ')
+     .prepare();
+
+  client.run(textq, function(err, res) {
+      textchart
+      .data(res)
+      .parseRequest(this)
+      .call(function(){
+             this.dataset.sortRows("desc", function(row){
+              return row[2];
+            });
+          this.dataset.filterRows(function(row, index){
+             return index < 21;
+           });
+
+          })
+       .render();
+    });
+});
+</script>
+
+</body>
+
+</html>
+
+

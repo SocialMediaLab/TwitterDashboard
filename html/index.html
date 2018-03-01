@@ -1,10 +1,11 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <script type="text/javascript" src="//code.jquery.com/jquery-1.6.4.js"></script>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
  <title>Learning Analytics Dashboard</title>
   <meta charset="utf-8" name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
@@ -74,7 +75,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
 <br><br><br><br><br>  
    <font size=4 weight=bold>Posting Frequency
     <div  class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-4">
         <div class="chart-wrapper">
           <div class="chart-number"> [1] <b>Total posts</b> (<span></span>)</div>   
            <div class="chart-stage" id="total_chart">
@@ -93,16 +94,30 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
   <div class="chart-stage" id="hour_chart">
           </div>
           <div class="chart-notes">
-          The total number of tweets each hour using the hashtag #COURSE_HASHTAG
+          The total number of tweets each hour using the hashtag #COURSE_HASHTAG 
            </div>
         </div>
       </div>
-   </div>
+  
+<div class="col-sm-4">
+ <div class="chart-wrapper">
+ <div class="chart-number">[3]<b> All tweets </b><br></div>
+ <div class="chart-stage">
+            
+                      <a class="twitter-timeline"  href="https://twitter.com/hashtag/COURSE_HASHTAG" data-widget-id="964509360872476673">#COURSE_HASHTAG Tweets</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+           
+
+  </div>
+ </div>
+</div>
+
+ </div>
    <font size=4 weight=bold>Content Descriptions 
    <div class="row">
       <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-          <div class="chart-number">[3]<b> Content types </b> (<span></span>) </div> 
+          <div class="chart-number">[4]<b> Content types </b> (<span></span>) </div> 
  <div class="chart-stage" id="con_chart">
           </div>
           <div class="chart-notes">
@@ -114,7 +129,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
       </div>
     <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-           <div class="chart-number">[4]<b> Engagement type </b>(<span></span>)</div>  
+           <div class="chart-number">[5]<b> Engagement type </b>(<span></span>)</div>  
   <div class="chart-stage" id="eng_chart">
           </div>
           <div class="chart-notes">
@@ -124,7 +139,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
       </div>
            <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-   <div class="chart-number">[5]<b> Sentiment type </b>(<span></span>)<br><font style="font-size:14px;"> <a target="_blank" href="../sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div>
+   <div class="chart-number">[6]<b> Sentiment type </b>(<span></span>)<br><font style="font-size:14px;"> <a target="_blank" href="sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div>
           <div class="chart-stage" id="spline_chart">
           </div>
           <div class="chart-notes">
@@ -139,7 +154,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
 <div class="row">
      <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-          <div class="chart-number">[6]<b> Subjectivity type</b> (<span></span>)<br> <font style="font-size:14px;"><a target="_blank" href="../sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by subjectivity type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div> 
+          <div class="chart-number">[7]<b> Subjectivity type</b> (<span></span>)<br> <font style="font-size:14px;"><a target="_blank" href="sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by subjectivity type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div> 
  <div class="chart-stage" id="sub_chart">
           </div>
           <div class="chart-notes">
@@ -149,7 +164,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
       </div>
    <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-          <div class="chart-number">[7]<b> Top 10 Hashtags </b>(<span></span>) </div>
+          <div class="chart-number">[8]<b> Top 10 Hashtags </b>(<span></span>) </div>
             <div class="chart-stage"id="hashtag_chart" >
 
 </div>
@@ -160,7 +175,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
       </div>
       <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-          <div class="chart-number">[8]<b> Top 10 named entities </b> (<span></span>)</div> 
+          <div class="chart-number">[9]<b> Top 10 named entities </b> (<span></span>)</div> 
  <div class="chart-stage" id="ne_chart" >
           </div>
           <div class="chart-notes">
@@ -175,7 +190,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
   <div class="row">
   <div class="col-sm-12 col-md-3">
         <div class="chart-wrapper">
-           <div class="chart-number">[9]<b> Top 10 contributors </b>(<span></span>)<br><br></div>
+           <div class="chart-number">[10]<b> Top 10 contributors </b>(<span></span>)<br><br></div>
   <div class="chart-stage" id="column_chart" >
           </div>
           <div class="chart-notes">
@@ -190,7 +205,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
 
  <div class="col-sm- col-md-3">
         <div class="chart-wrapper">
-  <div class="chart-number">[10]<b> Top 10 most negative</b> (<span></span>)<br><font style="font-size:14px;"> <a target="_blank" href="../sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div>
+  <div class="chart-number">[11]<b> Top 10 most negative</b> (<span></span>)<br><font style="font-size:14px;"> <a target="_blank" href="sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div>
           <div class="chart-stage" id="subbar_chart" >
           </div>
           <div class="chart-notes" >
@@ -200,7 +215,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
       </div>
       <div class="col-sm-12 col-md-3">
         <div class="chart-wrapper">
-<div class="chart-number">[11]<b> Top 10 most positive</b> (<span></span>)<br><font style="font-size:14px;"> <a target="_blank" href="../sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div>
+<div class="chart-number">[12]<b> Top 10 most positive</b> (<span></span>)<br><font style="font-size:14px;"> <a target="_blank" href="sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div>
           <div class="chart-stage" id="sentbar_chart">
           </div>
           <div class="chart-notes">
@@ -210,7 +225,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
       </div>
        <div class="col-sm-12 col-md-3">
         <div class="chart-wrapper">
-  <div class="chart-number">[12]<b> Top 10 most mentioned</b> (<span></span>)<br><br></div>
+  <div class="chart-number">[13]<b> Top 10 most mentioned</b> (<span></span>)<br><br></div>
           <div class="chart-stage" id="mentions_chart">
           </div>
           <div class="chart-notes">
@@ -220,38 +235,6 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
       </div>
     </div>
  
- <div class="row">
-  <div class="col-sm-6 col-md-12">
- <div class="chart-wrapper"> 
- <div class="chart-number">[13]<b> All tweets </b>(<span></span>)<font style="font-size:16px;"> <a target="_blank" href="https://twitter.com/search?q=%23COURSE_HASHTAG&src=typd&lang=en">See previous tweets for the hashtag #COURSE_HASHTAG <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div> 
- <div class="chart-stage">
-<!--   <embed src=" https://dev.twitter.com/web/embedded-timelines/search"></embed> -->
-<div style="height:300px; overflow:auto;">
-<font style="font-size:14px;">
- <table cellspacing=0 cellpadding=0 width=100% id=mytable >
-  <tbody></b> 
-	<tr>
-	 <th>User handle</th>
-	 <th>Full text</th>
-	 <th>Time sent</th>
-	</tr>
-  </tbody>
-  </table>
-</font>
-   </div>
-
-
-  </div>
- </div>
-</div>
-</div>  
-<div style="visibility:visible;" class="col-sm-6 col-md-12">
-        <div class="chart-wrapper">
-     <div class="chart-stage" id="text_ext" >
-         </div>
-        </div>
-      </div>
-    </div>
  </div>
  </div> 
  </div>
@@ -263,7 +246,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
 
 <script type='text/javascript'>
 google.charts.load('current', {'packages':['corechart']});
-//google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(drawChart);
 
 
 
@@ -275,7 +258,7 @@ function getUrlParameter(name) {
 };
 
 function doReload(catid){
-  document.location = 'https://dashboard.socialmediadata.org/'+myhashtag+'/index.html?catid=' + catid;
+  document.location = '/index.html?catid=' + catid;
 };
 
 
@@ -302,55 +285,13 @@ function formatTime (val) {
      }
     else if (val == "this_16_weeks") {
      time_html ="4 months";
-     }	
+     }
 
    var sel=document.getElementById('content').getElementsByTagName('span');
    for (var i=0; i<sel.length; i++) {
-	sel[i].innerHTML=time_html; 
+sel[i].innerHTML=time_html; 
    }
 }
-
-function drawChart(inOptions,type)  {
-x=inOptions[0];
-chartId=inOptions[1];
-color=inOptions[2];
-legend_flag=inOptions[3];
-        
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Username');
-        data.addColumn('number', 'Frequency');
-        data.addRows(x);
-
-        var options = { 'width':500,
-                       'height':300,
-                       'hAxis':{textStyle:{fontSize: 7}},
-                       'legend':legend_flag,
-                       'colors':color,
-                       'chartArea': {'width':'70%', 'height': '90%'}
-        };
-        if (type=="BarChart"){
-      	  	var chart = new google.visualization.BarChart(document.getElementById(chartId)); }
-	if (type=="PieChart"){
-  		 var chart = new google.visualization.PieChart(document.getElementById(chartId)); }
-        function selectHandler() {
-        var selectedItem = chart.getSelection()[0];
-          if (selectedItem) {
-           target = data.getValue(selectedItem.row, 0); 
-             //SPECIAL CASE OF ADDING HASHTAG SYMBOL FOR HASHTAG PIE CHART
-             if (chartId=='hashtag_chart'){ 
-			console.log ("HELLO");
-			target='#'+target;} 
-             if (type== 'BarChart') {
-		 linkString ="https://twitter.com/search?f=tweets&q=%40"+target+"%20%23"+myhashtag+"&src=typd ";}
-              else if (type  =='PieChart') {  
-                 linkString="https://twitter.com/search?f=tweets&q=%22"+target+"%22%20%23"+myhashtag+"&src=typd";}
-           window.open(linkString);
-         }
-       }
-
-        google.visualization.events.addListener(chart, 'select', selectHandler);
-        chart.draw(data, options);
-      }
 
 
 
@@ -374,7 +315,6 @@ function tabelajzing(a){
        ].join("")
      }
 
-
 function readConfigFile() {
   var path="/config/"+myhashtag+".config";
   var result=null;
@@ -397,12 +337,8 @@ function readConfigFile() {
  return params;
 }
 
-
 var mytime=getUrlParameter("catid");
 var myhashtag= window.location.href.split('/')[3];
-
-//document.getElementById("hashSection").innerHTML = myhashtag;
-
 if (!mytime || mytime=="null") {
   mytime="this_1_week";}
 
@@ -416,8 +352,7 @@ file_readKey=allConfig['KEEN_READ_KEY'].replace(/"/g,"");
 var client = new Keen({
        projectId: file_projectId,
        readKey: file_readKey 
-     });  
-
+     }); 
 
 var postchart = new Keen.Dataviz()
   .el('#post_line')
@@ -773,8 +708,8 @@ client.run([con1, con2, con3, con4], function(err, res) {
           goodlist[i][0]=templist[i][0];
           goodlist[i][1]=templist[i][1];
             }
-           var options =[goodlist,'hashtag_chart',['#2D2D45', '#3C3C5C','#4B4B73', '#5A5A8A','#6F6DA7','#8381B3','#9795BF','#ABA9CB','#BFBDD7','#D3D1E3'],'right'];
-              drawChart(options, 'PieChart');
+           var options =[goodlist,['#2D2D45', '#3C3C5C','#4B4B73', '#5A5A8A','#6F6DA7','#8381B3','#9795BF','#ABA9CB','#BFBDD7','#D3D1E3'],'right'];
+              drawChart(options, 'PieChart','hashtag_chart');
          })
 
 
@@ -785,7 +720,7 @@ client.run([con1, con2, con3, con4], function(err, res) {
         timezone: "US/Eastern",
         refresh_rate:"28000",
         group_by:"named_entities",
-	filters:[              {
+filters:[              {
             property_name: "named_entities",
             operator : "not_contains",
             property_value : "None"
@@ -795,15 +730,15 @@ client.run([con1, con2, con3, con4], function(err, res) {
             operator: "exists",
             property_value : true
           },
-	   {
+   {
             property_name: "named_entities",
             operator: "not_contains",
             property_value : "none" 
           },
-  	   {  property_name: "named_entities",
+     {  property_name: "named_entities",
             operator: "not_contains",
             property_value : "& amp"
-	}	 
+} 
         ]
 
          })
@@ -823,8 +758,8 @@ client.run([con1, con2, con3, con4], function(err, res) {
           goodlist[i][0]=templist[i][0];
           goodlist[i][1]=templist[i][1];
             }
-           var options =[goodlist,'ne_chart',['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'], 'right']
-              drawChart(options, 'PieChart');
+           var options =[goodlist,['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'], 'right']
+              drawChart(options, 'PieChart','ne_chart');
          })
 
 
@@ -934,8 +869,8 @@ timezone: "US/Eastern",
           goodlist[i][0]=templist[i][0];
           goodlist[i][1]=templist[i][1];
             }
-            var options =[goodlist, 'column_chart', ['purple'], 'none']; 
-	    drawChart(options,'BarChart');
+            var options =[goodlist, ['purple'], 'none']; 
+    drawChart(options,'BarChart','column_chart');
          })
 
 
@@ -976,8 +911,8 @@ timezone: "US/Eastern",
           goodlist[i][0]=templist[i][0];
           goodlist[i][1]=templist[i][1];
             }
-             var options =[goodlist, 'sentbar_chart',['green'], 'none'];
-	     drawChart(options,'BarChart'); 
+             var options =[goodlist, ['green'], 'none'];
+     drawChart(options,'BarChart','sentbar_chart'); 
          })
 
  
@@ -1018,8 +953,8 @@ client
           goodlist[i][0]=templist[i][0];
           goodlist[i][1]=templist[i][1];
             }
-            var options=[goodlist,'subbar_chart',['red'],'none'];
-            drawChart(options,'BarChart');
+            var options=[goodlist,['red'],'none'];
+            drawChart(options,'BarChart','subbar_chart');
 
          })
 
@@ -1061,8 +996,8 @@ client
           goodlist[i][0]=templist[i][0];
           goodlist[i][1]=templist[i][1];
             }
-          var options =[goodlist,'mentions_chart',['blue'],'none'];  
-	   drawChart(options,'BarChart','mentions_chart',['blue']);
+          var options =[goodlist,['blue'],'none'];  
+   drawChart(options,'BarChart','mentions_chart');
          })
 
 
@@ -1076,102 +1011,65 @@ client
      timezone:"US/Eastern",  
      filters :[ 
             {
-	property_name: "retweeted",
-	operator: "ne",
-	property_value: "true"	
+property_name: "retweeted",
+operator: "ne",
+property_value: "true"
     }, {
-	 property_name: "text",
+ property_name: "text",
         operator: "not_contains",
-        property_value: "RT "	
-	}
-	]
+        property_value: "RT "
+}
+]
 
 });
 
+function drawChart(inOptions,type,chartId)  {
+var x=inOptions[0];
+var color=inOptions[1];
+var legend_flag=inOptions[2];
 
-  var textchart = new Keen.Dataviz()
-     .el(document.getElementById('text_ext'))
-     .type('table')
-     .height(20)
-     .title(' ')
-     .prepare();
-  
-  client.run(textq, function(err, res) {
-      textchart
-      .data(res)
-      .parseRequest(this)
-      .call(function(){
-      x =new Array();
-      top_list =500
-      if (this.dataset.matrix.length < top_list) {
-	 top_list=this.dataset.matrix.length;}
-      for (i=1;i<top_list;i++){
-	 x[i]= new Array();
+var data = new google.visualization.DataTable();
+   data.addColumn('string', 'Username');
+   data.addColumn('number', 'Frequency');
+   data.addRows(x);
 
-      	 x[i][0]="<a target=_blank href=https://twitter.com/search?f=tweets&q=%40"+this.dataset.matrix[i][0]+"%20%23"+myhashtag+"&src=typd&lang=en>"+this.dataset.matrix[i][0]+"</a>";
- 	 x[i][1]=this.dataset.matrix[i][1];
-	 x[i][2]=this.dataset.matrix[i][2];
-	} 
-      x.shift();
-      this.dataset.sortRows("desc", function(row){
-		return row[2];
-            }); 
-          this.dataset.filterRows(function(row, index){
-             return index < 31;
-           });
-          })
-       .render();
-       $('#mytable').find("tr").after(
-      tabelajzing( x)
-  ); 	
-     });
+    var options = { 'width':500,
+                       'height':300,
+                       'hAxis':{textStyle:{fontSize: 7}},
+                       'legend':legend_flag,
+                       'colors':color,
+                       'chartArea': {'width':'70%', 'height': '90%'}
+        };
+   if (type=="BarChart"){
+        var chart = new google.visualization.BarChart(document.getElementById(chartId)); }
+   if (type=="PieChart"){
+        var chart = new google.visualization.PieChart(document.getElementById(chartId)); }
 
+  function selectHandler() {
+     var selectedItem = chart.getSelection()[0];
+        if (selectedItem) {
+           target = data.getValue(selectedItem.row, 0);
+            if (type=='PieChart') {
+                 if (chartId == 'hashtag_chart') {
+                   linkString ="https://twitter.com/search?f=tweets&q=%23"+target+"%20%23"+myhashtag+"&src=typd ";}
+                 else if (chartId  =='ne_chart') {
+                    linkString="https://twitter.com/search?f=tweets&q=%22"+target+"%22%20%23"+myhashtag+"&src=typd";}
+                }
+          else if (type== 'BarChart') {
+                 linkString ="https://twitter.com/search?f=tweets&q=from:"+target+"%20%23"+myhashtag+"&src=typd ";}
+           window.open(linkString);
+         }
+       }
 
-client
-      .query("count", {
-        event_collection: myhashtag,
-        timeframe: mytime,
-        timezone: "US/Eastern",
-        refresh_rate:"28000",
-        group_by: ["mentions1"],
-        filters:[              {
-            property_name: "mentions1",
-            operator : "ne",
-            property_value : "null"
-          },
-          {
-            property_name: "mentions1",
-            operator: "not_contains",
-            property_value :"None"
-          }
-        ]
-
-         })
-      .then(function(res) {
-        templist=new Array();
-       for (var i=0; i<res.result.length; i++){
-           templist[i]=new Array;
-           templist[i][0]=res.result[i].mentions1;
-           templist[i][1]=res.result[i].result; }
-        templist.sort(compareSecondColumn);
-        top_list=10;
-        if (res.result.length<top_list) {
-             top_list=res.result.length;}
-        goodlist=new Array;
-        for (var i=0; i<=top_list; i++){
-          goodlist[i]=new Array;
-          goodlist[i][0]=templist[i][0];
-          goodlist[i][1]=templist[i][1];
-            }
-            var options=[goodlist,'mentions_chart',['blue'],'none']; 
-	    drawChart(options,'BarChart');
-         })
-
+        google.visualization.events.addListener(chart, 'select', selectHandler);
+        chart.draw(data, options);
+      }
 
 </script>
 
 </body>
 
 </html>
+
 
 
