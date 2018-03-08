@@ -50,19 +50,18 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
 <font color="black">
 <select id="selectitem" name="catid" onChange="doReload(this.value); ">
         <option value="null">Select timeframe</option>
-        <option value="this_1_week"  >1 week</option>
-        <option value="this_2_weeks"  >2 weeks</option>
-        <option value="this_3_weeks" >3 weeks</option>
-        <option value="this_4_weeks" >1 month</option>
-        <option value="this_8_weeks" >2 months</option>
+        <option value="this_1_week">1 week</option>
+        <option value="this_2_weeks">2 weeks</option>
+        <option value="this_3_weeks">3 weeks</option>
+        <option value="this_4_weeks">1 month</option>
+        <option value="this_8_weeks">2 months</option>
         <option value="this_12_weeks">3 months</option>
         <option value="this_16_weeks" >4 months</option>
 </select>
-
-      <noscript>
-    <input type='submit'>
-     </noscript>
-     </form>
+   <noscript>
+   <input type='submit'>
+   </noscript>
+   </form>
 </td><td width=40></td></tr>
 </table>
 <br><br>
@@ -248,7 +247,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
-
+var myhashtag= window.location.href.split('/').pop();
 
 function getUrlParameter(name) {
     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -258,9 +257,8 @@ function getUrlParameter(name) {
 };
 
 function doReload(catid){
-  document.location = '/index.html?catid=' + catid;
+  document.location = myhashtag+'/index.html?catid=' + catid;
 };
-
 
 
 function formatTime (val) {
@@ -316,7 +314,7 @@ function tabelajzing(a){
      }
 
 function readConfigFile() {
-  var path="/config/"+myhashtag+".config";
+  var path="config/"+myhashtag+".config";
   var result=null;
   var params={};
   var xmlhttp = new XMLHttpRequest();
@@ -327,7 +325,6 @@ function readConfigFile() {
 	result=xmlhttp.responseText;
   }
   var all= result.split('\n'); 
-  console.log(all);
   for (i=0;i<all.length;i++){
       if (all[i].includes("KEEN_PROJECT_ID") ) {
 	params['KEEN_PROJECT_ID']=all[i].split("=")[1];}
@@ -338,7 +335,6 @@ function readConfigFile() {
 }
 
 var mytime=getUrlParameter("catid");
-var myhashtag= window.location.href.split('/')[3];
 if (!mytime || mytime=="null") {
   mytime="this_1_week";}
 

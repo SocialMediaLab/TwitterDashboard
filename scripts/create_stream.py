@@ -37,6 +37,7 @@ for arg in args.query:
         query.append(str(arg))	
 
 print str(query[0]);
+
 """
 here = os.path.realpath('../config/dashboard.config')
 
@@ -182,7 +183,7 @@ def create_events (tweet):
      named_entities=get_namedentities(tweet['text'].encode('ascii','ignore'))
 
      
-     keen.add_event(query[0][1:],{
+     keen.add_event(str(query[0][1:]),{
                 "ID":tweet['id_str'],
                 "text":tweet['text'].encode('ascii','ignore'),
                 "username":tweet['user']['screen_name'],
@@ -275,7 +276,7 @@ if __name__ == '__main__':
       try:
           stream_listener = StreamListener()
           stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-	  stream.filter(track=[query[0]], stall_warnings=True)
+	  stream.filter(track=[str(query[0])], stall_warnings=True)
       except AttributeError as ae:
           if "NoneType" or "ReadTimeoutError" in ae:
               pass
