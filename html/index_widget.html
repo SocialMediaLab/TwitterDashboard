@@ -21,8 +21,8 @@
 
   <link href="//d26b395fwzu5fz.cloudfront.net/keen-dataviz-1.1.3.css" rel="stylesheet" />
   <script src="//d26b395fwzu5fz.cloudfront.net/keen-dataviz-1.1.3.js"></script>
-  <link rel="stylesheet" type="text/css" href="../assets/lib/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" href="../assets/css/keen-dashboards.css" />
+  <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/keen-dashboards.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" rel="stylesheet" type="text/css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
@@ -87,7 +87,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
           </div>
         </div>
       </div>
-      <div class="col-sm-8">
+      <div class="col-sm-4">
         <div class="chart-wrapper">
            <div class="chart-number">[2]<b> Total number of posts each hour</b> </div>
   <div class="chart-stage" id="hour_chart">
@@ -97,13 +97,26 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
            </div>
         </div>
       </div>
+  
+<div class="col-sm-4">
+ <div class="chart-wrapper">
+ <div class="chart-number">[3]<b> All tweets </b><br></div>
+ <div class="chart-stage">
+            
+                      <a class="twitter-timeline"  href="https://twitter.com/hashtag/COURSE_HASHTAG" data-widget-id="964509360872476673">#COURSE_HASHTAG Tweets</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+           
+
+  </div>
  </div>
- 
+</div>
+
+ </div>
    <font size=4 weight=bold>Content Descriptions 
    <div class="row">
       <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-          <div class="chart-number">[3]<b> Content types </b> (<span></span>) </div> 
+          <div class="chart-number">[4]<b> Content types </b> (<span></span>) </div> 
  <div class="chart-stage" id="con_chart">
           </div>
           <div class="chart-notes">
@@ -115,7 +128,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
       </div>
     <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-           <div class="chart-number">[4]<b> Engagement type </b>(<span></span>)</div>  
+           <div class="chart-number">[5]<b> Engagement type </b>(<span></span>)</div>  
   <div class="chart-stage" id="eng_chart">
           </div>
           <div class="chart-notes">
@@ -125,7 +138,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
       </div>
            <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-   <div class="chart-number">[5]<b> Sentiment type </b>(<span></span>)<br><font style="font-size:14px;"> <a target="_blank" href="sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div>
+   <div class="chart-number">[6]<b> Sentiment type </b>(<span></span>)<br><font style="font-size:14px;"> <a target="_blank" href="sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div>
           <div class="chart-stage" id="spline_chart">
           </div>
           <div class="chart-notes">
@@ -140,7 +153,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
 <div class="row">
      <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-          <div class="chart-number">[6]<b> Subjectivity type</b> (<span></span>)<br> <font style="font-size:14px;"><a target="_blank" href="sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by subjectivity type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div> 
+          <div class="chart-number">[7]<b> Subjectivity type</b> (<span></span>)<br> <font style="font-size:14px;"><a target="_blank" href="sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by subjectivity type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div> 
  <div class="chart-stage" id="sub_chart">
           </div>
           <div class="chart-notes">
@@ -150,7 +163,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
       </div>
    <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-          <div class="chart-number">[7]<b> Top 10 Hashtags </b>(<span></span>) </div>
+          <div class="chart-number">[8]<b> Top 10 Hashtags </b>(<span></span>) </div>
             <div class="chart-stage"id="hashtag_chart" >
 
 </div>
@@ -161,7 +174,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
       </div>
       <div class="col-sm-6 col-md-4">
         <div class="chart-wrapper">
-          <div class="chart-number">[8]<b> Top 10 named entities </b> (<span></span>)</div> 
+          <div class="chart-number">[9]<b> Top 10 named entities </b> (<span></span>)</div> 
  <div class="chart-stage" id="ne_chart" >
           </div>
           <div class="chart-notes">
@@ -176,7 +189,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
   <div class="row">
   <div class="col-sm-12 col-md-3">
         <div class="chart-wrapper">
-           <div class="chart-number">[9]<b> Top 10 contributors </b>(<span></span>)<br><br></div>
+           <div class="chart-number">[10]<b> Top 10 contributors </b>(<span></span>)<br><br></div>
   <div class="chart-stage" id="column_chart" >
           </div>
           <div class="chart-notes">
@@ -185,9 +198,13 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
         </div>
       </div>
      
+
+
+
+
  <div class="col-sm- col-md-3">
         <div class="chart-wrapper">
-  <div class="chart-number">[10]<b> Top 10 most negative</b> (<span></span>)<br><font style="font-size:14px;"> <a target="_blank" href="sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div>
+  <div class="chart-number">[11]<b> Top 10 most negative</b> (<span></span>)<br><font style="font-size:14px;"> <a target="_blank" href="sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div>
           <div class="chart-stage" id="subbar_chart" >
           </div>
           <div class="chart-notes" >
@@ -197,7 +214,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
       </div>
       <div class="col-sm-12 col-md-3">
         <div class="chart-wrapper">
-<div class="chart-number">[11]<b> Top 10 most positive</b> (<span></span>)<br><font style="font-size:14px;"> <a target="_blank" href="sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div>
+<div class="chart-number">[12]<b> Top 10 most positive</b> (<span></span>)<br><font style="font-size:14px;"> <a target="_blank" href="sent_sub.html?source=COURSE_HASHTAG">See examples of tweets by sentiment type <img src="https://cdn.onlinewebfonts.com/svg/img_167295.png" height=14 width=14></a></font></div>
           <div class="chart-stage" id="sentbar_chart">
           </div>
           <div class="chart-notes">
@@ -207,7 +224,7 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
       </div>
        <div class="col-sm-12 col-md-3">
         <div class="chart-wrapper">
-  <div class="chart-number">[12]<b> Top 10 most mentioned</b> (<span></span>)<br><br></div>
+  <div class="chart-number">[13]<b> Top 10 most mentioned</b> (<span></span>)<br><br></div>
           <div class="chart-stage" id="mentions_chart">
           </div>
           <div class="chart-notes">
@@ -216,20 +233,6 @@ eight="60" width="225" src="http://socialmedialab.ca/wp-content/uploads/2016/11/
         </div>
       </div>
     </div>
-      <div class="row">
-  <div class="col-sm-6 col-md-12">
-        <div class="chart-wrapper">
-           <div class="chart-number">[13] <b>Full text of all Twitter posts today using the course hashtag</div>
-          <div class="chart-stage" id="text_ext" >
-          </div>
-          <div class="chart-notes">
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-
  
  </div>
  </div> 
@@ -1057,42 +1060,6 @@ var data = new google.visualization.DataTable();
         google.visualization.events.addListener(chart, 'select', selectHandler);
         chart.draw(data, options);
       }
-
-
-Keen.ready(function() {
-  var textq = new Keen.Query("extraction", {
-     event_collection: myhashtag,
-     timeframe: 'this_1_days',
-     refresh_rate: 3600,
-     property_names: ["username","text","keen.timestamp"],
-     timezone:"US/Eastern"
-    });
-
-  var textchart = new Keen.Dataviz()
-     .el(document.getElementById('text_ext'))
-     .height(330)
-     .type('table')
-     .title('Full text of today\'s tweets')
-     .prepare();
-
-  client.run(textq, function(err, res) {
-      textchart
-      .data(res)
-      .parseRequest(this)
-      .call(function(){
-             this.dataset.sortRows("desc", function(row){
-              return row[2];
-           });
-           this.dataset.filterRows(function(row, index){
-             return index < 30;
-           });
-          })
-       .render();
-    });
-});
-
-
-
 
 </script>
 
