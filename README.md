@@ -5,7 +5,7 @@
 What the project does
 ---------------------
 
-This is an information dashboard that analyzes tweets produced under a specific course hashtag, and displays the resulting visualizations. The goal is to allow instructors to see their students' Twitter activity in a visual format. 
+This is an information dashboard that analyzes tweets produced under a specific course hashtag, and displays the resulting visualizations. The goal is to allow instructors to see their students' Twitter activity, visually in real-time. 
 
 
 Why is it useful
