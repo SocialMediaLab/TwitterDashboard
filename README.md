@@ -1,39 +1,14 @@
 # LA dashboard project - generic 
 =======
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/RUSocialMediaLab/TwitterDashboard/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+As social media take root in our society, more and more University instructors are incorporating platforms like Twitter into their classroom. However, very few of the current Learning Analytics (LA) systems and dashboards are able to process and visualize social media data for the purpose of instructional interventions and evaluation. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+As a result, instructors who are using social media in the classroom have no easy way to assess their students learning progress or to use the data to adjust and improve their lessons in real time. 
 
-### Markdown
+The dashboard analyzes tweets produced under a specific course hashtag, and displays the resulting visualizations for an instructor to use for their own exploration. The goal is to allow instructors to see the ways in which students engage with each other using Twitter. 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+=====
 
-```markdown
-Syntax highlighted code block
+*This software is distrubuted under GNU General Public License v3.0 GNU (GPLv3)
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/RUSocialMediaLab/TwitterDashboard/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+*This work was supported in part by eCampusOntario (https://www.ecampusontario.ca/).
