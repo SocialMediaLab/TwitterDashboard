@@ -20,14 +20,14 @@ How to get started
 ------------------
 Installation:
 
-[a relative link] (https://github.com/RUSocialMediaLab/Twitter/Dashboard/docs/Learning_Analytics_Dashboard_Installation_Guide.pdf)
+[a relative link] (https://github.com/RUSocialMediaLab/TwitterDashboard/docs/Learning_Analytics_Dashboard_Installation_Guide.pdf)
 
 Usage:
 
-[a relative link] (https://github.com/RUSocialMediaLab/Twitter/Dashboard/docs/Learning_Analytics_Dashboard_Userg_Guide.pdf)
+[a relative link] (https://github.com/RUSocialMediaLab/TwitterDashboard/docs/Learning_Analytics_Dashboard_Userg_Guide.pdf)
 
 
-Where users can get help with your project
+Where to get help
 ------------------------------------------
 Anatoliy Gruzd				 
 Director – Social Media Lab			
