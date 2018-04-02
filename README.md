@@ -23,7 +23,6 @@ Installation: [here](../../docs/Learning_Analytics_Dashboard_Installation_Guide.
 
 Usage: [here](../../docs/Learning_Analytics_Dashboard_User_Guide.pdf)
 
-
 Where to get help
 ------------------------------------------
 Anatoliy Gruzd <br>
