@@ -20,10 +20,10 @@ How to get started
 ------------------
 
 Installation:
-https://github.com/TwitterDashboard/docs/LA-Dashboard_Installation_Guide.pdf
+https://github.com/TwitterDashboard/docs/Learning_Analytics_Dashboard_Installation_Guide.pdf
 
 Usage:
-https://github.com/TwitterDashboard/docs/Learning Analytics Dashboard User Guide.pdf
+https://github.com/TwitterDashboard/docs/Learning_Analytics_Dashboard_User_Guide.pdf
 
 Where users can get help with your project
 ------------------------------------------
