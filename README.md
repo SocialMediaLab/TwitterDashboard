@@ -20,9 +20,11 @@ How to get started
 ------------------
 
 Installation:
+
 https://github.com/RUSocialMediaLab/TwitterDashboard/docs/Leanring_Analytics_Dashboard_Installation_Guide.pdf
 
 Usage:
+
 https://github.com/RUSocialMediaLab/TwitterDashboard/docs/Learning_Analytics_Dashboard_User_Guide.pdf
 
 
@@ -45,4 +47,5 @@ Who maintains and contributes to the project
 This software is maintained and updated by members of the Social Media Lab, Ted Rogers School of Management. Ryerson University.
 
 *This software is distrubuted under GNU General Public License v3.0 GNU (GPLv3)
-*This work was supported in part by eCampusOntario (https://www.ecampusontario.ca/).
+
+*This work was supported in part by eCampusOntario (https://www.ecampusontario.ca/)
