@@ -18,7 +18,7 @@ As a result, instructors who are using social media in the classroom have no eas
 
 How to get started 
 ------------------
-../docs/LA_dashboard_Intallation_Guide.pdf
+TwitterDashboard/docs/LA-Dashboard_Installation_Guide.pdf
 
 ../docs/LA_dashboard_User_Guide.pdf
 
