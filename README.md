@@ -18,9 +18,12 @@ As a result, instructors who are using social media in the classroom have no eas
 
 How to get started 
 ------------------
-TwitterDashboard/docs/LA-Dashboard_Installation_Guide.pdf
 
-../docs/LA_dashboard_User_Guide.pdf
+Installation:
+https://github.com/TwitterDashboard/docs/LA-Dashboard_Installation_Guide.pdf
+
+Usage:
+https://github.com/TwitterDashboard/docs/Learning Analytics Dashboard User Guide.pdf
 
 Where users can get help with your project
 ------------------------------------------
