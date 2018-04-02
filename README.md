@@ -1,5 +1,5 @@
 # Learning Analytics Dashboard
-=================================
+=========================================
 
 
 What the project does
