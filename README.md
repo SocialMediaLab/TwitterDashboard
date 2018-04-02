@@ -19,13 +19,9 @@ This software allows instructors to explore how their students create, share, an
 
 How to get started 
 ------------------
-Installation:
+Installation: [here](../../docs/Learning_Analytics_Dashboard_Installation_Guide.pdf)
 
-[view here](Learning_Analytics_Dashboard_Installation_Guide.pdf)
-
-Usage:
-
-[view here](Learning_Analytics_Dashboard_Userg_Guide.pdf)
+Usage: [here](../../docs/Learning_Analytics_Dashboard_User_Guide.pdf)
 
 
 Where to get help
