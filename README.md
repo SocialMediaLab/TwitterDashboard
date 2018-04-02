@@ -1,5 +1,5 @@
 # Learning Analytics Dashboard
-=========================================
+
 
 
 What the project does
@@ -18,15 +18,11 @@ As a result, instructors who are using social media in the classroom have no eas
 
 How to get started 
 ------------------
-
 Installation:
-
-https://github.com/RUSocialMediaLab/TwitterDashboard/docs/Leanring_Analytics_Dashboard_Installation_Guide.pdf
+[a relative link] (Learning_Analytics_Dashboard_Installation_Guide.pdf)
 
 Usage:
-
-https://github.com/RUSocialMediaLab/TwitterDashboard/docs/Learning_Analytics_Dashboard_User_Guide.pdf
-
+[a relative link] (Learning_Analytics_Dashboard_Userg_Guide.pdf)
 
 
 Where users can get help with your project
