@@ -29,15 +29,15 @@ Usage:
 
 Where to get help
 ------------------------------------------
-Anatoliy Gruzd				 
-Director – Social Media Lab			
-Ted Rogers School of Management  		
-gruzd@ryerson.ca			
+Anatoliy Gruzd <br>
+Director – Social Media Lab <br>
+Ted Rogers School of Management <br>
+gruzd@ryerson.ca			<br><br>
 
-Nadia Conroy
-Postdoc Researcher – Social Media Lab
-Ted Rogers School of Management
-n1conroy@ryerson.ca
+Nadia Conroy <br>
+Postdoc Researcher – Social Media Lab<br> 
+Ted Rogers School of Management <br>
+n1conroy@ryerson.ca<br>
 
 
 Who maintains and contributes to the project
