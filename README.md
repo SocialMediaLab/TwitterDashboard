@@ -21,11 +21,11 @@ How to get started
 ------------------
 Installation:
 
-[here](../docs/Learning_Analytics_Dashboard_Installation_Guide.pdf)
+[here](../../docs/Learning_Analytics_Dashboard_Installation_Guide.pdf)
 
 Usage:
 
-[here](../docs/Learning_Analytics_Dashboard_Userg_Guide.pdf)
+[here](../../docs/Learning_Analytics_Dashboard_Userg_Guide.pdf)
 
 
 Where to get help
