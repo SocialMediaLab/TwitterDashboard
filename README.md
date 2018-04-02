@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # LA dashboard project - generic 
 =======
 ## Welcome to GitHub Pages
