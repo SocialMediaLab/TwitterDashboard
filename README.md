@@ -5,7 +5,7 @@
 What the project does
 ---------------------
 
-This is an information dashboard that analyzes tweets produced under a specific course hashtag, and displays the resulting visualizations for an instructor to use for their own exploration. The goal is to allow instructors to see the ways in which students engage with eachother using Twitter. 
+This is an information dashboard that analyzes tweets produced under a specific course hashtag, and displays the resulting visualizations. The goal is to allow instructors to see their students' Twitter activity in a visual format. 
 
 
 Why is it useful
@@ -15,16 +15,17 @@ As social media take root in our society, more and more University instructors a
 
 As a result, instructors who are using social media in the classroom have no easy way to assess their students learning progress or to use the data to adjust and improve their lessons in real time. 
 
+This software allows instructors to explore how their students create, share, and engage with materials on Twitter as part of their learning activites.
 
 How to get started 
 ------------------
 Installation:
 
-[a relative link] (https://github.com/RUSocialMediaLab/TwitterDashboard/docs/Learning_Analytics_Dashboard_Installation_Guide.pdf)
+[here]  (/docs/Learning_Analytics_Dashboard_Installation_Guide.pdf)
 
 Usage:
 
-[a relative link] (https://github.com/RUSocialMediaLab/TwitterDashboard/docs/Learning_Analytics_Dashboard_Userg_Guide.pdf)
+[here] (/docs/Learning_Analytics_Dashboard_Userg_Guide.pdf)
 
 
 Where to get help
