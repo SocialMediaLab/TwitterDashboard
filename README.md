@@ -5,7 +5,7 @@
 What the project does
 ---------------------
 
-This is an information dashboard that analyzes tweets produced under a specific course hashtag, and displays the resulting visualizations for an instructor to use for their own exploration. The goal is to allow instructors to see the ways in which students engage with each other using Twitter. 
+This is an information dashboard that analyzes tweets produced under a specific course hashtag, and displays the resulting visualizations for an instructor to use for their own exploration. The goal is to allow instructors to see the ways in which students engage with eachother using Twitter. 
 
 
 Why is it useful
@@ -19,6 +19,7 @@ As a result, instructors who are using social media in the classroom have no eas
 How to get started 
 ------------------
 ../docs/LA_dashboard_Intallation_Guide.pdf
+
 ../docs/LA_dashboard_User_Guide.pdf
 
 Where users can get help with your project
