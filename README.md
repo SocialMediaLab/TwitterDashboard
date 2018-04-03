@@ -42,4 +42,4 @@ This software is maintained and updated by members of the Social Media Lab, Ted 
 
 *This software is distrubuted under GNU General Public License v3.0 GNU (GPLv3)
 
-*This work was supported in part by eCampusOntario (https://www.ecampusontario.ca/)
+*This work was supported in part by eCampusOntario (https://www.ecampusontario.ca/) and The Social Sciences and Humanities Research Council of Canada.
