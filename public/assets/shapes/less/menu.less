@@ -1,0 +1,245 @@
+//Mixins
+@import "mixins.less";
+
+/*-----------------------------------*/
+/* Menu */
+/*-----------------------------------*/
+
+.menu {
+	display: block;
+	position: relative;
+	height: 70px;
+	margin-bottom: 60px;
+	z-index: 1300;
+
+	ul li {
+		float: left;
+		position: relative;
+
+		ul {
+			opacity: 0;
+			visibility: hidden;
+			position: absolute;
+			left: 0;
+			top: 70px;
+			min-width: 400px;
+			.transition();
+
+			li {
+				float: left;
+				display: inline-block;
+				a {
+					font-size: 12px;
+					padding: 15px 0;
+					background: rgba(223, 227, 233, .13);
+					color: #dfe3e9;
+
+					&:hover, &.hover {
+						background: rgba(242, 242, 242, .16);
+						color: #fff;
+					}
+					span {padding: 0 30px;}
+				}
+			}
+		}
+
+		&:hover, &.hover {
+			ul {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			& > a {
+				background: #f2f2f2;
+				color: #1d3e55;
+			}
+		}
+
+		&:last-child {
+			a {
+				span {
+					border-right: 0;
+				}
+			}
+		}
+
+		a {
+			display: block;
+			text-transform: uppercase;
+			font-size: 14px;
+			color: #dfe3e9;
+			padding: 18px 0;
+			transition: background 0.15s ease;
+
+			span {
+				border-right: 1px solid rgba(223, 227, 233, .2);
+				display: block;
+				padding: 10px 28px;
+			}
+		}
+	}
+}
+
+.top-search {
+	position: relative;
+	display: block;
+	margin-right: 28px;
+	margin-top: 20px;
+
+	form {
+		padding: 0;
+		margin: 0;
+
+		.field_text {
+			position: relative;
+			display: block;
+			margin: 0;
+			float: none;
+			width: 150px;
+
+			input[type="text"] {
+				postion: relative;
+				background: #dfe3e9;
+				border: 0;
+				height: 28px;
+				line-height: 28px;
+				color: #939ea9;
+				font-size: 11px;
+				text-transform: uppercase;
+				font-weight: 600;
+				z-index: 1;
+			}
+
+			input[type="submit"] {
+				background: transparent;
+				border: 0;
+				height: 28px;
+				line-height: 28px;
+				width: 28px;
+				position: absolute;
+				top: 0;
+				right: 0;
+				z-index: 3;
+				background: url(images/icons/search.png) no-repeat 7px 7px;
+				background-size: 13px 15px;
+				padding: 0;
+			}
+		}
+	}
+}
+
+/*-----------------------------------*/
+/* Mobile Menu */
+/*-----------------------------------*/
+
+.slicknav_btn { position: relative; display: block; vertical-align: middle; float: right; padding: 0.438em 0.625em 0.438em 0.625em; line-height: 1.125em; cursor: pointer; }
+.slicknav_menu  .slicknav_menutxt { display: block; line-height: 1.188em; float: left; }
+.slicknav_menu .slicknav_icon { float: left; margin: 0.188em 0 0 0.438em; }
+.slicknav_menu .slicknav_no-text { margin: 0 }
+.slicknav_menu .slicknav_icon-bar { display: block; width: 1.125em; height: 0.125em; -webkit-border-radius: 1px; -moz-border-radius: 1px; border-radius: 1px; -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); }
+.slicknav_btn .slicknav_icon-bar + .slicknav_icon-bar { margin-top: 0.188em }
+.slicknav_nav { clear: both }
+.slicknav_nav ul,
+.slicknav_nav li { display: block }
+.slicknav_nav .slicknav_arrow { font-size: 0.8em; margin: 0 0 0 0.4em; }
+.slicknav_nav .slicknav_item { display: block; cursor: pointer; }
+.slicknav_nav a { display: block }
+.slicknav_nav .slicknav_item a { display: inline }
+.slicknav_menu:before,
+.slicknav_menu:after { content: ''; display: table; }
+.slicknav_menu:after { clear: both }
+
+/*
+    User Default Style
+    Change the following styles to modify the appearance of the menu.
+*/
+
+.slicknav_menu {
+	font-size:16px;
+	display: none;
+}
+/* Button */
+.slicknav_btn {
+	margin: 5px 5px 6px;
+	text-decoration:none;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	background-color: @cyan-color;
+	&:active {background-color: lighten(@cyan-color, 10%);}
+}
+
+/* Button Text */
+.slicknav_menu  .slicknav_menutxt {
+	color: @white-color;
+	font-weight: bold;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+/* Button Lines */
+.slicknav_menu .slicknav_icon-bar {background-color: @white-color;}
+.slicknav_menu {
+	background: @gray-color;
+	background: rgba(0, 0, 0, 0.22);
+	padding: 5px;
+}
+.slicknav_nav {
+	color: @white-color;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+
+	&, ul {
+		list-style: none;
+		overflow:hidden;
+	}
+
+	ul {
+		padding:0;
+		margin:0 0 0 10px;
+		float: none !important;
+	}
+
+	.slicknav_item {
+		padding:5px 10px;
+		margin:2px 5px;
+	}
+
+	a {
+		padding: 10px;
+		margin: 2px 5px;
+		text-decoration: none;
+		font-size: 14px;
+		color: @dark-white;
+		text-transform: uppercase;
+		.transition(none);
+
+		&:hover, &:hover > a {
+			background: #f2f2f2;
+			color: #1d3e55;
+		}
+	}
+
+	.slicknav_item {
+		padding: 10px;
+		a {padding:0; margin:0;}
+		&:hover {
+			background: #f2f2f2;
+			color: #1d3e55 !important;
+		}
+	}
+	.slicknav_txtnode {margin-left:15px;}
+	.top-search {
+		float: none !important;
+		margin: 14px 24px 26px 24px;
+		form .field_text {width: auto;}
+	}
+}
+
+@media @sm {
+	.menu {
+		ul li a span {padding: 10px 13px;}
+		.top-search {margin-right: 14px;}
+	}
+}
+@media @xs {
+	.menu {display: none;}
+	.slicknav_menu {display: block;}
+}

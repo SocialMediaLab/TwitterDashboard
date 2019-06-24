@@ -1,0 +1,59 @@
+<div class="widget-container boxed equalize-height" id="tweet-widget-container">
+	<div class="inner">
+		<h3 class="widget-title">
+			Recent Tweets
+      <div class="tip">
+        <img src="/assets/images/info.png">
+        <div class="tiptext">
+          <p>This widget displays all recent tweets, including ones that have been filtered out by Twitter's search algorithm.</p>
+        </div>
+      </div>
+		</h3>
+    <div id="tweets-widget">
+    </div>
+    <a onclick="displayTweets()" class="btn btn-small btn-transparent" hidefocus="true" id="more-button"><span>More</span></a>
+
+	</div>
+</div>
+
+<script>
+  window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+      t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function(f) {
+      t._e.push(f);
+    };
+
+    return t;
+  }(document, "script", "twitter-wjs"));
+
+  window.twttr.ready(loadTwitter)
+  function loadTwitter() {
+    if (!window.twttr.widgets) {
+      setTimeout(loadTwitter, 500)
+    } else displayTweets()
+  }
+
+  let totalDisplayed = 0;
+
+  function displayTweets() {
+    var widget = document.getElementById('tweets-widget');
+    console.log('test')
+    for (i = 0; i < 10; i++) {
+      window.twttr.widgets.createTweet(
+        recentTweets[0].values[i+totalDisplayed], widget, {
+          conversation: 'none',
+          cards: 'hidden'
+        }
+      )
+      totalDisplayed++;
+    }
+  }
+</script>

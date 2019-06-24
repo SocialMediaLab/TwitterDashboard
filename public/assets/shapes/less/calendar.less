@@ -1,0 +1,432 @@
+//Mixins
+@import "mixins.less";
+
+/*-----------------------------------*/
+/* Widget Calendar */
+/*-----------------------------------*/
+
+.widget-calendar .inner {padding: 0 12px 32px;}
+
+/* Datepicker General Styles
+-------------------------------------*/
+
+.ui-datepicker {
+	display: none;
+}
+
+.ui-state-disabled {
+	cursor: default !important;
+}
+
+.ui-icon {
+	display: block;
+	text-indent: -99999px;
+	overflow: hidden;
+}
+
+#ui-datepicker-div {
+	background: @cyan-color;
+	width: 180px;
+	.ui-datepicker-header {height: auto;}
+}
+
+#ui-datepicker-div .ui-datepicker-header .ui-datepicker-title:before, #ui-datepicker-div .ui-datepicker-header .ui-datepicker-title:after {
+	background: transparent;
+}
+
+/* Datepicker Header
+-----------------------------------------------*/
+
+.ui-datepicker-header {
+	position: relative;
+	padding: 0;
+	margin: 0 -12px 6px;
+	height: 60px;
+	line-height: 55px;
+}
+
+.ui-datepicker-prev, .ui-datepicker-next {
+	.icon-font();
+	position: absolute;
+	top: 23px;
+	left: 16px;
+	cursor: pointer;
+	z-index: 10;
+	&:before {content: '\e601';}
+}
+
+.ui-datepicker-next {
+	left: auto;
+	right: 16px;
+	&:before {content: '\e600';}
+}
+
+.ui-datepicker-year {display: none;}
+
+#ui-datepicker-div .ui-datepicker-prev, #ui-datepicker-div .ui-datepicker-next {
+	top: 11px;
+	left: 11px;
+	&:hover, &:active {color: @red-color;}
+}
+
+.ui-datepicker-title {
+	height: 60px;
+	position: relative;
+	line-height: 55px;
+	font-size: 24px;
+	font-weight: 300;
+	color: @white-color;
+	text-align: center;
+	text-shadow: none;
+}
+
+#ui-datepicker-div {
+	.ui-datepicker-header {
+		margin: 0 0 8px;
+	}
+	.ui-datepicker-next {
+		left: auto;
+		right: 11px;
+	}
+	.ui-datepicker-title {
+		height: 32px;
+		line-height: 32px;
+		font-size: 14px;
+	}
+}
+
+/* Datepicker Table
+-----------------------------------------*/
+
+.ui-datepicker {
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 0 auto;
+	}
+	th {
+		text-align: center;
+		text-shadow: none;
+		padding-bottom: 28px;
+		font-size: 14px;
+		font-weight: 300;
+		color: #eef0f2;
+	}
+}
+
+.ui-datepicker td span, .ui-datepicker td a {
+	display: block;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 20px;
+	color: #50a6bc;
+	text-align: center;
+	text-shadow: none;
+	padding: 4px 0;
+	border: 1px solid transparent;
+}
+
+#ui-datepicker-div td span, #ui-datepicker-div td a {
+	height: 26px;
+	line-height: 22px;
+	padding: 0;
+	font-size: 12px;
+	color: @white-color;
+}
+
+td.ui-datepicker-today a, td.ui-datepicker-today a.ui-state-hover {
+	color: @cyan-color;
+	border-color: @cyan-color;
+}
+
+td.ui-state-highlight a, td.ui-datepicker-today.ui-state-highlight a, #ui-datepicker-div td.ui-datepicker-current-day a, #ui-datepicker-div td.ui-datepicker-current-day.ui-datepicker-today a {
+	color: @cyan-color;
+	border-color: @cyan-color;
+}
+
+#ui-datepicker-div {
+	td.ui-datepicker-today a, td.ui-datepicker-today a.ui-state-hover {
+		color: @white-color;
+		border-color: @white-color;
+	}
+
+	td.ui-state-highlight a, td.ui-datepicker-today.ui-state-highlight a, td.ui-datepicker-current-day a, td.ui-datepicker-current-day.ui-datepicker-today a {
+		color: @white-color;
+		border-color: @white-color;
+	}
+}
+
+
+/*-----------------------------------*/
+/* Widget Calendar Style 2 */
+/*-----------------------------------*/
+
+.widget-calendar.style2 {
+	overflow: hidden;
+	text-align: center;
+	padding: 20px 0 38px;
+
+	.calendar-header {
+		position: relative;
+
+		.calendar-month {
+			font-size: 24px;
+			font-weight: 300;
+			color: @white-color;
+			margin: 0 0 26px;
+		}
+		.icon {
+			position: absolute;
+			top: 10px;
+			left: 16px;
+			font-size: 13px;
+			&.icon-arrow-right {left: auto; right: 16px;}
+		}
+	}
+	.calendar-days {
+		margin-bottom: 28px;
+		font-size: 0;
+		span {
+			display: inline-block;
+			font-size: 14px;
+			color: #50a6bc;
+			margin: 0 5px;
+			&.today {color: @white-color;}
+		}
+	}
+	.calendar-date {
+		position: relative;
+		.square(150px);
+		border: 1px solid @white-color;
+		.border-radius(50%);
+		margin: 0 auto;
+		padding-top: 22px;
+		margin-bottom: 34px;
+
+		&:before {
+			content: '';
+			.full-size();
+			.border-radius(50%);
+			box-shadow: rgb(0, 0, 0) 1px 1px,
+			rgb(0, 0, 0) 2px 2px,
+			rgb(0, 0, 0) 3px 3px,
+			rgb(0, 0, 0) 4px 4px,
+			rgb(0, 0, 0) 5px 5px,
+			rgb(0, 0, 0) 6px 6px,
+			rgb(0, 0, 0) 7px 7px,
+			rgb(0, 0, 0) 8px 8px,
+			rgb(0, 0, 0) 9px 9px,
+			rgb(0, 0, 0) 10px 10px,
+			rgb(0, 0, 0) 11px 11px,
+			rgb(0, 0, 0) 12px 12px,
+			rgb(0, 0, 0) 13px 13px,
+			rgb(0, 0, 0) 14px 14px,
+			rgb(0, 0, 0) 15px 15px,
+			rgb(0, 0, 0) 16px 16px,
+			rgb(0, 0, 0) 17px 17px,
+			rgb(0, 0, 0) 18px 18px,
+			rgb(0, 0, 0) 19px 19px,
+			rgb(0, 0, 0) 20px 20px,
+			rgb(0, 0, 0) 21px 21px,
+			rgb(0, 0, 0) 22px 22px,
+			rgb(0, 0, 0) 23px 23px,
+			rgb(0, 0, 0) 24px 24px,
+			rgb(0, 0, 0) 25px 25px,
+			rgb(0, 0, 0) 26px 26px,
+			rgb(0, 0, 0) 27px 27px,
+			rgb(0, 0, 0) 28px 28px,
+			rgb(0, 0, 0) 29px 29px,
+			rgb(0, 0, 0) 30px 30px,
+			rgb(0, 0, 0) 31px 31px,
+			rgb(0, 0, 0) 32px 32px,
+			rgb(0, 0, 0) 33px 33px,
+			rgb(0, 0, 0) 34px 34px,
+			rgb(0, 0, 0) 35px 35px,
+			rgb(0, 0, 0) 36px 36px,
+			rgb(0, 0, 0) 37px 37px,
+			rgb(0, 0, 0) 38px 38px,
+			rgb(0, 0, 0) 39px 39px,
+			rgb(0, 0, 0) 40px 40px,
+			rgb(0, 0, 0) 41px 41px,
+			rgb(0, 0, 0) 42px 42px,
+			rgb(0, 0, 0) 43px 43px,
+			rgb(0, 0, 0) 44px 44px,
+			rgb(0, 0, 0) 45px 45px,
+			rgb(0, 0, 0) 46px 46px,
+			rgb(0, 0, 0) 47px 47px,
+			rgb(0, 0, 0) 48px 48px,
+			rgb(0, 0, 0) 49px 49px,
+			rgb(0, 0, 0) 50px 50px,
+			rgb(0, 0, 0) 51px 51px,
+			rgb(0, 0, 0) 52px 52px,
+			rgb(0, 0, 0) 53px 53px,
+			rgb(0, 0, 0) 54px 54px,
+			rgb(0, 0, 0) 55px 55px,
+			rgb(0, 0, 0) 56px 56px,
+			rgb(0, 0, 0) 57px 57px,
+			rgb(0, 0, 0) 58px 58px,
+			rgb(0, 0, 0) 59px 59px,
+			rgb(0, 0, 0) 60px 60px,
+			rgb(0, 0, 0) 61px 61px,
+			rgb(0, 0, 0) 62px 62px,
+			rgb(0, 0, 0) 63px 63px,
+			rgb(0, 0, 0) 64px 64px,
+			rgb(0, 0, 0) 65px 65px,
+			rgb(0, 0, 0) 66px 66px,
+			rgb(0, 0, 0) 67px 67px,
+			rgb(0, 0, 0) 68px 68px,
+			rgb(0, 0, 0) 69px 69px,
+			rgb(0, 0, 0) 70px 70px,
+			rgb(0, 0, 0) 71px 71px,
+			rgb(0, 0, 0) 72px 72px,
+			rgb(0, 0, 0) 73px 73px,
+			rgb(0, 0, 0) 74px 74px,
+			rgb(0, 0, 0) 75px 75px,
+			rgb(0, 0, 0) 76px 76px,
+			rgb(0, 0, 0) 77px 77px,
+			rgb(0, 0, 0) 78px 78px,
+			rgb(0, 0, 0) 79px 79px,
+			rgb(0, 0, 0) 80px 80px,
+			rgb(0, 0, 0) 81px 81px,
+			rgb(0, 0, 0) 82px 82px,
+			rgb(0, 0, 0) 83px 83px,
+			rgb(0, 0, 0) 84px 84px,
+			rgb(0, 0, 0) 85px 85px,
+			rgb(0, 0, 0) 86px 86px,
+			rgb(0, 0, 0) 87px 87px,
+			rgb(0, 0, 0) 88px 88px,
+			rgb(0, 0, 0) 89px 89px,
+			rgb(0, 0, 0) 90px 90px,
+			rgb(0, 0, 0) 91px 91px,
+			rgb(0, 0, 0) 92px 92px,
+			rgb(0, 0, 0) 93px 93px,
+			rgb(0, 0, 0) 94px 94px,
+			rgb(0, 0, 0) 95px 95px,
+			rgb(0, 0, 0) 96px 96px,
+			rgb(0, 0, 0) 97px 97px,
+			rgb(0, 0, 0) 98px 98px,
+			rgb(0, 0, 0) 99px 99px,
+			rgb(0, 0, 0) 100px 100px,
+			rgb(0, 0, 0) 101px 101px,
+			rgb(0, 0, 0) 102px 102px,
+			rgb(0, 0, 0) 103px 103px,
+			rgb(0, 0, 0) 104px 104px,
+			rgb(0, 0, 0) 105px 105px,
+			rgb(0, 0, 0) 106px 106px,
+			rgb(0, 0, 0) 107px 107px,
+			rgb(0, 0, 0) 108px 108px,
+			rgb(0, 0, 0) 109px 109px,
+			rgb(0, 0, 0) 110px 110px,
+			rgb(0, 0, 0) 111px 111px,
+			rgb(0, 0, 0) 112px 112px,
+			rgb(0, 0, 0) 113px 113px,
+			rgb(0, 0, 0) 114px 114px,
+			rgb(0, 0, 0) 115px 115px,
+			rgb(0, 0, 0) 116px 116px,
+			rgb(0, 0, 0) 117px 117px,
+			rgb(0, 0, 0) 118px 118px,
+			rgb(0, 0, 0) 119px 119px,
+			rgb(0, 0, 0) 120px 120px,
+			rgb(0, 0, 0) 121px 121px,
+			rgb(0, 0, 0) 122px 122px,
+			rgb(0, 0, 0) 123px 123px,
+			rgb(0, 0, 0) 124px 124px,
+			rgb(0, 0, 0) 125px 125px,
+			rgb(0, 0, 0) 126px 126px,
+			rgb(0, 0, 0) 127px 127px,
+			rgb(0, 0, 0) 128px 128px,
+			rgb(0, 0, 0) 129px 129px,
+			rgb(0, 0, 0) 130px 130px,
+			rgb(0, 0, 0) 131px 131px,
+			rgb(0, 0, 0) 132px 132px,
+			rgb(0, 0, 0) 133px 133px,
+			rgb(0, 0, 0) 134px 134px,
+			rgb(0, 0, 0) 135px 135px,
+			rgb(0, 0, 0) 136px 136px,
+			rgb(0, 0, 0) 137px 137px,
+			rgb(0, 0, 0) 138px 138px,
+			rgb(0, 0, 0) 139px 139px,
+			rgb(0, 0, 0) 140px 140px,
+			rgb(0, 0, 0) 141px 141px,
+			rgb(0, 0, 0) 142px 142px,
+			rgb(0, 0, 0) 143px 143px,
+			rgb(0, 0, 0) 144px 144px,
+			rgb(0, 0, 0) 145px 145px,
+			rgb(0, 0, 0) 146px 146px,
+			rgb(0, 0, 0) 147px 147px,
+			rgb(0, 0, 0) 148px 148px,
+			rgb(0, 0, 0) 149px 149px,
+			rgb(0, 0, 0) 150px 150px,
+			rgb(0, 0, 0) 151px 151px,
+			rgb(0, 0, 0) 152px 152px,
+			rgb(0, 0, 0) 153px 153px,
+			rgb(0, 0, 0) 154px 154px,
+			rgb(0, 0, 0) 155px 155px,
+			rgb(0, 0, 0) 156px 156px,
+			rgb(0, 0, 0) 157px 157px,
+			rgb(0, 0, 0) 158px 158px,
+			rgb(0, 0, 0) 159px 159px,
+			rgb(0, 0, 0) 160px 160px,
+			rgb(0, 0, 0) 161px 161px,
+			rgb(0, 0, 0) 162px 162px,
+			rgb(0, 0, 0) 163px 163px,
+			rgb(0, 0, 0) 164px 164px,
+			rgb(0, 0, 0) 165px 165px,
+			rgb(0, 0, 0) 166px 166px,
+			rgb(0, 0, 0) 167px 167px,
+			rgb(0, 0, 0) 168px 168px,
+			rgb(0, 0, 0) 169px 169px,
+			rgb(0, 0, 0) 170px 170px,
+			rgb(0, 0, 0) 171px 171px,
+			rgb(0, 0, 0) 172px 172px,
+			rgb(0, 0, 0) 173px 173px,
+			rgb(0, 0, 0) 174px 174px,
+			rgb(0, 0, 0) 175px 175px,
+			rgb(0, 0, 0) 176px 176px,
+			rgb(0, 0, 0) 177px 177px,
+			rgb(0, 0, 0) 178px 178px,
+			rgb(0, 0, 0) 179px 179px,
+			rgb(0, 0, 0) 180px 180px,
+			rgb(0, 0, 0) 181px 181px,
+			rgb(0, 0, 0) 182px 182px,
+			rgb(0, 0, 0) 183px 183px,
+			rgb(0, 0, 0) 184px 184px,
+			rgb(0, 0, 0) 185px 185px,
+			rgb(0, 0, 0) 186px 186px,
+			rgb(0, 0, 0) 187px 187px,
+			rgb(0, 0, 0) 188px 188px,
+			rgb(0, 0, 0) 189px 189px,
+			rgb(0, 0, 0) 190px 190px,
+			rgb(0, 0, 0) 191px 191px,
+			rgb(0, 0, 0) 192px 192px,
+			rgb(0, 0, 0) 193px 193px,
+			rgb(0, 0, 0) 194px 194px,
+			rgb(0, 0, 0) 195px 195px,
+			rgb(0, 0, 0) 196px 196px,
+			rgb(0, 0, 0) 197px 197px,
+			rgb(0, 0, 0) 198px 198px,
+			rgb(0, 0, 0) 199px 199px,
+			rgb(0, 0, 0) 200px 200px;
+			z-index: -1;
+			opacity: .04;
+		}
+
+		strong {
+			font-size: 77px;
+			font-weight: 300;
+			display: block;
+			margin: 0 auto 10px;
+		}
+		span {
+			font-family: @font-family-after;
+			font-size: 11px;
+			text-transform: uppercase;
+			font-weight: 400;
+			letter-spacing: .4px;
+		}
+	}
+	.btn {
+		margin: 0;
+		span {border-width: 1px;}
+	}
+}

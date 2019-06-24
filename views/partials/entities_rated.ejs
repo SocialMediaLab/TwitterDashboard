@@ -1,0 +1,128 @@
+<!-- Entities -->
+<div class="widget-container boxed">
+  <div class="inner">
+    <h3 class="widget-title">
+      Top Named Entities
+      <div class="tip">
+          <img src="/cdnpoli/assets/images/info.png">
+          <div class="tiptext">
+          	<p>[Click on a bar to see the relevant tweets]</p>
+            <p>Entities are proper names for people (outside Twitter), places, and organizations.</p>
+            <p>Use this chart to assess who and what users are talking about.</p>
+          </div>
+      </div>
+    </h3>
+      <div class="chart-stage" id="rated_entities_chart"></div>
+      <div class="chart-stage" id="daily_sentiments_chart"></div>
+  </div>
+</div>
+<script type="text/javascript">
+  function makeRatedEntityChart() {
+    var data = {}
+    data.columns = new Array(10);
+    data.columns[0] = new Array(11);
+    data.columns[0][0] = "Entity";
+    data.columns[1] = new Array(10);
+    data.columns[1][0] = "Count";
+
+    var counts = new Array (11)
+    counts[0] = 'Count'
+    var names = new Array (10)
+    for (var i = 0; i < days[days.length-1].top_entities.length; i++) {
+      // console.log(days[days.length-1].top_entities[i])
+      counts[i+1] = days[days.length-1].top_entities[i].count
+      names[i] = days[days.length-1].top_entities[i]._id
+    };
+    var chart = c3.generate({
+      bindto: '#rated_entities_chart',
+      data: {
+        columns: [counts],
+        type: 'bar',
+        onclick: function(d, element) {
+          var name = names[d.x]
+          console.log(d)
+          document.getElementsByClassName('c3-bar-' + d.x)[0].style.opacity = '0.5'
+          addToChart(name)
+        }
+      },
+      axis: {
+        x:{
+          type: 'category',
+          categories: names,
+          label: {position: 'none'}
+        }
+      },
+      legend: {
+        show: false
+      }
+    });
+    makeEntitySentimentChart()
+  }
+  function loadD3() {
+    if (!window.twttr.widgets) {
+      setTimeout(loadTwitter, 500)
+    } else displayTweets()
+  }
+
+  let entitySentimentChart
+
+  function makeEntitySentimentChart() {
+    var data = {}
+    data.columns = [new Array(days.length+1), new Array(days.length+1)]
+    data.columns[0][0] = 'x'
+    data.columns[1][0] = 'Total'
+
+    for (var i = 0; i < days.length; i++){
+      data.columns[0][i+1] = stringToDate(days[i]._id)
+      data.columns[1][i+1] = days[i].sentiment
+    }
+    console.log(data.columns)
+    for (var i = 0; i < data.columns.length; i++) {
+      for (var j = 0; j < data.columns[i].length; j++) {
+        if (data.columns[i][j] == null) data.columns[i][j] = 0
+      }
+    }
+    data.x = 'x'
+    data.type = 'spline'
+    //console.log(data);
+    entitySentimentChart = c3.generate({
+      bindto: '#daily_sentiments_chart',
+      data: data,
+      axis : {
+        x : {
+          type : 'timeseries',
+        }
+      }
+    })
+  }
+
+  function addToChart(name) {
+
+    $.post('/cdnpoli/get_entity', {'name':name}, function(data, status) {
+      chartData = entitySentimentChart.data()[0].values
+      //console.log(chartData)
+      //console.log(data)
+      var newData = Array(chartData.length)
+      newData[0] = name
+
+      for (var dateString in data) {
+        var date = stringToDate(dateString)
+        console.log(date)
+        for (var i = 0; i < chartData.length; i++) {
+          if (chartData[i].x.getTime() === date.getTime()) { console.log(i)
+            newData[i+1] = data[dateString].avg
+          }
+        }
+      }
+      for (i = 0; i < chartData.length; i++) {
+        if (newData[i] == null) newData[i] = 0
+      }
+      console.log(newData)
+
+      entitySentimentChart.load({
+        columns: [newData]
+      })
+    })
+    //console.log(post('/cdnpoli/get_entity', name))
+  }
+</script>

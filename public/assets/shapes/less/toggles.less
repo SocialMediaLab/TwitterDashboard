@@ -1,0 +1,89 @@
+//Mixins
+@import "mixins.less";
+
+/*-----------------------------------*/
+/* Toggles */
+/*-----------------------------------*/
+
+.toggle {
+	position: relative;
+	margin-bottom: 30px;
+}
+.toggle.collapsed.boxed:after {display: none;}
+.toggle-header {display: inline-block;}
+
+.toggle {
+	&.boxed, &.boxed-dark, &.bordered {
+		.toggle-header {
+			display: block;
+		}
+	}
+	&.boxed-dark, &.bordered {
+		h2, h3, p {color: #eef0f2;}
+	}
+}
+
+.toggle-header {
+	h2 {
+		display: inline-block;
+		margin: 0;
+		color: #f87600;
+		letter-spacing: -1px;
+		@media @xs {font-size: 18px;}
+	}
+
+	h3 {
+		display: inline-block;
+		margin: 0;
+		color: #5d5d5d;
+		@media @xs {font-size: 16px;}
+	}
+}
+
+.toggle-header span {
+	display: inline-block;
+	font-size: 18px;
+	color: #25bf75;
+}
+
+.toggle {
+	&.boxed, &.boxed-dark, &.bordered {
+		.toggle-link {
+			position: relative;
+			display: block;
+			padding: 26px 64px 26px 28px;
+			@media @xs {padding: 20px 40px 20px 15px;}
+		}
+	}
+}
+
+.toggle-link {
+	&:before {
+		content: "\e60a";
+		font-family: 'Fashion';
+		color: #25bf75;
+		text-shadow: none;
+		position: absolute;
+		display: block;
+		top: 21px;
+		right: 28px;
+		font-size: 34px;
+		font-weight: normal;
+		@media @xs {top: 14px; right: 6px;}
+	}
+}
+
+.toggle-link.collapsed:before {content: "\e60e";}
+.toggle.boxed .toggle-link:before {color: #25bf75;}
+.toggle.bordered .toggle-link:before {color: #f9f9f9;}
+.toggle-body .inner {padding: 0 5px 0;}
+
+.toggle {
+	&.boxed, &.boxed-dark, &.bordered {
+		.toggle-body {
+			.inner {
+				padding: 0 33px 12px;
+			}
+		}
+	}
+}

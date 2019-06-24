@@ -1,0 +1,75 @@
+<!-- Subjectivity Types -->
+<div class="widget-container boxed">
+  <div class="inner">
+    <h3 class="widget-title">
+      Subjectivity Type
+      <div class="tip">
+        <img src="/assets/images/info.png" >
+          <div class="tiptext">
+            <p>Subjectivity is the degree of factuality or opinionated language in tweets. To calculate the subjectivity of sentences, we use the NLTK subjectivity classifier, trained on the Subjectivity Dataset (Pang & Lee, 2004).</p>
+            <p>Use this information to determine how confident people are when writing tweets, and the strength of the opinions they're sharing.</p>
+          </div>
+      </div>
+    </h3>
+    <div class="chart-stage" id="subjectivity_chart"></div>
+    <a hidden onclick="makeSubjectivityChart(false)">switch</a>
+    <a hidden onclick="makeSubjectivityChart(true)">switch</a>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function makeSubjectivityChart(normalized) {
+    var data = new google.visualization.DataTable();
+    data.addColumn("date", "Date");
+    data.addColumn("number", "Subjective");
+    data.addColumn("number", "Non-Subjective");
+
+    for (i = 0; i < days.length; i++) {
+      if (normalized) {
+        n = days[i].total
+      } else {
+        n = 1
+      }
+      if (days[i].total != 0) {
+        data.addRow([
+          stringToDate(days[i]._id),
+          days[i].subjective / n,
+          days[i].not_subjective / n
+        ])
+      }
+    }
+    data.sort({column: 0});
+
+    var options = {
+      hAxis: {
+        textPosition: 'in',
+        textStyle: textStyle,
+        format: 'MMM dd',
+      },
+      vAxis: {
+        minValue: 0,
+        textPosition: 'in',
+        textStyle: textStyle,
+      },
+      colors: [chartColors[0], chartColors[1], chartColors[3]],
+      chartArea:{
+        width: '100%',
+        height: '100%'
+      },
+      legend: {
+        position: 'in',
+        alignment: 'end',
+        
+        textStyle: textStyle,
+      },
+      curveType: 'function',
+    };
+    /*
+    if (normalized) {
+      options.vAxis.format = 'percent'
+    }
+    */
+    var chart = new google.visualization.LineChart(document.getElementById('subjectivity_chart'));
+    chart.draw(data, options);
+  }
+</script>

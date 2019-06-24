@@ -1,0 +1,99 @@
+//Mixins
+@import "mixins.less";
+
+/* Comment List */
+/*-----------------------------------*/
+
+.comment-list {
+	position: relative;
+	margin-bottom: 24px;
+	h3 {
+		color: @white-color;
+		margin-bottom: 20px;
+	}
+	li.comment {position: relative;}
+}
+
+.comment-body:before {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: #25bf75 url(images/icons/down-left-arrow.png) no-repeat center center;
+	display: block;
+	height: 100%;
+	width: 50px;
+	z-index: 100;
+}
+
+.comment-body {
+	position: relative;
+	padding: 34px 90px 22px 175px;
+	margin-bottom: 20px;
+	background: @white-color;
+}
+
+.comment-avatar {
+	position: absolute;
+	top: 26px;
+	left: 32px;
+	width: 106px;
+	border-radius: 50%;
+	img {border-radius: 50%;}
+}
+
+.link-author {
+	display: inline-block;
+	color: @darktomato-color;
+	margin-right: 18px;
+	text-transform: uppercase;
+}
+
+.comment-date {
+	text-transform: uppercase;
+	color: @extradarkcyan-color;
+}
+
+.comment-author {
+	margin-bottom: 16px;
+	font-size: 15px;
+}
+
+.comment {
+	.children {
+		padding: 0 120px 0 0;
+	}
+}
+
+/* Responsive */
+@media @sm {
+	.comment .children {
+		padding-right: 50px;
+	}
+
+	.comment-body {
+		padding: 26px 60px 9px 130px;
+	}
+
+	.comment-avatar {
+		left: 14px;
+	}
+}
+
+@media @xxs {
+	.comment-body {
+		padding: 128px 36px 9px 15px;
+	}
+
+	.comment-body:before {
+		width: 30px;
+	}
+
+	.comment-avatar {
+		top: 10px;
+	}
+
+	.comment .children {
+		padding-right: 0;
+	}
+}

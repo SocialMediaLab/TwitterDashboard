@@ -1,0 +1,58 @@
+//Mixins
+@import "mixins.less";
+
+/*-----------------------------------*/
+/* Info Boxes */
+/*-----------------------------------*/
+
+.info-boxes {margin-bottom: 30px;}
+
+.alert {
+	position: relative;
+	padding: 0;
+	margin-bottom: 30px;
+	border: none;
+	border-radius: 28px;
+	background: @white-color;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.alert-close {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	float: none;
+	opacity: 1;
+	filter: alpha(opacity=100);
+	background-color: rgba(0, 0, 0, 0);
+	overflow: hidden;
+	text-indent: 10000px;
+}
+
+.alert span, .alert p {
+	display: inline;
+	margin: 0;
+	font-size: 14px;
+}
+
+.alert-body {
+	color: #00a7ad;
+	padding: 16px 20px 18px 60px;
+	font-family: @font-family-after;
+	letter-spacing: -.6px;
+
+	.icon {
+		position: absolute;
+		top: 7px;
+		left: 8px;
+		font-size: 41px;
+	}
+	span {padding-right: 3px}
+}
+
+.alert-warning .alert-body {color: #fb9d08;}
+.alert-error .alert-body {color: #f06c44;}
+.alert-success .alert-body {color: #4daf7c;}

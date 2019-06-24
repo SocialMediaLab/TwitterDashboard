@@ -1,0 +1,109 @@
+//Mixins
+@import "mixins.less";
+
+// Typography
+// --------------------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+	color: @headings-font-color;
+	margin: 10px 0 15px;
+	line-height: @headings-line-height;
+	font-family: @headings-font-family;
+	letter-spacing: -1px;
+}
+
+h1 {font-size: (@font-size-base*2.769230769230769); letter-spacing: -2px;}
+h2 {font-size: (@font-size-base*1.8461538461538463);}
+h3 {font-size: (@font-size-base*1.3846153846153846);}
+h4 {font-size: (@font-size-base*1.3076923076923077);}
+h5 {font-size: (@font-size-base*1.2307692307692308);}
+h6 {font-size: (@font-size-base*1.0769230769230769);}
+
+@media @xs {
+	h1 {font-size: 26px;}
+	h2 {font-size: 22px;}
+}
+
+// Font Weight
+.font-light {
+	font-weight: 300;
+}
+
+.font-normal {
+	font-weight: 400;
+}
+
+.font-semi {
+	font-weight: 600;
+}
+
+.font-bold {
+	font-weight: 700;
+}
+
+/*-----------------------------------*/
+/* Pull Quotes */
+/*-----------------------------------*/
+
+.typography {
+	margin-bottom: 30px;
+	.inner {
+		padding: 14px 28px 30px;
+		@media @xs {padding: 10px 15px 20px;}
+	}
+}
+
+.typography h2, .typography h3, .typography h4, .typography h5, .typography h6 {
+	margin-top: 28px;
+}
+
+.quote-left, .quote-right {
+	font-size: 17px;
+	font-weight: 400;
+	line-height: 21px;
+	color: #00a7ad;
+	width: 33%;
+	margin-bottom: 12px;
+	font-style: italic;
+}
+
+.quote-left {
+	float: left;
+	margin-right: 6%;
+}
+
+.quote-right {
+	float: right;
+	margin-left: 6%;
+}
+
+.block-quotes {
+	margin-bottom: 30px;
+	.inner {
+		padding: 24px 28px 26px;
+		@media @xs {padding: 12px 15px;}
+	}
+
+	h2 {
+		font-size: 36px;
+		letter-spacing: -2px;
+		margin-top: 0;
+		margin-bottom: 21px;
+	}
+}
+
+@media (max-width: 479px) {
+	.quote-left, .quote-right {
+		float: none;
+		display: block;
+		width: auto;
+		margin-left: 0;
+	}
+}
+
+/*-----------------------------------*/
+/* TEXT COLORS */
+/*-----------------------------------*/
+
+.text-orange {color: #ff7758 !important;}
+.text-blue {color: #1d3e55 !important;}

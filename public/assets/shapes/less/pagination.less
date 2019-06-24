@@ -1,0 +1,63 @@
+//Mixins
+@import "mixins.less";
+
+/*-----------------------------------*/
+/* Pagination */
+/*-----------------------------------*/
+
+.pagination {
+	position: relative;
+	display: block;
+	margin-bottom: 20px;
+	.btn {
+		display: inline-block;
+		vertical-align: top;
+		background: transparent;
+		float: left;
+		span {
+			background: transparent;
+			border: 1px solid #fff;
+			width: 39px;
+			text-align: center;
+			padding: 0;
+			line-height: 38px;
+			border-right: 0;
+			font-size: 11px;
+		}
+	}
+	.btn:hover {
+		span {
+			color: #15d47d;
+		}
+	}
+	.btn:last-child {
+		span {
+			border-right: 1px solid #fff;
+		}
+	}
+}
+
+.inner-links a, .inner-links .page-current {
+	display: inline-block;
+	float: left;
+	border: 1px solid #fff;
+	height: 38px;
+	line-height: 36px;
+	width: 39px;
+	text-align: center;
+	border-right: 0;
+}
+
+.inner-links {
+	.page-current {
+		background: #fff;
+		color: #5d5d5d;
+	}
+}
+
+/* Responsive */
+@media (max-width: 479px) {
+	.pagination .btn span, .inner-links a, .inner-links .page-current {
+		width: 27px;
+	}
+}

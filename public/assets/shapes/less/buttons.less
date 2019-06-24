@@ -1,0 +1,380 @@
+//Mixins
+@import "mixins.less";
+
+/*-----------------------------------*/
+/* Buttons */
+/*-----------------------------------*/
+
+.btn {
+	position: relative;
+	display: inline-block;
+	border-radius: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
+
+	span, input {
+		display: block;
+		height: 38px;
+		border: 2px solid #0fb465;
+		line-height: 34px;
+		color: #fff;
+		text-transform: uppercase;
+		font-size: 14px;
+		padding: 0 16px;
+		font-weight: 600;
+		background: #0fb465;
+		opacity: .9;
+		.transition();
+	}
+
+	&:hover, &.btn-hover {
+		span, input {
+			opacity: .8;
+		}
+	}
+
+	&:active, &.btn-active {
+		-webkit-box-shadow: none;
+		box-shadow: none;
+
+		span, input {
+			opacity: 1;
+		}
+	}
+
+	&.btn-arrow-left, &.btn-arrow-right {
+		span:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			border-top: 19px solid transparent;
+			border-bottom: 19px solid transparent;
+		}
+	}
+	&.btn-arrow-left {
+		padding-left: 16px;
+
+		span {
+			padding-left: 10px;
+			&:before {left: 0; border-right: 16px solid #0fb465;}
+		}
+	}
+	&.btn-arrow-right {
+		padding-right: 16px;
+
+		span {
+			padding-right: 10px;
+			&:before {right: 0; border-left: 16px solid #0fb465;}
+		}
+	}
+
+	&.btn-small span, &.btn-small input {
+		height: 28px;
+		line-height: 24px;
+		font-size: 12px;
+		font-weight: 400;
+		padding: 0 13px;
+	}
+
+	&.btn-large span, &.btn-large input {
+		height: 50px;
+		line-height: 46px;
+		font-size: 16px;
+		padding: 0 26px;
+	}
+
+	&.btn-transparent {
+		span, input {
+			background: transparent;
+			color: #0fb465;
+		}
+
+		&:hover span, &:hover input {
+			background: #0fb465;
+			color: #fff;
+		}
+	}
+
+	&.txt-white {
+		span, input {
+			color: #fff !important;
+		}
+	}
+
+	&.btn-light {
+		span, input {
+			border-color: #eef0f2;
+			background: #eef0f2;
+			color: #42505f;
+		}
+	}
+
+	&.btn-blue {
+		span, input {
+			border-color: #3c9ff3;
+			background: #3c9ff3;
+		}
+
+		&.btn-transparent {
+			span, input {
+				background: transparent;
+				color: #3c9ff3;
+			}
+
+			&:hover span, &:hover input {
+				background: #3c9ff3;
+				color: #fff;
+			}
+		}
+	}
+
+	&.btn-tomato {
+		span, input {
+			border-color: @darktomato-color;
+			background: @darktomato-color;
+		}
+
+		&.btn-transparent {
+			span, input {
+				background: transparent;
+				color: @darktomato-color;
+			}
+
+			&:hover span, &:hover input {
+				background: @darktomato-color;
+				color: #fff;
+			}
+		}
+	}
+
+	&.btn-brown {
+		span, input {
+			border-color: @lightbrown-color;
+			background: @lightbrown-color;
+		}
+
+		&.btn-transparent {
+			span, input {
+				background: transparent;
+				color: @lightbrown-color;
+			}
+
+			&:hover span, &:hover input {
+				background: @lightbrown-color;
+				color: #fff;
+			}
+		}
+	}
+
+	&.btn-coral {
+		span, input {
+			border-color: #ff7758;
+			background: #ff7758;
+		}
+
+		&.btn-transparent {
+			span, input {
+				background: transparent;
+				color: #ff7758;
+			}
+
+			&:hover span, &:hover input {
+				background: #ff7758;
+				color: #fff;
+			}
+		}
+	}
+
+	&.btn-orange {
+		span, input {
+			border-color: #ffa128;
+			background: #ffa128;
+		}
+
+		&.btn-transparent {
+			span, input {
+				background: transparent;
+				color: #ef8600;
+			}
+
+			&:hover span, &:hover input {
+				background: #ffa128;
+				color: #fff;
+			}
+		}
+	}
+
+	&.btn-pink {
+		span, input {
+			border-color: #ff638b;
+			background: #ff638b;
+		}
+
+		&.btn-transparent {
+			span, input {
+				background: transparent;
+				color: #ff638b;
+			}
+
+			&:hover span, &:hover input {
+				background: #ff638b;
+				color: #fff;
+			}
+		}
+	}
+
+	&.btn-gray {
+		span, input {
+			border-color: #727272;
+			background: #727272;
+		}
+
+		&.btn-transparent {
+			span, input {
+				background: transparent;
+				color: #727272;
+			}
+
+			&:hover span, &:hover input {
+				background: #727272;
+				color: #fff;
+			}
+		}
+	}
+
+	&.btn-violet {
+		span, input {
+			border-color: #b984d2;
+			background: #b984d2;
+		}
+
+		&.btn-transparent {
+			span, input {
+				background: transparent;
+				color: #a966c8;
+			}
+
+			&:hover span, &:hover input {
+				background: #b984d2;
+				color: #fff;
+			}
+		}
+	}
+
+	&.btn-skyblue {
+		span, input {
+			border-color: #1abed6;
+			background: #1abed6;
+		}
+
+		&.btn-transparent {
+			span, input {
+				background: transparent;
+				color: #00a7bf;
+			}
+
+			&:hover span, &:hover input {
+				background: #1abed6;
+				color: #fff;
+			}
+		}
+	}
+
+	&.btn-yellowgreen {
+		span, input {
+			border-color: #88c506;
+			background: #88c506;
+		}
+
+		&.btn-transparent {
+			span, input {
+				background: transparent;
+				color: #6c9f00;
+			}
+
+			&:hover span, &:hover input {
+				background: #88c506;
+				color: #fff;
+			}
+		}
+	}
+
+	&.btn-lightbrown {
+		span, input {
+			border-color: #d4b38c;
+			background: #d4b38c;
+		}
+
+		&.btn-transparent {
+			span, input {
+				background: transparent;
+				color: #ac7b41;
+			}
+
+			&:hover span, &:hover input {
+				background: #d4b38c;
+				color: #fff;
+			}
+		}
+	}
+
+	&.btn-darktomato {
+		span, input {
+			border-color: @darktomato-color;
+			background: @darktomato-color;
+		}
+
+		&.btn-transparent {
+			span, input {
+				background: transparent;
+				color: @darktomato-color;
+			}
+
+			&:hover span, &:hover input {
+				background: @darktomato-color;
+				color: @white-color;
+			}
+		}
+	}
+}
+
+.buttons {
+	.btn {
+		margin-right: 16px;
+		margin-bottom: 19px;
+	}
+	&.boxed .inner {
+		padding: 33px 28px 27px;
+		@media @xs {padding: 20px 15px 5px;}
+	}
+}
+
+.join-button {
+	display: block;
+	background: rgba(0, 0, 0, .22);
+	margin-bottom: 30px;
+	.transition();
+
+	&:active {background: rgba(0, 0, 0, .32);}
+	.inner {padding: 27px 15px 38px;}
+
+	& > span {
+		display: block;
+		text-align: center;
+	}
+
+	img {
+		width: 111px;
+		margin: 0 auto 20px;
+		position: relative;
+		left: 9px;
+	}
+
+	span {
+		font-size: 36px;
+		margin-bottom: 0;
+		letter-spacing: -2px;
+	}
+}
+

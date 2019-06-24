@@ -1,0 +1,51 @@
+<!-- Top contributors -->
+<div class="widget-container boxed">
+  <div class="inner">
+    <h3 class="widget-title">
+      Most Active Users
+      <div class="tip">
+        <img src="/assets/images/info.png">
+        <div class="tiptext">
+        	<p>[Click on a bar to see the relevant tweets]</p>
+          <p>This chart displays the users who most frequently retweet, reply, or post using the hashtag.</p>
+          <p>Use this chart to check who's leading the conversation, or if there are bots or spam accounts overusing the hashtag.</p>
+        </div>
+      </div>
+    </h3>
+    <div class="chart-stage" id="contributor_chart"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  
+  function makeContributorChart() {
+    var all_users = new Array()
+    all_users[i] = new Array()
+
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'User');
+    data.addColumn('number', 'Count');
+
+    for (i = 0; i < days.length; i++) {
+      for (j = 0; j < 10; j++) {
+        data.addRow([
+          days[i].top_contributors[j]._id,
+          days[i].top_contributors[j].count
+        ])
+      }
+    }
+
+    data = google.visualization.data.group(data, [0], [{'column': 1, 'aggregation': google.visualization.data.sum, 'type': 'number'}])
+    data.sort({column:1, desc:true})
+    data.removeRows(20, data.getNumberOfRows() - 20)
+
+    var chart = new google.charts.Bar(document.getElementById('contributor_chart'));
+
+    google.visualization.events.addListener(chart, 'select', function() {
+      var target = data.getValue(chart.getSelection()[0].row, 0)
+      window.open("https://twitter.com/search?f=tweets&q=from:"+target+"%20%23"+hashtag+"&src=typd")
+    })
+
+    chart.draw(data, barOptions);
+  };
+</script>

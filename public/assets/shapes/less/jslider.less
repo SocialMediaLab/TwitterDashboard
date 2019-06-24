@@ -1,0 +1,133 @@
+//Mixins
+@import "mixins.less";
+
+/*-----------------------------------*/
+/* Range Slider */
+/*-----------------------------------*/
+
+.range-slider {
+	margin: 50px 0 20px;
+}
+
+.jslider {
+	display: block;
+	width: 100%;
+	position: relative;
+}
+
+.jslider table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 0;
+}
+
+.jslider td, .jslider th {
+	padding: 0;
+	vertical-align: top;
+	text-align: left;
+	border: 0;
+}
+
+.jslider table .jslider table tr, .jslider table tr td {
+	width: 100%;
+	vertical-align: top;
+	padding: 0;
+	margin: 0;
+}
+
+/* Slider */
+.jslider .jslider-bg {
+	height: 20px;
+	border: 1px solid @light-white;
+	padding: 3px;
+}
+
+.jslider .jslider-bg .l, .jslider .jslider-bg .r {
+	display: none;
+}
+
+.jslider .jslider-bg .v {
+	position: relative;
+	display: block;
+	height: 100%;
+	background: #e5bc6c;
+}
+
+/* Pointer */
+.jslider .jslider-pointer {
+	width: 1px;
+	height: 50%;
+	position: absolute;
+	top: -50%;
+	z-index: 2 !important;
+	cursor: pointer;
+	background: @light-white;
+}
+
+.jslider .jslider-pointer-to {
+	margin-left: -2px;
+}
+
+.jslider .jslider-pointer:before {
+	position: absolute;
+	content: '';
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	top: -7px;
+	left: -3px;
+	border: 1px solid @light-white;
+}
+
+/* Tooltip */
+.jslider .jslider-value {
+	font-size: 13px;
+	color: @dark-white;
+	position: absolute;
+	top: -40px;
+	left: 20%
+}
+
+.jslider .jslider-value-to {
+	left: 80%;
+}
+
+/* Min, Max Values */
+.jslider .jslider-label {
+	font-size: 11px;
+	color: #adadad;
+	text-shadow: none;
+	white-space: nowrap;
+	position: absolute;
+	top: -14px;
+	left: 0;
+}
+
+.jslider .jslider-label-to {
+	left: auto;
+	right: 0;
+}
+
+.jslider .jslider-scale,
+.jslider .jslider-label {
+	display: none;
+}
+
+/* Range Slider Style 2 */
+/*-----------------------------------*/
+
+.range-slider.styled {
+	margin-top: 41px;
+	.jslider {
+		.jslider-bg {height: 30px; padding: 6px;}
+		.jslider-pointer {
+			height: 8px;
+			top: -8px;
+			&:before {
+
+			}
+		}
+		.jslider-value {top: -31px;}
+	}
+}
+

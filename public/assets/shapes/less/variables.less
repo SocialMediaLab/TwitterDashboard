@@ -1,0 +1,71 @@
+// Media Queries
+@media-xxs:	479px; // < Extra Small devices BreakPoint
+@media-xs:	767px; // Extra Small devices BreakPoint
+@media-sm:	991px; // Small devices BreakPoint
+@media-md:	1199px; // Medium devices BreakPoint
+@media-xxs-plus: (@media-xxs + 1);
+@media-xs-plus: (@media-xs + 1);
+@xxs:		~'only screen and (max-width: @{media-xxs})';
+@xs:		~'only screen and (max-width: @{media-xs})';
+@sm:		~'only screen and (max-width: @{media-sm})';
+@md:		~'only screen and (max-width: @{media-md})';
+@xs-only:	~'(min-width: @{media-xxs-plus}) and (max-width: @{media-xs})';
+@sm-only:	~'(min-width: @{media-xs-plus}) and (max-width: @{media-sm})';
+
+// Icons
+@icon-font-path: "fonts/fashion-font/";
+@icon-font-name: "fashion";
+
+// General
+@body-bg: url(images/bg.jpg);
+@font-color: #5d5d5d;
+@body-wrap: transparent;
+@body-wrap-padding: 0 0 100px;
+
+// Colors
+@blue-color: #3c9ff3;
+@darkblue-color: #1d4d56;
+@green-color: #06ad5d;
+@tomato-color: #ff7758;
+@darktomato-color: #e25f3c;
+@orange-color: #ef8600;
+@red-color: #eb2e5f;
+@pink-color: #ff638b;
+@gray-color: #727272;
+@violet-color: #a966c8;
+@darkviolet-color: #72679c;
+@cyan-color: #25bf75;
+@darkcyan-color: #1abed6;
+@extradarkcyan-color: #00a7ad;
+@lightgreen-color: #6c9f00;
+@lightbrown-color: #d4b38c;
+@brown-color: #ac7b41;
+@lightbrown-color: #dea95c;
+@dark-white: #dfe3e9;
+@light-white: #eef0f2;
+@dark-color: #525252;
+@lightgreen-color: #00ac59;
+@white-color: #fff;
+@black-color: #000;
+
+// Typography
+@font-family-base: 'Open Sans', sans-serif;
+@font-family-after: 'Allerta', sans-serif;
+@font-size-base: 13px;
+@line-height-base: 1;
+@font-weight: 600;
+@paragraph-line-height: 21px;
+@paragraph-margin-bottom: 15px;
+
+// Headings
+@headings-font-color: @dark-color;
+@headings-line-height: 1.2;
+@headings-font-family: 'Open Sans', sans-serif;
+
+// Links
+@link-color: @dark-white;
+@link-hover-color: @cyan-color;
+
+// Boxes
+@boxed-bg: @white-color;
+@boxed-dark: rgba(0, 0, 0, .22);

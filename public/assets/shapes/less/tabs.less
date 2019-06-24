@@ -1,0 +1,275 @@
+//Mixins
+@import "mixins.less";
+
+/*-----------------------------------*/
+/* Tabs */
+/*-----------------------------------*/
+
+.tabs-framed {
+	margin-bottom: 30px;
+}
+
+.sidebar {
+	.tabs-framed {
+		margin-bottom: 30px;
+	}
+}
+
+/* Tab Thumbs */
+.tabs.bookmarks2 {
+	li {
+		max-width: 48%;
+	}
+}
+
+.tabs.bookmarks3 {
+	li {
+		max-width: 32%;
+	}
+}
+
+.tabs.bookmarks4 {
+	li {
+		max-width: 28%;
+	}
+}
+
+.tabs.bookmarks5 {
+	li {
+		max-width: 18%;
+	}
+}
+
+.tabs.bookmarks6 {
+	li {
+		max-width: 16%;
+	}
+}
+
+.tabs {
+	position: relative;
+	z-index: 1;
+	background: #fff;
+	padding: 13px 0;
+	&.dark {
+		background: rgba(0, 0, 0, .22);
+		li {
+			background: transparent;
+			a {
+				border-color: rgba(202, 207, 212, .1);
+				color: #f9f9f9;
+			}
+		}
+	}
+	li {
+		float: left;
+		position: relative;
+		border: 0;
+		background: #fff;
+		a {
+			display: block;
+			font-size: 14px;
+			height: 46px;
+			line-height: 46px;
+			color: #5d5d5d;
+			padding: 0 26px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			border-right: 1px solid #cacfd4;
+			text-transform: uppercase;
+		}
+	}
+	li:last-child {
+		a {
+			border: 0;
+		}
+	}
+	li.active {
+		a {
+			color: #00a7ad;
+		}
+	}
+}
+
+.sidebar {
+	.tabs {
+		li {
+			&:last-child a {
+				padding-right: 0;
+			}
+			a {
+				padding: 0 23px;
+			}
+		}
+	}
+}
+
+/* Tab Content */
+.tab-content.boxed {
+	border-top-left-radius: 0;
+	margin-bottom: 0;
+}
+
+.tab-content {
+	overflow: visible;
+	padding: 13px 25px 21px;
+	h4 {
+		color: #191919;
+	}
+	&.boxed h2 {
+		margin-bottom: 20px;
+		color: #ff7758;
+		margin-top: 0;
+		&.with-shadow {margin-top: 10px;}
+	}
+	&.boxed-dark {
+		color: #f9f9f9;
+		h2 {color: #f9f9f9;}
+	}
+	p {
+		position: relative;
+		z-index: 2;
+	}
+}
+
+.tab-image {
+	margin: 0 0 15px 0;
+	img {
+		display: block;
+		position: relative;
+		max-width: 100%;
+	}
+
+}
+
+.tab-image.pull-left, .tab-image.pull-right {
+	width: 45%;
+	&.with-shadow {width: 38%; margin-top: 15px;}
+}
+
+.col-sm-12 .tab-image.pull-left, .col-sm-12 .tab-image.pull-right {
+	width: 35%;
+}
+
+.tab-image.pull-left {
+	margin: 5px 20px 5px 0;
+	&.with-shadow {
+		margin-right: -44px;
+		z-index: 1;
+	}
+}
+
+.tab-image.pull-right {
+	margin: 5px 0 5px 20px;
+}
+
+/* Tab Content with Icon on the Left */
+.tab-pane-icon {
+	padding-left: 64px;
+}
+
+.tab-icon {
+	position: absolute;
+	top: 37px;
+	left: 27px;
+}
+
+.note {
+	display: block;
+	width: 31px;
+	height: 31px;
+	text-align: center;
+	line-height: 31px;
+	border-radius: 50%;
+	background: #e25f3c;
+	color: #fff;
+	position: absolute;
+	right: 5px;
+	top: -20px;
+}
+
+/* Responsive */
+@media @sm-only {
+	.tab-content {padding: 20px;}
+	.tab-icon {left: 6px;}
+}
+
+@media @xxs {
+	.tabs li span {display: none;}
+
+	.tabs li a,
+	.tabs li.active a {
+		height: 29px;
+		line-height: 29px;
+		font-size: 12px !important;
+		padding: 0 6px;
+	}
+
+	.tab-content {padding: 20px;}
+
+	.tab-image.pull-left,
+	.tab-image.pull-right {
+		width: 100% !important;
+		margin: 0;
+		margin-bottom: 16px;
+		float: none !important;
+		&.with-shadow {width: 38% !important; margin: 0;}
+	}
+
+	.tab-pane-icon {padding: 0;}
+	.tab-icon {display: none;}
+	.note {top: -30px;}
+}
+
+/* Tabs Styled */
+/*-----------------------------------*/
+
+.tabs-framed {
+	&.styled {
+		.tab-content {
+			padding: 0 28px 32px;
+
+			.date {
+				color: #50a6bc;
+				display: block;
+				margin-top: 18px;
+				margin-bottom: 13px;
+				font-size: 13px;
+			}
+
+			.see-more {
+				position: relative;
+				color: #00a7ad;
+				text-decoration: underline;
+				font-size: 12px;
+				&:hover, &:active {color: @cyan-color;}
+				&:after {
+					content: '\e600';
+					.icon-font();
+					position: absolute;
+					top: 6px;
+					right: -10px;
+					font-size: 8px;
+				}
+			}
+
+			h4 {
+				font-size: 18px;
+				color: #e25f3c;
+				margin-top: 2px;
+			}
+		}
+
+		@media @xxs, @sm-only {
+			.tab-content {padding: 0 15px 26px;}
+			.tab-image.pull-left,
+			.tab-image.pull-right {
+				width: auto;
+				float: none !important;
+				margin: 0 0 15px;
+			}
+			.tabs li a {padding: 0 5px;}
+		}
+	}
+}

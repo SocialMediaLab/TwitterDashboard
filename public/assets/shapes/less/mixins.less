@@ -1,0 +1,190 @@
+//Variables
+@import "variables.less";
+
+@import "variables";
+
+//Icon Font
+.icon-font() {
+	font-family: @icon-font-name;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+//Clearfix
+.clearfix() {
+	&:before, &:after {content: ''; display: table;}
+	&:after {clear: both;}
+}
+
+//Transition
+.transition(@transition: all .2s ease-out) {
+	-webkit-transition+: @transition;
+	-moz-transition+: @transition;
+	-o-transition+: @transition;
+	-ms-transition+: @transition;
+	transition+: @transition;
+}
+
+// Animation
+.animation(@animation-name, @animation-duration: 1s, @animation-iteration: 1, @animation-timing-function: ease-out, @animation-direction: normal) {
+	-webkit-animation-name: @animation-name;
+	animation-name: @animation-name;
+	-webkit-animation-duration: @animation-duration;
+	animation-duration: @animation-duration;
+	-webkit-animation-iteration-count: @animation-iteration;
+	animation-iteration-count: @animation-iteration;
+	-webkit-animation-timing-function: @animation-timing-function;
+	animation-timing-function: @animation-timing-function;
+	-webkit-animation-direction: @animation-direction;
+	animation-direction: @animation-direction;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+.animation-delay(@delay) {
+	-webkit-animation-delay: @delay;
+	animation-delay: @delay;
+}
+
+//Transform
+.transform(@transform) {
+	-webkit-transform+_: @transform;
+	-moz-transform+_: @transform;
+	-o-transform+_: @transform;
+	-ms-transform+_: @transform;
+	transform+_: @transform;
+}
+
+//Transform Origin
+.transform-origin(@origin: center center) {
+	-webkit-transform-origin: @origin;
+	-moz-transform-origin: @origin;
+	-o-transform-origin: @origin;
+	-ms-transform-origin: @origin;
+	transform-origin: @origin;
+}
+
+//Box Shadow
+.box-shadow(@box-shadow: 0 0 4px rgba(0,0,0,.26)) {
+	-webkit-box-shadow+: @box-shadow;
+	-moz-box-shadow+: @box-shadow;
+	box-shadow+: @box-shadow;
+}
+
+//Border Radius
+.border-radius(@border-radius: 4px) {
+	-webkit-border-radius: @border-radius;
+	-moz-border-radius: @border-radius;
+	border-radius: @border-radius;
+}
+
+//Background Size
+.background-size(@background-size: cover) {
+	-webkit-background-size: @background-size;
+	-moz-background-size: @background-size;
+	-o-background-size: @background-size;
+	-ms-background-size: @background-size;
+	background-size: @background-size;
+}
+
+//Placeholders
+.placeholder(@placeholder-font-size: 14px, @placeholder-font-weight: 400, @placeholder-font-color: @dark-white) {
+	&::-webkit-input-placeholder  {font-size: @placeholder-font-size; font-weight: @placeholder-font-weight; color: @placeholder-font-color;}
+	&:-moz-placeholder            {font-size: @placeholder-font-size; font-weight: @placeholder-font-weight; color: @placeholder-font-color;}
+	&::-moz-placeholder           {font-size: @placeholder-font-size; font-weight: @placeholder-font-weight; color: @placeholder-font-color;}
+	&:-ms-input-placeholder       {font-size: @placeholder-font-size; font-weight: @placeholder-font-weight; color: @placeholder-font-color;}
+}
+
+//Input Appearance
+.appearance(@appearance: none) {
+	-webkit-appearance: @appearance;
+	-moz-appearance: @appearance;
+	appearance: @appearance;
+}
+
+//User Select
+.user-select(@user-select: none) {
+	-webkit-user-select: @user-select;
+	-moz-user-select: @user-select;
+	-ms-user-select: @user-select;
+	user-select: @user-select;
+}
+
+// Sizing shortcuts
+.size(@width, @height) {
+	width: @width;
+	height: @height;
+}
+.square(@size) {
+	.size(@size, @size);
+}
+
+// Retina Images
+.retina(@bg-image, @bg-size, @bg-size-vertical: auto) {
+	@media  (-webkit-min-device-pixel-ratio: 1.5),
+			(min-resolution: 1.5dppx),
+			(min-resolution: 144dpi) {
+		background-image: url(@bg-image);
+		.background-size(@bg-size @bg-size-vertical);
+	}
+}
+
+// Linear Gradient
+.gradient(@gradient, @gradient-bottom: darken(@gradient, 15%)) {
+	background: @gradient;
+	background: -moz-linear-gradient(top, @gradient 0%, @gradient-bottom 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@gradient), color-stop(100%,@gradient-bottom));
+	background: -webkit-linear-gradient(top,  @gradient 0%, @gradient-bottom 100%);
+	background: -o-linear-gradient(top,  @gradient 0%, @gradient-bottom 100%);
+	background: -ms-linear-gradient(top,  @gradient 0%, @gradient-bottom 100%);
+	background: linear-gradient(to bottom,  @gradient 0%, @gradient-bottom 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@{gradient}', endColorstr='@{gradient-bottom}',GradientType=0 );
+	.ie9 & {filter: none;}
+}
+
+// Linear Gradient with 3 points
+.gradient3points(@gradient-top, @gradient: @gradient-top, @percentage: 50%, @gradient-bottom: darken(@gradient, 15%)) {
+	background: @gradient;
+	background: -moz-linear-gradient(top, @gradient-top 0%, @gradient @percentage,  @gradient-bottom 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@gradient-top), color-stop(@percentage,@gradient), color-stop(100%,@gradient-bottom));
+	background: -webkit-linear-gradient(top,  @gradient-top 0%,@gradient @percentage,@gradient-bottom 100%);
+	background: -o-linear-gradient(top,  @gradient-top 0%,@gradient @percentage,@gradient-bottom 100%);
+	background: -ms-linear-gradient(top,  @gradient-top 0%,@gradient @percentage,@gradient-bottom 100%);
+	background: linear-gradient(to bottom,  @gradient-top 0%,@gradient @percentage,@gradient-bottom 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@{gradient-top}', endColorstr='@{gradient-bottom}',GradientType=0 );
+	.ie9 & {filter: none;}
+}
+
+// Opacity
+.opacity(@opacity: .5) {
+	-webkit-opacity: @opacity;
+	-moz-opacity: @opacity;
+	opacity: @opacity;
+	@opperc: @opacity * 100;
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opperc})";
+	filter: ~"alpha(opacity=@{opperc})";
+}
+
+// Blur
+.blur(@radius: 2) {
+	-webkit-filter: blur(@radius + 0px);
+	-moz-filter: blur(@radius + 0px);
+	-ms-filter: blur(@radius + 0px);
+	filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='blur'><feGaussianBlur stdDeviation='@{radius}'/></filter></svg>#blur");
+	filter: blur(@radius + 0px);
+	filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=@radius);
+}
+
+// Full Size
+.full-size() {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}

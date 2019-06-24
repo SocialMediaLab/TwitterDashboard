@@ -1,0 +1,70 @@
+<!-- Sentiment Type -->
+<div class="widget-container boxed styled">
+  <div class="inner">
+    <h3 class="widget-title">
+      Sentiment Type
+      <div class="tip">
+        <img src="/assets/images/info.png">
+        <div class="tiptext">
+          <p>This chart displays the percentage of tweets which use positive, negative, or neutral language on a given day.</p>
+          <p>Sentiment is a measure of the positive or negative emotions associated with the words in the tweet. To calculate this, we use the <a href="http://www.nltk.org/api/nltk.sentiment.html" target="_blank">NLTK Sentiment Analyzer</a>, a python package to implement and facilitate Sentiment Analysis using NLTK features and classifiers.</p>
+        </div>
+      </div>
+    </h3>
+    <div class="chart-stage" id="sentiment_chart"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function makeSentimentChart() {
+
+    var data = new google.visualization.DataTable();
+
+    data.addColumn('date', 'day');
+    data.addColumn('number', 'Positive');
+    data.addColumn('number', 'Negative');
+
+    for (i = 0; i < days.length; i++) {
+      data.addRow([
+          stringToDate( days[i]._id ),
+          days[i].positive / days[i].total,
+          -days[i].negative / days[i].total
+        ])
+    }
+    data.sort({column:0})
+
+    var options = {
+      hAxis: {
+        textPosition: 'in',
+        textStyle: textStyle,
+        format: 'MMM d',
+      },
+      vAxis: {
+        minValue: 0, 
+        format: 'percent',
+        textPosition: 'in',
+        textStyle: textStyle,
+        viewWindow: {
+          max: 0.8,
+          min: -.8
+        },
+        ticks: [-0.5, 0, .5],
+      },
+      colors: [positiveColor, negativeColor],
+      chartArea:{
+        width: '100%',
+        height: '100%'
+      },
+      legend: {
+        position: 'in',
+        alignment: 'end',
+        
+        textStyle: textStyle,
+      },
+      interpolateNulls: false,
+    };
+
+    var chart = new google.visualization.AreaChart(document.getElementById('sentiment_chart'));
+    chart.draw(data, options);
+  };
+</script>
