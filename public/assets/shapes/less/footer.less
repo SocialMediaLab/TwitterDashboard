@@ -1,0 +1,65 @@
+//Mixins
+@import "mixins.less";
+
+.footer {
+	.footer-top {
+		padding: 17px 0 102px;
+		border-top: 5px solid #f4f0ea;
+		border-bottom: 1px solid rgba(244, 240, 234, .1);
+	}
+
+	h4.widget-title {
+		font-size: 21px;
+		font-weight: 400;
+		color: #fff;
+		margin-bottom: 25px;
+	}
+
+	.widget-container {
+		margin: 0 0 30px 36px;
+
+		li {
+			margin-bottom: 14px;
+
+			a {
+				color: fade(@white-color, 50%);
+				font-size: 13px;
+				font-weight: 400;
+				.transition();
+				&:hover, &:active {color: @white-color;}
+			}
+		}
+	}
+
+	.footer-bottom {
+		padding: 44px 28px 70px;
+
+		.copyright {
+			font-size: 14px;
+			color: @white-color;
+			font-weight: 400;
+		}
+
+		.footer-socials {
+			margin-bottom: 20px;
+
+			a {
+				font-size: 38px;
+				color: @white-color;
+				margin-right: 5px;
+				.transition();
+				&:hover, &:active {color: @cyan-color;}
+			}
+		}
+	}
+
+	@media @sm {
+		.widget-container {margin-left: 14px;}
+		.footer-top, .footer-bottom {padding-bottom: 60px;}
+	}
+	@media @xxs {
+		h4.widget-title {font-size: 18px;}
+		.footer-top {padding-bottom: 40px;}
+		.footer-bottom {padding: 40px 15px;}
+	}
+}

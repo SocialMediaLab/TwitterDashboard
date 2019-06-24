@@ -1,0 +1,52 @@
+<!-- Entities -->
+<div class="widget-container boxed">
+  <div class="inner">
+    <h3 class="widget-title">
+      Top Named Entities
+      <div class="tip">
+          <img src="/assets/images/info.png">
+          <div class="tiptext">
+          	<p>[Click on a bar to see the relevant tweets]</p>
+            <p>Entities are proper names for people (outside Twitter), places, and organizations.</p>
+            <p>Use this chart to assess who and what users are talking about.</p>
+          </div>
+      </div>
+    </h3>
+      <div class="chart-stage" id="entity_chart"></div>
+      <div class="chart-stage" id="entity_sentiment_chart"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  
+  function makeEntityChart() {
+
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Named Entity');
+    data.addColumn('number', 'Count');
+
+    for (i = 0; i < days.length; i++) {
+      for (j = 0; j < days[i].top_entities.length; j++) {
+        data.addRow([
+          days[i].top_entities[j]._id,
+          days[i].top_entities[j].count
+        ])
+      }
+    }
+    data = google.visualization.data.group(data, [0], [{'column': 1, 'aggregation': google.visualization.data.sum, 'type': 'number'}])
+    data.sort({column:1, desc:true})
+    data.removeRows(10, data.getNumberOfRows() - 10)
+
+
+    var chart = new google.charts.Bar(document.getElementById('entity_chart'));
+
+    google.visualization.events.addListener(chart, 'select', function() {
+      var target = data.getValue(chart.getSelection()[0].row, 0)
+      window.open("https://twitter.com/search?f=tweets&q=\""+target+"\"%20%23"+hashtag+"&src=typd")
+    })
+
+    chart.draw(data, barOptions); 
+
+  };
+
+</script>

@@ -1,10 +1,3 @@
-#!/usr/bin/python3.4
-
-#create_stream.py
-#Requires: Access keys for Twitter API and Keen.io project
-#Usage: % python create_stream.py <twitter query>
-
-
 from __future__ import unicode_literals
 import sys
 import nltk
@@ -12,49 +5,29 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize, pos_tag, ne_chunk
 from nltk.tree import Tree
 import os
-import keen
 import tweepy
 import time
 import json
 from textblob import TextBlob
 import argparse
+import thread, time, datetime
+import day_caching
 import cgi
 import re
-import ConfigParser as configparser
+import pymongo
 from nltk.tag import StanfordNERTagger
 from nltk.tokenize import word_tokenize
+from pprint import pprint
+import sys
 
+if len(sys.argv) < 2:
+	print("To create stream for hashtag: python create_stream hashtag")
+	sys.exit()
 
+stream_name = sys.argv[1]
+print("Collecting Tweets for #" + stream_name)
 
-#use program arguments as twitter query
-parser = argparse.ArgumentParser(description='Provide twitter query: keywords, @user_handle, #hashtags')
-parser.add_argument('-q', '--query', type=str, default=[], nargs='+', help='provide a query for twitter')
-parser.add_argument('-c', '--config', dest='config',type=argparse.FileType(mode='r'))
-args = parser.parse_args()
-query =[]
-for arg in args.query:
-	arg = "#%s"%arg
-        query.append(str(arg))	
-
-print str(query[0]);
-
-"""
-here = os.path.realpath('../config/dashboard.config')
-
-if args.config:
-   config_file=args.config
-   config = configparser.ConfigParser(defaults = {'here': here})
-   config.read(args.config)
-"""
-#extract all environment variables
-access_token = os.environ.get('ACCESS_TOKEN')
-access_token_secret = os.environ.get('ACCESS_TOKEN_SECRET')
-consumer_key = os.environ.get('CONSUMER_KEY')
-consumer_secret = os.environ.get('CONSUMER_SECRET')
-keen.project_id = os.environ.get('KEEN_PROJECT_ID')
-keen.write_key = os.environ.get('KEEN_WRITE_KEY')
-keen.read_key = os.environ.get('KEEN_READ_KEY')
-
+config = json.loads(open('config.json', 'r').read())
 
 def get_sentiment(text):
     blob = TextBlob(text)
@@ -79,7 +52,6 @@ def get_subjectivity_range(subjectivity):
     else:
         return ("Non subjective")
 
-
 def get_wordcounts(text):
     default_stopwords = set(nltk.corpus.stopwords.words('english'))
     all_stopwords = default_stopwords
@@ -98,8 +70,6 @@ def get_wordcounts(text):
         return([data[0],data[1]])
     elif len(data)==0:
         return(["None","None"])
-
-
 
 def get_continuous_chunks(tagged_sent):
     continuous_chunk = []
@@ -122,7 +92,6 @@ def get_namedentities(text):
     tokenized_text = word_tokenize(text)
     ne_tagged_sent = st.tag(tokenized_text)
     named_entities = get_continuous_chunks(ne_tagged_sent)
-    named_entities = get_continuous_chunks(ne_tagged_sent)
     named_entities_str = [" ".join([token for token, tag in ne]) for ne in named_entities]
     named_entities_str_tag = [(" ".join([token for token, tag in ne]), ne[0][1]) for ne in named_entities]
     list =[]
@@ -143,71 +112,131 @@ def get_subjectivity(text):
     return average*100
 
 def create_events (tweet):
-     if len(tweet['entities']['user_mentions']) >= 1:
-          mentions1=tweet['entities']['user_mentions'][0]['screen_name']
-     else:
-          mentions1="None"
-     if len(tweet['entities']['user_mentions']) >= 2:
-          mentions2=tweet['entities']['user_mentions'][1]['screen_name']
-     else:
-          mentions2="None"
-     if len(tweet['entities']['hashtags']) >= 1:
-          hashtag1=tweet['entities']['hashtags'][0]['text'].lower()
-     else:
-          hashtag1="None"
-     if len(tweet['entities']['hashtags']) >= 2:
-          hashtag2=tweet['entities']['hashtags'][1]['text'].lower()
-     else:
-          hashtag2="None"
-     if len(tweet['entities']['urls']) == 1:
-          urls1=tweet['entities']['urls'][0]['url']
-     else:
-          urls1="None"
-     if len(tweet['entities']['urls']) > 1:
-          urls2=tweet['entities']['urls'][1]['url']
-     else:
-          urls2="None"
-     if 'media' in tweet['entities']:
-          media = 'true'
-     else:
-          media= 'false'
-     if 'retweeted_status' in tweet:
-         retweet_status= 'true'
-     else:
-         retweet_status = 'false'
-     sentiment = get_sentiment(tweet['text'])
-     sentiment_range =get_sentiment_range(sentiment)
-     subjectivity = get_subjectivity(tweet['text'])
-     subjectivity_range =get_subjectivity_range(subjectivity)
-     terms=get_wordcounts(tweet['text'])
-     named_entities=get_namedentities(tweet['text'].encode('ascii','ignore'))
+    if len(tweet['entities']['user_mentions']) >= 1:
+        mentions1=tweet['entities']['user_mentions'][0]['screen_name']
+    else:
+        mentions1="None"
+    if len(tweet['entities']['user_mentions']) >= 2:
+        mentions2=tweet['entities']['user_mentions'][1]['screen_name']
+    else:
+        mentions2="None"
+    if len(tweet['entities']['hashtags']) >= 1:
+        hashtag1=tweet['entities']['hashtags'][0]['text'].lower()
+    else:
+        hashtag1="None"
+    if len(tweet['entities']['hashtags']) >= 2:
+        hashtag2=tweet['entities']['hashtags'][1]['text'].lower()
+    else:
+        hashtag2="None"
+    if len(tweet['entities']['urls']) == 1:
+        urls1=tweet['entities']['urls'][0]['url']
+    else:
+        urls1="None"
+    if len(tweet['entities']['urls']) > 1:
+        urls2=tweet['entities']['urls'][1]['url']
+    else:
+        urls2="None"
+    if 'media' in tweet['entities']:
+        media = 'true'
+    else:
+        media= 'false'
+    if 'retweeted_status' in tweet:
+        retweet_status= 'true'
+    else:
+        retweet_status = 'false'
 
-     
-     keen.add_event(str(query[0][1:]),{
-                "ID":tweet['id_str'],
-                "text":tweet['text'].encode('ascii','ignore'),
-                "username":tweet['user']['screen_name'],
-                "hashtag1":hashtag1,
-                "hashtag2":hashtag2,
-                "created_at":tweet['created_at'],
-                "mentions1":mentions1,
-                "mentions2":mentions2,
-                "urls1":urls1,
-                "urls2":urls2,
-                "sentiment_range":sentiment_range,
-                "sentiment":sentiment,
-                "subjectivity":subjectivity,
-                "subjectivity_range":subjectivity_range,
-                "named_entities":named_entities,
-                "retweeted":retweet_status,
-                "replied_to":tweet['in_reply_to_screen_name'],
-                "media":media
-       })
+    sentiment = get_sentiment(tweet['text'])
+    sentiment_range =get_sentiment_range(sentiment)
+    subjectivity = get_subjectivity(tweet['text'])
+    subjectivity_range =get_subjectivity_range(subjectivity)
+    terms=get_wordcounts(tweet['text'])
+    named_entities=get_namedentities(tweet['text'].encode('ascii','ignore'))
+    #print "ID "+tweet['id_str']
+    x = {
+      "_id":tweet['id_str'],
+      "subjectivity_range":subjectivity_range,
+      "sentiment_range":sentiment_range,      
+      "text":tweet['text'].encode('ascii','ignore'),
+      "username":tweet['user']['screen_name'],
+      "hashtag1":hashtag1,
+      "hashtag2":hashtag2,
+      "created_at": tweet['created_at'],
+      "mentions1":mentions1,
+      "mentions2":mentions2,
+      "urls1":urls1,
+      "urls2":urls2,
+      "sentiment":sentiment,
+      "subjectivity":subjectivity,
+      "named_entities":named_entities,
+      "retweeted":retweet_status,
+      "replied_to":tweet['in_reply_to_screen_name'],
+      "media":media
+    }
 
+    print('New tweet: ' + '@' + x['username'] + ': ' + x['text'])
+
+    # print x["text"] + '\n'
+
+    queue = collection.find_one({"_id": "QUEUE"})
+
+
+    if queue == None:
+        queue = collection.insert_one({
+            "_id":"QUEUE",
+            "values": [tweet['id_str']]
+        })
+    ids = queue['values']
+
+    ids.insert(0, tweet['id_str'])
+
+    if len(ids) >= 100:
+        ids = ids[0:100]
+
+    collection.replace_one( {'_id':'QUEUE'},
+    {
+        "_id":"QUEUE",
+        "values": ids
+    })
+
+    collection.insert_one(x)
+
+def test_rate_limit(api, wait=True, buffer=.1):
+    """
+    Tests whether the rate limit of the last request has been reached.
+    :param api: The `tweepy` api instance.
+    :param wait: A flag indicating whether to wait for the rate limit reset
+                 if the rate limit has been reached.
+    :param buffer: A buffer time in seconds that is added on to the waiting
+                   time as an extra safety margin.
+    :return: True if it is ok to proceed with the next request. False otherwise.
+    """
+    #Get the number of remaining requests
+    remaining = int(api.last_response.getheader('x-rate-limit-remaining'))
+    #Check if we have reached the limit
+    if remaining == 0:
+        limit = int(api.last_response.getheader('x-rate-limit-limit'))
+        reset = int(api.last_response.getheader('x-rate-limit-reset'))
+        #Parse the UTC time
+        reset = datetime.fromtimestamp(reset)
+        #Let the user know we have reached the rate limit
+        print "0 of {} requests remaining until {}.".format(limit, reset)
+
+        if wait:
+            delay = (reset - datetime.now()).total_seconds() + buffer
+            print "Sleeping for {}s...".format(delay)
+            sleep(delay)
+            #We have waited for the rate limit reset. OK to proceed.
+            return True
+        else:
+            #We have reached the rate limit. The user needs to handle the rate limit manually.
+            return False
+
+    #We have not reached the rate limit
+    return True
 
 class StreamListener(tweepy.StreamListener):
     def on_status(self, status):
-        #print "From on_status", (status.text)
+        #print "From on_status", (status.aext)
         return
 
     def on_delete(self, status_id, user_id):
@@ -219,7 +248,13 @@ class StreamListener(tweepy.StreamListener):
         return
 
     def on_error(self, status_code):
-        sys.stderr.write('Error: ' + str(status_code) + "\n")
+        sys.stderr.write('Twitter API Error: ' + str(status_code) + "\n")
+        if status_code == 420:
+            sys.stderr.write('Waiting to reconnect\n')
+            time.sleep(60)
+            sys.stderr.write('Reconnecting\n')
+        if status_code == 401:
+            os.system('sudo ntpdate ntp.org')
         return False
 
     def on_timeout(self):
@@ -237,46 +272,24 @@ class StreamListener(tweepy.StreamListener):
             print "Hit Base Exception ", str(e)
             time.sleep(5)
 
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+auth = tweepy.OAuthHandler(config['consumer_key'], config['consumer_secret'])
+auth.set_access_token(config['access_token'], config['access_token_secret'])
 api = tweepy.API(auth)
 
-
-def test_rate_limit(api, wait=True, buffer=.1):
-    """
-    Tests whether the rate limit of the last request has been reached.
-    :param api: The `tweepy` api instance.
-    :param wait: A flag indicating whether to wait for the rate limit reset
-                 if the rate limit has been reached.
-    :param buffer: A buffer time in seconds that is added on to the waiting
-                   time as an extra safety margin.
-    :return: True if it is ok to proceed with the next request. False otherwise.
-    """
-    remaining = int(api.last_response.getheader('x-rate-limit-remaining'))
-    if remaining == 0:
-        limit = int(api.last_response.getheader('x-rate-limit-limit'))
-        reset = int(api.last_response.getheader('x-rate-limit-reset'))
-        reset = datetime.fromtimestamp(reset)
-        print "0 of {} requests remaining until {}.".format(limit, reset)
-
-        if wait:
-            delay = (reset - datetime.now()).total_seconds() + buffer
-            print "Sleeping for {}s...".format(delay)
-            sleep(delay)
-            return True
-        else:
-            return False
-
-    return True
+client = pymongo.MongoClient('localhost', 27017)
+database = client[stream_name]
+#print database
+collection = database["tweets"]
+#for r in collection.find():
+#     print r
+thread.start_new_thread(day_caching.timed_days, (database, stream_name, config['caching_frequency']))
 
 if __name__ == '__main__':
-     if len(sys.argv)==0:
-	print "Please provide a hashtag to establish a query"
      while True:
       try:
           stream_listener = StreamListener()
           stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-	  stream.filter(track=[str(query[0])], stall_warnings=True)
+          stream.filter(track=["#" + stream_name], stall_warnings=True)
       except AttributeError as ae:
           if "NoneType" or "ReadTimeoutError" in ae:
               pass

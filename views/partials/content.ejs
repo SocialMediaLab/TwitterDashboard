@@ -1,0 +1,65 @@
+<!-- Content Types -->
+<div class="widget-container boxed">
+<div class="inner">
+  	<h3 class="widget-title">
+    Content Types
+    <div class="tip">
+      	<img src="/assets/images/info.png">
+      		<div class="tiptext">
+       			<p>Twitter users can create an original post, or retweet or reply to an existing tweet. The height of each bar represents the whole number of tweets for a particular day. Each coloured line represents a category (in this case the number of tweets that are replies, retweets, or original) that make up parts of the whole. </p>
+      		</div>
+    	</div>
+  		</h3>
+  		<div class="chart-stage" id="content_chart"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	
+	function makeContentChart(normalized) {
+	var data = new google.visualization.DataTable();
+
+	data.addColumn({type:'date', id:'day'});
+	data.addColumn({type:'number', id:'User_Mentions', label: 'User Mentions'});
+	data.addColumn('number', 'Hashtags');
+	data.addColumn('number', 'URLs');
+	data.addColumn('number', 'Media');
+
+	for (var i = 0; i < days.length; i++) {
+	data.addRow([stringToDate(days[i]._id),
+	  days[i].mentions,
+	  days[i].hashtags,
+	  days[i].urls,
+	  days[i].media ]);
+	};
+	data.sort({column: 0});
+
+	var options = {
+	hAxis: {
+	  textPosition: 'in',
+	  textStyle: textStyle,
+	  format: 'MMM d',
+	},
+	vAxis: {
+	  minValue: 0, 
+	  textPosition: 'in',
+	  textStyle: textStyle,
+	},
+	colors: chartColors,
+	chartArea:{
+	  width: '100%',
+	  height: '100%'
+	},
+	legend: {
+	  position: 'in',
+	  alignment: 'end',
+	  width: '100%',
+	},
+	isStacked: true,
+	};
+
+	var chart = new google.visualization.AreaChart(document.getElementById('content_chart'));
+
+	chart.draw(data, options);
+	};
+</script>

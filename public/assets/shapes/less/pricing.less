@@ -1,0 +1,402 @@
+//Mixins
+@import "mixins.less";
+
+/*-----------------------------------*/
+/* Pricing */
+/*-----------------------------------*/
+
+.pricing-box {
+	border-top: 6px solid @white-color;
+	display: inline-block;
+	&.styled2 {display: block;}
+	.price-col {
+		background-color: @pink-color;
+		position: relative;
+		float: left;
+		width: 222px;
+		text-align: center;
+		color: @white-color;
+		.inner {padding: 41px 28px 37px;}
+
+		.price {
+			position: relative;
+			font-size: 72px;
+			font-weight: 600;
+			letter-spacing: -5px;
+			display: inline-block;
+			margin-bottom: 13px;
+			em {
+				margin-right: 3px;
+			}
+			sup {
+				margin-left: 3px;
+			}
+		}
+	}
+	.price-col.col-active {width: 274px;}
+}
+
+.pricing-box .price-col .price em, .pricing-box .price-col .price sup {
+	font-size: 24px;
+	position: relative;
+	vertical-align: top;
+	top: 8px;
+	letter-spacing: -1px;
+}
+
+.price-col {
+	.price-body-top {
+		margin-bottom: 25px;
+		strong {
+			display: block;
+			font-size: 36px;
+			font-weight: 600;
+			margin-bottom: 2px;
+			letter-spacing: -2px;
+		}
+		em {
+			font-size: 14px;
+			text-transform: uppercase;
+		}
+	}
+	.price-col-body {
+		margin-bottom: 20px;
+		ul {
+			li {
+				margin-bottom: 6px;
+				font-size: 13px;
+			}
+		}
+	}
+	.sign-up {
+		.btn {
+			span {
+				border: 2px solid @white-color;
+				color: @white-color;
+				height: 40px;
+				line-height: 36px;
+			}
+		}
+	}
+}
+
+.price-col .sign-up .btn {
+	&:hover span,
+	&:focus span,
+	&:active span {
+		background: @white-color;
+		color: @pink-color;
+	}
+}
+
+.green-bg {
+	.sign-up {
+		.btn:hover {
+			span {color: @cyan-color;}
+		}
+	}
+}
+
+.blue-bg {
+	.sign-up {
+		.btn:hover {
+			span {color: @blue-color;}
+		}
+	}
+}
+
+.violet-bg {
+	.sign-up {
+		.btn:hover {
+			span {
+				color: @darkviolet-color;
+			}
+		}
+	}
+}
+
+// Col Active
+.pricing-box {
+	.price-col.col-active {
+		background-color: @white-color !important;
+		color: @pink-color;
+
+		.sign-up .btn {
+			&:hover span,
+			&:focus span,
+			&:active span {
+				background: @pink-color;
+				color: @white-color;
+			}
+		}
+	}
+}
+
+.price-col.col-active {
+	.sign-up {
+		.btn {
+			span {
+				border-color: @pink-color;
+				color: @pink-color;
+				height: 48px;
+				line-height: 44px;
+			}
+		}
+	}
+	.price {
+		color: @dark-color;
+		font-size: 90px;
+	}
+	.inner {
+		padding-bottom: 50px;
+	}
+}
+.price-col.col-active .price em, .price-col.col-active .price sup {font-size: 27px;}
+
+/* Pricing Box Styled */
+/*-----------------------------------*/
+
+.pricing-box.styled {
+	border: 0;
+	position: relative;
+
+	.price-col {
+		background-color: @white-color;
+		position: relative;
+		float: left;
+		width: 300px;
+		margin-top: 37px;
+		color: @font-color;
+		overflow: hidden;
+		.inner {padding: 50px 28px 34px;}
+		.price-col-body {
+			margin-bottom: 25px;
+			ul {
+				li {
+					margin-bottom: 7px;
+				}
+			}
+		}
+	}
+	.price-col.col-active {
+		background-color: @pink-color !important;
+		width: 340px;
+		margin-top: 0;
+		color: @white-color;
+		.price {
+			color: @white-color;
+			font-size: 101px;
+		}
+		& > .inner {padding: 60px 28px 38px;}
+		.price-col-body {margin-bottom: 33px;}
+	}
+	.price-col.col-blue {
+		.price {color: @blue-color;}
+		.sign-up {
+			a {color: @blue-color;}
+		}
+	}
+	.price-col.col-green {
+		.price {color: @cyan-color;}
+		.sign-up {
+			a {color: @cyan-color;}
+		}
+	}
+	.sign-up {
+		a {
+			text-transform: uppercase;
+			font-size: 14px;
+		}
+	}
+	.price-col-foot {
+		padding: 26px 0 0;
+		border-top: 1px solid #e4e1df;
+	}
+	.col-active {
+		.price sup {font-size: 34px;}
+		.price-col-foot {
+			padding: 38px 0 6px;
+		}
+		.sign-up {
+			a {
+				font-size: 17px;
+				color: @white-color;
+			}
+		}
+	}
+
+	.badge {
+		background-color: @light-white;
+		font-size: 30px;
+		font-weight: 400;
+		color: @pink-color;
+		text-transform: none;
+		letter-spacing: -2px;
+		padding: 8px 96px 10px;
+		top: 25px;
+		right: -74px;
+
+		&:before, &:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: -1;
+			background-color: @light-white;
+		}
+		&:after {
+			z-index: -2;
+			background-color: difference(@pink-color, #0e1f23);
+			.transform(rotate(11deg));
+			.transform-origin(36px 0);
+			right: -36px;
+		}
+	}
+}
+
+/* Responsive */
+@media @sm {
+	.pricing-box .price-col {
+		width: 170px;
+		.inner {padding: 36px 10px 40px;}
+		&.col-active {width: 210px; .inner {padding-bottom: 40px;}}
+	}
+	.pricing-box.styled .price-col {
+		width: 220px;
+		&.col-active {width: 280px;}
+		.badge {
+			font-size: 26px;
+			top: 8px;
+			right: -90px;
+		}
+	}
+}
+@media @xs {
+	.pricing-box {display: block;}
+	.pricing-box .price-col {
+		float: none !important;
+		width: auto !important;
+	}
+}
+
+/* Pricing Box Styled 2 */
+/*-----------------------------------*/
+
+.pricing-box.styled2 {
+	border: none;
+
+	.badge {
+		background-color: @light-white;
+		font-family: @font-family-after;
+		color: @darktomato-color;
+		padding: 16px 97px;
+
+		&:before, &:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: -1;
+			background-color: @light-white;
+		}
+		&:after {
+			z-index: -2;
+			background-color: difference(@darktomato-color, #0f1111);
+			.transform(rotate(6deg));
+			.transform-origin(0 0);
+			right: -36px;
+		}
+	}
+
+	.price-col {
+		width: 100%;
+		background: transparent;
+
+		.price-col-head {
+			padding: 60px 10px 38px;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.price {
+			font-size: 48px;
+			letter-spacing: -1px;
+			display: block;
+			margin-bottom: 17px;
+			em {
+				font-size: 48px;
+				top: 1px;
+				letter-spacing: -1px;
+			}
+		}
+
+		.type {
+			font-size: 24px;
+			font-weight: 700;
+			color: @light-white;
+			border: 1px solid @light-white;
+			padding: 5px 24px 7px;
+			position: relative;
+			display: inline-block;
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				opacity: 0.04;
+				display: block;
+				box-shadow: rgb(0, 0, 0) 1px 1px, rgb(0, 0, 0) 2px 2px, rgb(0, 0, 0) 3px 3px, rgb(0, 0, 0) 4px 4px, rgb(0, 0, 0) 5px 5px, rgb(0, 0, 0) 6px 6px, rgb(0, 0, 0) 7px 7px, rgb(0, 0, 0) 8px 8px, rgb(0, 0, 0) 9px 9px, rgb(0, 0, 0) 10px 10px, rgb(0, 0, 0) 11px 11px, rgb(0, 0, 0) 12px 12px, rgb(0, 0, 0) 13px 13px, rgb(0, 0, 0) 14px 14px, rgb(0, 0, 0) 15px 15px, rgb(0, 0, 0) 16px 16px, rgb(0, 0, 0) 17px 17px, rgb(0, 0, 0) 18px 18px, rgb(0, 0, 0) 19px 19px, rgb(0, 0, 0) 20px 20px, rgb(0, 0, 0) 21px 21px, rgb(0, 0, 0) 22px 22px, rgb(0, 0, 0) 23px 23px, rgb(0, 0, 0) 24px 24px, rgb(0, 0, 0) 25px 25px, rgb(0, 0, 0) 26px 26px, rgb(0, 0, 0) 27px 27px, rgb(0, 0, 0) 28px 28px, rgb(0, 0, 0) 29px 29px, rgb(0, 0, 0) 30px 30px, rgb(0, 0, 0) 31px 31px, rgb(0, 0, 0) 32px 32px, rgb(0, 0, 0) 33px 33px, rgb(0, 0, 0) 34px 34px, rgb(0, 0, 0) 35px 35px, rgb(0, 0, 0) 36px 36px, rgb(0, 0, 0) 37px 37px, rgb(0, 0, 0) 38px 38px, rgb(0, 0, 0) 39px 39px, rgb(0, 0, 0) 40px 40px, rgb(0, 0, 0) 41px 41px, rgb(0, 0, 0) 42px 42px, rgb(0, 0, 0) 43px 43px, rgb(0, 0, 0) 44px 44px, rgb(0, 0, 0) 45px 45px, rgb(0, 0, 0) 46px 46px, rgb(0, 0, 0) 47px 47px, rgb(0, 0, 0) 48px 48px, rgb(0, 0, 0) 49px 49px, rgb(0, 0, 0) 50px 50px, rgb(0, 0, 0) 51px 51px, rgb(0, 0, 0) 52px 52px, rgb(0, 0, 0) 53px 53px, rgb(0, 0, 0) 54px 54px, rgb(0, 0, 0) 55px 55px, rgb(0, 0, 0) 56px 56px, rgb(0, 0, 0) 57px 57px, rgb(0, 0, 0) 58px 58px, rgb(0, 0, 0) 59px 59px, rgb(0, 0, 0) 60px 60px, rgb(0, 0, 0) 61px 61px, rgb(0, 0, 0) 62px 62px, rgb(0, 0, 0) 63px 63px, rgb(0, 0, 0) 64px 64px, rgb(0, 0, 0) 65px 65px, rgb(0, 0, 0) 66px 66px, rgb(0, 0, 0) 67px 67px, rgb(0, 0, 0) 68px 68px, rgb(0, 0, 0) 69px 69px, rgb(0, 0, 0) 70px 70px, rgb(0, 0, 0) 71px 71px, rgb(0, 0, 0) 72px 72px, rgb(0, 0, 0) 73px 73px, rgb(0, 0, 0) 74px 74px, rgb(0, 0, 0) 75px 75px, rgb(0, 0, 0) 76px 76px, rgb(0, 0, 0) 77px 77px, rgb(0, 0, 0) 78px 78px, rgb(0, 0, 0) 79px 79px, rgb(0, 0, 0) 80px 80px, rgb(0, 0, 0) 81px 81px, rgb(0, 0, 0) 82px 82px, rgb(0, 0, 0) 83px 83px, rgb(0, 0, 0) 84px 84px, rgb(0, 0, 0) 85px 85px, rgb(0, 0, 0) 86px 86px, rgb(0, 0, 0) 87px 87px, rgb(0, 0, 0) 88px 88px, rgb(0, 0, 0) 89px 89px, rgb(0, 0, 0) 90px 90px, rgb(0, 0, 0) 91px 91px, rgb(0, 0, 0) 92px 92px, rgb(0, 0, 0) 93px 93px, rgb(0, 0, 0) 94px 94px, rgb(0, 0, 0) 95px 95px, rgb(0, 0, 0) 96px 96px, rgb(0, 0, 0) 97px 97px, rgb(0, 0, 0) 98px 98px, rgb(0, 0, 0) 99px 99px;
+			}
+		}
+
+		.price-col-body {
+			padding: 32px 10px 40px;
+			margin-bottom: 0;
+			ul {
+				margin-bottom: 30px;
+				li {margin-bottom: 11px;}
+			}
+		}
+
+		.btn span {padding: 0 24px;}
+
+		&.col-active {
+			color: @white-color;
+			background: transparent !important;
+			.price-col-head { padding: 32px 10px 35px;}
+			.price-col-body {padding-bottom: 32px;}
+			.price {color: @white-color;}
+
+			.btn span {
+				font-size: 16px;
+				height: 46px;
+				line-height: 42px;
+			}
+
+			.type {
+				font-size: 30px;
+				padding: 6px 24px 9px;
+			}
+			.price {
+				font-size: 70px;
+				em {font-size: 70px;}
+			}
+		}
+	}
+}
+
+@media @sm {
+	.pricing-box.styled2 .price-col .type {padding-left: 12px; padding-right: 12px;}
+}
+@media @xxs {
+	.pricing-box.styled2 {
+		.badge {top: 6px; right: -88px;}
+		.price-col .price-col-head {padding-top: 35px;}
+	}
+}

@@ -1,0 +1,65 @@
+<!-- Total posts -->
+<div class="widget-container boxed styled">
+	<div class="inner">
+    <h3 class="widget-title">
+      Total Posts (<span class="time_replace"></span>) 
+        <div class="tip">
+          <img src="/assets/images/info.png">
+          <div class="tiptext">
+            <p>The total number of tweets during the past <span class="time_replace"></span> using the hashtag #<span class="hashtag_replace"></span>.</p>
+          </div>
+        </div>
+    </h3>
+    
+    
+    <div id="total_posts_container">
+			<div id="post_chart"></div>
+    </div>
+		<div class="chart-notes">
+			There have been <span id="total_replace"></span> posts during <span class="time_replace"></span> using the hashtag #<span class="hashtag_replace"></span>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+  function makePostChart() {
+
+    var tempData = new google.visualization.DataTable();
+
+    tempData.addColumn('date', 'day');
+    tempData.addColumn('number', 'Posts');
+
+    for (var i = 0; i < days.length; i++) {
+      tempData.addRow([stringToDate(days[i]._id), days[i].total]);
+    }
+
+    tempData.sort({column:0})
+
+    var options = {
+      hAxis: {
+        textPosition: 'in',
+        textStyle: textStyle,
+        format: 'MMM d',
+      },
+      vAxis: {
+        minValue: 0, 
+        textPosition: 'in',
+        textStyle: textStyle,
+      },
+      colors: chartColors,
+      chartArea:{
+        width: '100%',
+        height: '90%'
+      },
+      legend: {
+        position: 'none',
+        alignment: 'end',
+        
+        textStyle: textStyle,
+      }
+    };
+
+    var chart = new google.visualization.AreaChart(document.getElementById('post_chart'));
+    chart.draw(tempData, options);
+  };
+</script>

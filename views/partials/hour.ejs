@@ -1,0 +1,61 @@
+<!-- Posts per hour -->
+<div class="widget-container boxed styled">
+<div class="inner">
+  <h3 class="widget-title">
+    Average Posts Per Hour
+    <div class="tip">
+      <img src="/assets/images/info.png">
+      <div class="tiptext">
+        <p>This chart displays the average number of tweets of various types using #<span id="hashtag_replace"></span> each hour of the day.</p>
+      </div>
+    </div>
+  </h3>
+  <div class="chart-stage" id="hour_chart"></div>
+</div>
+</div>
+
+<script type="text/javascript">
+	function makeHourChart() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Time');
+        data.addColumn('number', 'Count');
+
+        var hours = new Array(24);
+        for (i = 0; i < 24; i++) hours[i] = 0;
+
+        for (i = 0; i < days.length; i++) {
+          for (j = 0; j < days[0].hours.length; j++) {
+            hours[j] += days[i].hours[j] / days.length;
+          }
+        }
+
+        for (i = 0; i < days[0].hours.length; i++) {
+          data.addRow([i+':00', hours[i]])
+        }
+
+        var options = {
+          hAxis: {
+            textPosition: 'in',
+            textStyle: textStyle,
+            showTextEvery: 2,
+            gridlines: { count: 12},
+            minorGridlines: { count: 0},
+          },
+          vAxis: { 
+            textPosition: 'in',
+            textStyle: textStyle,
+          },
+          colors: [chartColors[0], chartColors[1], chartColors[3]],
+          chartArea:{
+            width: '100%',
+            height: '100%'
+          },
+          legend: 'none',
+          curveType: 'function',
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('hour_chart'));
+        chart.draw(data, options);
+    };
+</script>

@@ -1,0 +1,182 @@
+//Mixins
+@import "mixins.less";
+
+/*-----------------------------------*/
+/* Select Elements */
+/*-----------------------------------*/
+
+.cusel,
+#cuselBox .cusel-scroll-wrap,
+#cuselBox .jScrollPaneContainer,
+#cuselBox .cusel-scroll-pane {
+	width: 100% !important;
+}
+
+.cusel {
+	height: 38px;
+	display: inline-block;
+	position: relative;
+	z-index: 2;
+	padding: 0 30px 0 12px;
+	text-shadow: none;
+	cursor: pointer;
+}
+
+.cuselOpen {
+	z-index: 9999;
+}
+
+/* Right Arrow */
+.cuselFrameRight {
+	position: absolute;
+	top: 7px;
+	right: 0;
+	bottom: 0;
+	width: 31px;
+	cursor: pointer;
+	height: 23px;
+	border-left: 1px solid #c4c4c4;
+
+	&:before,
+	&:after {
+		content: '';
+		width: 0;
+		height: 0;
+		border-left: 3px solid transparent;
+		border-right: 3px solid transparent;
+		border-bottom: 4px solid #8f8f8f;
+		position: absolute;
+		top: 6px;
+		right: 12px;
+	}
+
+	&:after {
+		border-top: 4px solid #8f8f8f;
+		border-bottom: none;
+		top: 14px;
+	}
+}
+
+.cusel:hover .cuselFrameRight:before,
+.cuselFocus .cuselFrameRight:before {
+	border-bottom-color: #999;
+}
+
+.cusel:hover .cuselFrameRight:after,
+.cuselFocus .cuselFrameRight:after {
+	border-top-color: #999;
+}
+
+/* Selected Item */
+.cuselText {
+	cursor: pointer;
+}
+
+/* Needed for iPad */
+
+.cuselText label {
+	width: 100%;
+	height: 100%;
+	line-height: 36px;
+	color: #a0a0a0;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-weight: 400;
+	font-size: 13px;
+	font-family: @font-family-base;
+	cursor: pointer;
+}
+
+/* Select List */
+#cuselBox {
+	position: absolute;
+	z-index: 9999;
+	border-top: none;
+	background-color: @white-color;
+	padding: 0;
+}
+
+#cuselBox .jScrollPaneContainer {
+	position: relative;
+	overflow: hidden;
+}
+
+#cuselBox .cusel-scroll-pane {
+	padding-right: 0 !important;
+}
+
+#cuselBox span {
+	display: block;
+	padding-left: 2px;
+	cursor: pointer; /* Needed for iPad */
+	border-top: 1px solid #c4c4c4;
+	background: @white-color;
+	&:first-child {border-top: none;}
+}
+
+#cuselBox span label {
+	display: block;
+	padding: 9px 10px;
+	position: relative;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-shadow: none;
+	cursor: pointer;
+}
+
+#cuselBox span:hover,
+#cuselBox span.cuselOptHover,
+#cuselBox span.cuselActive {
+	color: #25bf75;
+}
+
+/* Scrolling */
+#cuselBox .jScrollPaneTrack {
+	height: 100%;
+	width: 4px !important;
+	position: absolute;
+	top: 0;
+	right: 4px;
+}
+
+#cuselBox .jScrollPaneDrag {
+	position: absolute;
+	cursor: pointer;
+	width: 6px !important;
+	height: 26px !important;
+	right: -1px;
+	background: #a0a0a0;
+}
+
+.jScrollArrowUp,
+.jScrollArrowDown {
+	width: 6px !important;
+	height: 6px;
+	position: absolute;
+	top: 0;
+	right: 3px;
+	cursor: pointer;
+}
+
+.jScrollArrowDown {
+	top: auto;
+	bottom: 0;
+}
+
+.jScrollArrowUp:before,
+.jScrollArrowDown:before {
+	content: '';
+	display: block;
+	width: 0;
+	height: 0;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	border-bottom: 4px solid #a0a0a0;
+}
+
+.jScrollArrowDown:before {
+	border-top: 6px solid #a0a0a0;
+	border-bottom: none;
+}

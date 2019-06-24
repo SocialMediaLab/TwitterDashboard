@@ -1,0 +1,1023 @@
+//Mixins
+@import "mixins.less";
+
+/*-----------------------------------*/
+/* Post Items */
+/*-----------------------------------*/
+
+.post-item {
+	position: relative;
+	padding: 0;
+	margin-bottom: 30px;
+	& > .boxed {margin: 0;}
+	h2 {
+		font-size: 36px;
+		letter-spacing: -2px;
+		margin-bottom: 21px;
+	}
+	.boxed-dark {
+		color: @dark-white;
+		h2 a {color: @dark-white;}
+	}
+	.post-meta-calendar {
+		background: @cyan-color;
+		position: absolute;
+		top: 27px;
+		left: 27px;
+		width: 50px;
+		height: 50px;
+		text-align: center;
+		color: @white-color;
+		border: 1px solid @cyan-color;
+		padding: 6px 0;
+		overflow: hidden;
+		span {display: block;}
+		.date {
+			font-size: 21px;
+			font-weight: 300;
+			margin-bottom: 3px;
+		}
+		.month {
+			font-family: @font-family-after;
+			font-size: 12px;
+			font-weight: 300;
+		}
+	}
+	.post-meta-bot {
+		font-size: 18px;
+		a {display: inline-block;}
+		.icon {margin-right: 9px;}
+		.post-comments {
+			.icon {font-size: 25px;}
+		}
+		.post-views {
+			.icon {font-size: 20px;}
+		}
+		.post-author {
+			.icon {font-size: 23px;}
+		}
+		.post-details {
+			.icon {font-size: 25px;}
+		}
+	}
+}
+
+.post-item.boxed > .inner {padding: 16px 28px 42px;}
+
+.post-item, .post-item-popular {
+	h2 a {
+		color: @dark-color;
+		&:hover {color: @cyan-color;}
+	}
+}
+
+.post-item .post-meta-bot a[class^="post-"], .post-item .post-meta-bot a[class*=" post-"] {
+	margin-right: 32px;
+}
+
+.post-item .post-meta-bot a i, .post-item .post-meta-bot a span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/* Post Items Style 1 */
+/*-----------------------------------*/
+
+.post-item.style1 {
+	.post-title {
+		h2 {
+			margin-bottom: 10px;
+		}
+	}
+	.boxed {
+		& > .inner {
+			padding: 17px 28px;
+		}
+	}
+	.boxed-dark {
+		& > .inner {
+			padding: 28px 28px 31px;
+		}
+	}
+}
+
+/* Post Items Style 2 */
+/*-----------------------------------*/
+
+.post-item.style2 {
+	.boxed .inner, .boxed-dark .inner {padding: 17px 28px 44px;}
+	h2 {padding: 0 70px 0 0;}
+	.post-meta-calendar {
+		top: 35px;
+		left: auto;
+		right: 28px;
+		z-index: 3;
+		padding: 0;
+		.date {
+			display: block;
+			background: @white-color;
+			color: @cyan-color;
+			font-size: 22px;
+			font-weight: 600;
+			padding: 3px 0;
+			margin-bottom: 4px;
+		}
+	}
+	.post-img {
+		margin-bottom: 23px;
+	}
+	.post-meta-bot {
+		.post-comments {
+			.icon {font-size: 30px;}
+		}
+		.icon {margin-right: 0;}
+		a {
+			text-align: center;
+			span {
+				display: block;
+				padding: 0 26px;
+				border-left: 1px solid rgba(255, 255, 255, .1);
+			}
+		}
+		a:first-child {
+			span {
+				border: none;
+			}
+		}
+		.post-views {
+			em {
+				font-size: 13px;
+				margin-bottom: 17px;
+				display: block;
+			}
+		}
+		span {
+			font-size: 14px;
+		}
+		.icon-stack {
+			margin-bottom: 8px;
+		}
+		.post-author {
+			.icon {
+				margin-bottom: 11px;
+			}
+		}
+		.post-details {
+			.icon {
+				margin-bottom: 11px;
+			}
+		}
+		.inner {
+			padding: 13px 28px 32px 0;
+		}
+		a[class^="post-"] {
+			margin-right: 0;
+		}
+	}
+}
+
+/* Post Items Style 3 */
+/*-----------------------------------*/
+
+.post-item.style3 {
+	.post-img {
+		width: 38%;
+	}
+	.post-entry {
+		width: 62%;
+	}
+	.post-meta-calendar {
+		background: transparent;
+		overflow: visible;
+		border: none;
+		width: auto;
+		height: auto;
+		position: relative;
+		color: @dark-color;
+		text-align: left;
+		left: 0;
+		display: inline-block;
+		margin: 0;
+		.date {font-size: 81px;}
+		span {display: block;}
+
+		div {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.first-day {
+			position: relative;
+			margin-right: 30px;
+
+			&:before {
+				content: '';
+				.size(2px, 96px);
+				background-color: @dark-color;
+				position: absolute;
+				top: 3px;
+				right: -14px;
+				.transform(rotate(10deg));
+			}
+		}
+	}
+	.post-desc {
+		border-bottom: 1px solid #e4e4e4;
+		padding-bottom: 35px;
+	}
+	.post-meta-bot {
+		a.btn {margin-top: 60px;}
+	}
+}
+
+/* Post Items Style 4 */
+/*-----------------------------------*/
+
+.post-item.style4 {
+	.post-entry {
+		.inner {
+			float: left;
+			display: block;
+			padding: 12px 33px 17px;
+			width: 62%;
+		}
+	}
+	.post-title {
+		h2 {
+			margin-bottom: 11px;
+		}
+	}
+	.post-meta-calendar {
+		position: relative;
+		top: 0;
+		left: 0;
+		display: inline-block;
+		width: 33%;
+		height: auto;
+		border: none;
+		padding: 42px 0 60px;
+		.date {
+			font-size: 81px;
+			margin-bottom: 4px;
+		}
+		.month {font-size: 16px;}
+	}
+}
+
+/* Post Items Style 5 */
+/*-----------------------------------*/
+
+.post-item.style5 {
+	.post-img {
+		width: 42%;
+	}
+	.post-meta-calendar {
+		position: relative;
+		background: transparent;
+		text-align: left;
+		border: none;
+		left: 0;
+		top: 0;
+		display: block;
+		width: auto;
+		height: auto;
+		color: @extradarkcyan-color;
+		font-family: @font-family-after;
+		padding: 0;
+		margin-bottom: 20px;
+		span {
+			display: inline-block;
+			font-weight: 300;
+			font-size: 14px;
+		}
+		.icon {
+			vertical-align: -25%;
+			font-size: 20px;
+			margin-right: 5px;
+		}
+	}
+	.post-desc {
+		margin-bottom: 30px;
+	}
+	.post-meta-bot {
+		.post-author {
+			font-family: @font-family-after;
+			color: @font-color;
+			font-weight: 300;
+			font-size: 14px;
+			text-transform: uppercase;
+			margin: 12px 0 0 0;
+		}
+	}
+}
+
+/* Post Items Style 6 */
+/*-----------------------------------*/
+
+.post-item.style6 {
+	.post-img {width: 43%; margin: 0 30px 10px 0;}
+	.post-meta-top {
+		margin-bottom: 30px;
+		.post-author {
+			vertical-align: middle;
+			font-family: @font-family-after;
+			font-size: 14px;
+			color: @darktomato-color;
+			font-weight: 300;
+			text-transform: uppercase;
+		}
+	}
+	.post-desc {
+		margin-bottom: 30px;
+	}
+	.post-meta-calendar {
+		.icon {
+			vertical-align: -25%;
+			font-size: 20px;
+			margin-right: 5px;
+		}
+	}
+}
+
+.post-item.style6,
+.post-item.style7,
+.post-quote,
+.post-img {
+	.post-meta-calendar {
+		display: block;
+		background: transparent;
+		text-align: left;
+		border: none;
+		position: relative;
+		top: 0;
+		left: 0;
+		width: auto;
+		height: auto;
+		color: @extradarkcyan-color;
+		font-family: @font-family-after;
+		padding: 0;
+		margin-top: 8px;
+	}
+}
+
+.post-item.style6 .post-meta-calendar span, .post-item.style7 .post-meta-calendar span, .post-item.post-quote .post-meta-calendar span, .post-item.post-img .post-meta-calendar span {
+	display: inline-block;
+	font-weight: 300;
+	font-size: 14px;
+}
+
+/* Post Items Style 7 */
+/*-----------------------------------*/
+
+.post-item.style7 {
+	&.boxed > .inner {padding-bottom: 20px;}
+	.post-img {width: 44%; margin: 0 30px 10px 0;}
+}
+
+.post-item.style7 .post-meta-calendar, .post-item.post-quote .post-meta-calendar, .post-item.post-img .post-meta-calendar {
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: 0;
+}
+
+.post-item.style7 .post-meta-top .post-author, .post-item.post-img .post-author {
+	margin-right: 15px;
+}
+
+.post-item.style7 .post-meta-calendar .date, .post-item.post-quote .post-meta-calendar .date, .post-item.post-img .post-meta-calendar .date {
+	margin: 0;
+}
+
+.post-item.style7 {
+	.post-meta-top {margin-bottom: 28px;}
+	.post-desc {margin-bottom: 28px;}
+}
+
+.post-item {
+	.post-desc {
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+/* Post Quotes */
+/*-----------------------------------*/
+
+.post-quote.boxed {
+	.inner {padding: 18px 28px 40px;}
+}
+
+.post-item.post-quote .post-meta-calendar, .post-item.post-quote .post-author {
+	vertical-align: bottom;
+}
+
+.post-item.post-quote .post-meta-bot a[class^="post-"], .post-item.post-quote .post-meta-bot a[class*=" post-"] {
+	margin-right: 15px;
+}
+
+/* Post Carousel */
+/*-----------------------------------*/
+
+.post-item.post-image {
+	.post-meta-top {margin-bottom: 30px;}
+}
+
+.post-image {
+	.post-carousel {
+		.carousel-indicators {
+			width: 100%;
+			bottom: 0;
+			height: 60px;
+			line-height: 60px;
+			text-align: center;
+			left: 0;
+			margin: 0;
+			z-index: 5;
+			background: rgba(29, 50, 60, .86);
+
+			li, .active {
+				width: 8px;
+				height: 8px;
+				margin: 0 2px;
+			}
+		}
+
+		.carousel-control {
+			&.left, &.right {
+				height: 60px;
+				bottom: 0;
+				top: auto;
+				background: transparent;
+				z-index: 10;
+				font-size: 13px;
+				line-height: 60px;
+				text-align: center;
+				width: 10%;
+			}
+		}
+	}
+}
+
+.post-item.post-video {
+	.post-image {
+		position: relative;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	.inner {
+		padding-top: 38px;
+	}
+}
+
+.post-meta-about {
+	font-family: 'Allerta', sans-serif;
+	font-weight: 400;
+	.post-author {
+		color: #e25f3c;
+		margin-right: 15px;
+	}
+	.post-date {
+		color: #00a7ad;
+	}
+}
+
+.post-meta-about .post-date, .post-meta-about .post-author {
+	font-size: 14px;
+}
+
+.post-item.post-audio {
+	.post-meta-top {
+		margin-bottom: 25px;
+	}
+}
+
+/* Post Items Popular */
+/*-----------------------------------*/
+
+.post-list {
+	.post-item-popular {
+		width: 33.333333%;
+		float: left;
+		.post-meta-top {
+			padding: 15px 25px 0;
+			border-left: 1px solid #e4e4e4;
+		}
+		.post-title {
+			h2 {margin-bottom: 21px;}
+		}
+		.inner {padding: 19px 26px 38px;}
+	}
+	.post-item-popular:first-child {
+		.post-meta-top {border-left: 0;}
+	}
+}
+
+/* Post Items with Intro Text */
+/*-----------------------------------*/
+
+.post-item.intro-text {
+	h2 {
+		margin-bottom: 13px;
+	}
+	.post-meta-about {
+		float: none;
+		padding-top: 0;
+		margin-bottom: 15px;
+		text-transform: uppercase;
+		font-family: 'Allerta', sans-serif;
+		font-weight: 400;
+	}
+	.post-desc {
+		font-weight: 400;
+	}
+}
+
+.post-intro-text {
+	border-bottom: 1px solid #e2e2e2;
+	margin-bottom: 16px;
+	p {
+		font-size: 16px;
+		color: #e25f3c;
+		line-height: 21px;
+		margin: 0;
+		padding: 5px 0 20px 0;
+		font-style: italic;
+		font-weight: 400;
+	}
+}
+
+/* Featured Posts */
+/*-----------------------------------*/
+
+.featured-posts {
+	.inner{padding-bottom: 14px;}
+
+	h2 {
+		font-size: 24px;
+		font-weight: 400;
+		letter-spacing: normal;
+		margin-bottom: 5px;
+	}
+
+	.post-desc {
+		font-weight: 400;
+		margin-bottom: 15px;
+	}
+
+	.post-img {
+		margin-bottom: 20px;
+	}
+
+	.post-meta {
+		font-size: 12px;
+		font-weight: 400;
+		display: block;
+		margin-bottom: 20px;
+
+		a {
+			color: #50a6bc;
+			&:hover, &:active {color: @cyan-color;}
+		}
+	}
+
+	.post-meta-bot {
+		font-size: 12px;
+
+		.read-link {
+			position: relative;
+			color: #00a7ad;
+			text-decoration: underline;
+			text-align: left;
+			&:hover, &:active {color: @cyan-color;}
+			&:after {
+				content: '\e600';
+				.icon-font();
+				position: absolute;
+				top: 3px;
+				right: -10px;
+				font-size: 8px;
+			}
+		}
+	}
+
+	&.styled {
+		overflow: hidden;
+
+		.post-item {
+			color: #eef0f2;
+			display: block;
+			margin-bottom: 30px;
+		}
+
+		h2 {
+			text-align: center;
+			a {
+				color: #dfe3e9;
+			}
+		}
+
+		.post-meta {text-align: center;}
+
+		.post-img {
+			position: relative;
+			margin-bottom: 20px;
+			img {border-radius: 50%;}
+
+			&:before {
+				content: '';
+				.full-size();
+				border-radius: 50%;
+				opacity: .06;
+				box-shadow: rgb(0, 0, 0) 1px 1px,
+				rgb(0, 0, 0) 2px 2px,
+				rgb(0, 0, 0) 3px 3px,
+				rgb(0, 0, 0) 4px 4px,
+				rgb(0, 0, 0) 5px 5px,
+				rgb(0, 0, 0) 6px 6px,
+				rgb(0, 0, 0) 7px 7px,
+				rgb(0, 0, 0) 8px 8px,
+				rgb(0, 0, 0) 9px 9px,
+				rgb(0, 0, 0) 10px 10px,
+				rgb(0, 0, 0) 11px 11px,
+				rgb(0, 0, 0) 12px 12px,
+				rgb(0, 0, 0) 13px 13px,
+				rgb(0, 0, 0) 14px 14px,
+				rgb(0, 0, 0) 15px 15px,
+				rgb(0, 0, 0) 16px 16px,
+				rgb(0, 0, 0) 17px 17px,
+				rgb(0, 0, 0) 18px 18px,
+				rgb(0, 0, 0) 19px 19px,
+				rgb(0, 0, 0) 20px 20px,
+				rgb(0, 0, 0) 21px 21px,
+				rgb(0, 0, 0) 22px 22px,
+				rgb(0, 0, 0) 23px 23px,
+				rgb(0, 0, 0) 24px 24px,
+				rgb(0, 0, 0) 25px 25px,
+				rgb(0, 0, 0) 26px 26px,
+				rgb(0, 0, 0) 27px 27px,
+				rgb(0, 0, 0) 28px 28px,
+				rgb(0, 0, 0) 29px 29px,
+				rgb(0, 0, 0) 30px 30px,
+				rgb(0, 0, 0) 31px 31px,
+				rgb(0, 0, 0) 32px 32px,
+				rgb(0, 0, 0) 33px 33px,
+				rgb(0, 0, 0) 34px 34px,
+				rgb(0, 0, 0) 35px 35px,
+				rgb(0, 0, 0) 36px 36px,
+				rgb(0, 0, 0) 37px 37px,
+				rgb(0, 0, 0) 38px 38px,
+				rgb(0, 0, 0) 39px 39px,
+				rgb(0, 0, 0) 40px 40px,
+				rgb(0, 0, 0) 41px 41px,
+				rgb(0, 0, 0) 42px 42px,
+				rgb(0, 0, 0) 43px 43px,
+				rgb(0, 0, 0) 44px 44px,
+				rgb(0, 0, 0) 45px 45px,
+				rgb(0, 0, 0) 46px 46px,
+				rgb(0, 0, 0) 47px 47px,
+				rgb(0, 0, 0) 48px 48px,
+				rgb(0, 0, 0) 49px 49px,
+				rgb(0, 0, 0) 50px 50px,
+				rgb(0, 0, 0) 51px 51px,
+				rgb(0, 0, 0) 52px 52px,
+				rgb(0, 0, 0) 53px 53px,
+				rgb(0, 0, 0) 54px 54px,
+				rgb(0, 0, 0) 55px 55px,
+				rgb(0, 0, 0) 56px 56px,
+				rgb(0, 0, 0) 57px 57px,
+				rgb(0, 0, 0) 58px 58px,
+				rgb(0, 0, 0) 59px 59px,
+				rgb(0, 0, 0) 60px 60px,
+				rgb(0, 0, 0) 61px 61px,
+				rgb(0, 0, 0) 62px 62px,
+				rgb(0, 0, 0) 63px 63px,
+				rgb(0, 0, 0) 64px 64px,
+				rgb(0, 0, 0) 65px 65px,
+				rgb(0, 0, 0) 66px 66px,
+				rgb(0, 0, 0) 67px 67px,
+				rgb(0, 0, 0) 68px 68px,
+				rgb(0, 0, 0) 69px 69px,
+				rgb(0, 0, 0) 70px 70px,
+				rgb(0, 0, 0) 71px 71px,
+				rgb(0, 0, 0) 72px 72px,
+				rgb(0, 0, 0) 73px 73px,
+				rgb(0, 0, 0) 74px 74px,
+				rgb(0, 0, 0) 75px 75px,
+				rgb(0, 0, 0) 76px 76px,
+				rgb(0, 0, 0) 77px 77px,
+				rgb(0, 0, 0) 78px 78px,
+				rgb(0, 0, 0) 79px 79px,
+				rgb(0, 0, 0) 80px 80px,
+				rgb(0, 0, 0) 81px 81px,
+				rgb(0, 0, 0) 82px 82px,
+				rgb(0, 0, 0) 83px 83px,
+				rgb(0, 0, 0) 84px 84px,
+				rgb(0, 0, 0) 85px 85px,
+				rgb(0, 0, 0) 86px 86px,
+				rgb(0, 0, 0) 87px 87px,
+				rgb(0, 0, 0) 88px 88px,
+				rgb(0, 0, 0) 89px 89px,
+				rgb(0, 0, 0) 90px 90px,
+				rgb(0, 0, 0) 91px 91px,
+				rgb(0, 0, 0) 92px 92px,
+				rgb(0, 0, 0) 93px 93px,
+				rgb(0, 0, 0) 94px 94px,
+				rgb(0, 0, 0) 95px 95px,
+				rgb(0, 0, 0) 96px 96px,
+				rgb(0, 0, 0) 97px 97px,
+				rgb(0, 0, 0) 98px 98px,
+				rgb(0, 0, 0) 99px 99px,
+				rgb(0, 0, 0) 100px 100px,
+				rgb(0, 0, 0) 101px 101px,
+				rgb(0, 0, 0) 102px 102px,
+				rgb(0, 0, 0) 103px 103px,
+				rgb(0, 0, 0) 104px 104px,
+				rgb(0, 0, 0) 105px 105px,
+				rgb(0, 0, 0) 106px 106px,
+				rgb(0, 0, 0) 107px 107px,
+				rgb(0, 0, 0) 108px 108px,
+				rgb(0, 0, 0) 109px 109px,
+				rgb(0, 0, 0) 110px 110px,
+				rgb(0, 0, 0) 111px 111px,
+				rgb(0, 0, 0) 112px 112px,
+				rgb(0, 0, 0) 113px 113px,
+				rgb(0, 0, 0) 114px 114px,
+				rgb(0, 0, 0) 115px 115px,
+				rgb(0, 0, 0) 116px 116px,
+				rgb(0, 0, 0) 117px 117px,
+				rgb(0, 0, 0) 118px 118px,
+				rgb(0, 0, 0) 119px 119px,
+				rgb(0, 0, 0) 120px 120px,
+				rgb(0, 0, 0) 121px 121px,
+				rgb(0, 0, 0) 122px 122px,
+				rgb(0, 0, 0) 123px 123px,
+				rgb(0, 0, 0) 124px 124px,
+				rgb(0, 0, 0) 125px 125px,
+				rgb(0, 0, 0) 126px 126px,
+				rgb(0, 0, 0) 127px 127px,
+				rgb(0, 0, 0) 128px 128px,
+				rgb(0, 0, 0) 129px 129px,
+				rgb(0, 0, 0) 130px 130px,
+				rgb(0, 0, 0) 131px 131px,
+				rgb(0, 0, 0) 132px 132px,
+				rgb(0, 0, 0) 133px 133px,
+				rgb(0, 0, 0) 134px 134px,
+				rgb(0, 0, 0) 135px 135px,
+				rgb(0, 0, 0) 136px 136px,
+				rgb(0, 0, 0) 137px 137px,
+				rgb(0, 0, 0) 138px 138px,
+				rgb(0, 0, 0) 139px 139px,
+				rgb(0, 0, 0) 140px 140px,
+				rgb(0, 0, 0) 141px 141px,
+				rgb(0, 0, 0) 142px 142px,
+				rgb(0, 0, 0) 143px 143px,
+				rgb(0, 0, 0) 144px 144px,
+				rgb(0, 0, 0) 145px 145px,
+				rgb(0, 0, 0) 146px 146px,
+				rgb(0, 0, 0) 147px 147px,
+				rgb(0, 0, 0) 148px 148px,
+				rgb(0, 0, 0) 149px 149px,
+				rgb(0, 0, 0) 150px 150px,
+				rgb(0, 0, 0) 151px 151px,
+				rgb(0, 0, 0) 152px 152px,
+				rgb(0, 0, 0) 153px 153px,
+				rgb(0, 0, 0) 154px 154px,
+				rgb(0, 0, 0) 155px 155px,
+				rgb(0, 0, 0) 156px 156px,
+				rgb(0, 0, 0) 157px 157px,
+				rgb(0, 0, 0) 158px 158px,
+				rgb(0, 0, 0) 159px 159px,
+				rgb(0, 0, 0) 160px 160px,
+				rgb(0, 0, 0) 161px 161px,
+				rgb(0, 0, 0) 162px 162px,
+				rgb(0, 0, 0) 163px 163px,
+				rgb(0, 0, 0) 164px 164px,
+				rgb(0, 0, 0) 165px 165px,
+				rgb(0, 0, 0) 166px 166px,
+				rgb(0, 0, 0) 167px 167px,
+				rgb(0, 0, 0) 168px 168px,
+				rgb(0, 0, 0) 169px 169px,
+				rgb(0, 0, 0) 170px 170px,
+				rgb(0, 0, 0) 171px 171px,
+				rgb(0, 0, 0) 172px 172px,
+				rgb(0, 0, 0) 173px 173px,
+				rgb(0, 0, 0) 174px 174px,
+				rgb(0, 0, 0) 175px 175px,
+				rgb(0, 0, 0) 176px 176px,
+				rgb(0, 0, 0) 177px 177px,
+				rgb(0, 0, 0) 178px 178px,
+				rgb(0, 0, 0) 179px 179px,
+				rgb(0, 0, 0) 180px 180px,
+				rgb(0, 0, 0) 181px 181px,
+				rgb(0, 0, 0) 182px 182px,
+				rgb(0, 0, 0) 183px 183px,
+				rgb(0, 0, 0) 184px 184px,
+				rgb(0, 0, 0) 185px 185px,
+				rgb(0, 0, 0) 186px 186px,
+				rgb(0, 0, 0) 187px 187px,
+				rgb(0, 0, 0) 188px 188px,
+				rgb(0, 0, 0) 189px 189px,
+				rgb(0, 0, 0) 190px 190px,
+				rgb(0, 0, 0) 191px 191px,
+				rgb(0, 0, 0) 192px 192px,
+				rgb(0, 0, 0) 193px 193px,
+				rgb(0, 0, 0) 194px 194px,
+				rgb(0, 0, 0) 195px 195px,
+				rgb(0, 0, 0) 196px 196px,
+				rgb(0, 0, 0) 197px 197px,
+				rgb(0, 0, 0) 198px 198px,
+				rgb(0, 0, 0) 199px 199px,
+				rgb(0, 0, 0) 200px 200px;
+			}
+		}
+	}
+
+	@media @xs {
+		.post-img {width: 250px;}
+		&.styled {
+			.post-img {margin: 0 auto 20px;}
+		}
+	}
+}
+
+/* Post Shopping Info */
+/*-----------------------------------*/
+
+.post-shopping-info {
+	.inner {padding: 26px 28px 32px;}
+
+	.post-shopping-title {
+		h2 {
+			font-size: 36px;
+			margin: 0;
+			margin-bottom: 5px;
+			line-height: 1;
+
+			a {
+				color: #525252;
+
+				&:hover {
+					color: #ff7758;
+				}
+			}
+		}
+
+		h3 {
+			color: #00a7ad;
+			font-weight: 400;
+			margin: 0;
+			margin-bottom: 20px;
+		}
+	}
+
+	.read-link {
+		position: relative;
+		color: #00a7ad;
+		font-size: 12px;
+		text-decoration: underline;
+		&:hover, &:active {color: @cyan-color;}
+		&:after {
+			content: '\e600';
+			.icon-font();
+			position: absolute;
+			top: 6px;
+			right: -10px;
+			font-size: 8px;
+		}
+	}
+}
+
+/* Responsive */
+@media @sm {
+	.post-item h2 {font-size: 26px;}
+	.post-item.boxed > .inner {padding: 6px 20px 26px;}
+
+	.post-item .post-meta-bot a[class^="post-"],
+	.post-item .post-meta-bot a[class*=" post-"] {
+		margin-right: 10px;
+	}
+
+	.post-item.style1 {
+		.boxed > .inner {padding: 8px 20px 10px;}
+		.boxed-dark > .inner {padding: 20px 20px 24px;}
+	}
+
+	.post-item.style2 {
+		.boxed .inner, .boxed-dark .inner {padding: 14px 20px 26px;}
+		.post-meta-calendar {top: 31px;}
+	}
+
+	.post-item.style3 {
+		.post-desc {padding-bottom: 20px;}
+		.post-meta-calendar {
+			top: 0;
+			padding-top: 20px;
+		}
+		.post-meta-bot a.btn {margin-top: 24px;}
+	}
+
+	.post-item.style4 {
+		.post-entry .inner {padding: 6px 16px 16px;}
+		.post-meta-calendar {width: 38%;}
+	}
+
+	.post-item.post-video.boxed > .inner {padding-top: 20px;}
+
+	.post-list .post-item-popular {
+		.post-meta-top {padding: 5px 20px 0;}
+		h2 {font-size: 18px;}
+		.post-meta-about span {display: block; margin: 0 0 5px;}
+		.inner {padding: 14px 20px 24px;}
+	}
+
+	.post-shopping-info {
+		.inner {padding: 15px 15px 24px;}
+		.post-shopping-title {
+			h2 {font-size: 23px;}
+			h3 {font-size: 16px; margin-bottom: 14px;}
+		}
+	}
+}
+
+@media @xs {
+	.post-item h2 {
+		font-size: 24px;
+		letter-spacing: -1px;
+	}
+
+	.post-item.style2 .post-meta-bot a span {padding: 0 24px;}
+
+	.post-list .post-item-popular {
+		width: 100%;
+		float: none;
+	}
+}
+
+@media @xxs {
+	.post-item h2 {font-size: 20px;}
+
+	.post-item.boxed > .inner {
+		padding: 15px 15px 20px;
+	}
+
+	.post-item.style1 {
+		.boxed {
+			& > .inner {
+				padding: 15px;
+			}
+		}
+	}
+
+	.post-item .post-meta-calendar {
+		left: 9px;
+		top: 14px;
+	}
+
+	.post-item.style1 .boxed-dark > .inner {
+		padding: 18px 15px 12px;
+	}
+
+	.post-item .post-meta-bot a[class^="post-"], .post-item .post-meta-bot a[class*=" post-"] {
+		margin-bottom: 12px;
+	}
+
+	.post-item.style2 .post-meta-bot a[class^="post-"] {
+		width: 110px;
+		margin-bottom: 30px;
+		span {border: none;}
+	}
+	.post-item.style2 .boxed-dark .inner {padding-bottom: 0;}
+
+	.post-item.style3 .post-img,
+	.post-item.style3 .post-entry,
+	.post-item.style4 .post-meta-calendar,
+	.post-item.style4 .post-entry .inner,
+	.post-item.style5 .post-img,
+	.post-item.style6 .post-img {
+		width: 100%;
+		float: none !important;
+	}
+
+	.post-item.style3 .post-meta-bot {
+		float: none !important;
+		a.btn {
+			margin-top: 30px;
+		}
+	}
+	.post-item.style4 .post-meta-calendar {padding: 8px 0 22px;}
+
+	.post-image .post-carousel .carousel-indicators {
+		height: 36px;
+		line-height: 36px;
+	}
+	.post-image .post-carousel .carousel-control.right,
+	.post-image .post-carousel .carousel-control.left {
+		height: 48px;
+	}
+	.post-list .post-item-popular .post-meta-top {padding: 12px 15px 0;}
+	.post-list .post-item-popular .inner {padding: 20px 15px 26px;}
+	.post-item.style7 .post-img {
+		width: 36%;
+		margin: 0 15px 0px 0;
+	}
+}

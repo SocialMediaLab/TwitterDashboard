@@ -1,0 +1,243 @@
+//Mixins
+@import "mixins.less";
+
+/*-----------------------------------*/
+/* General Styles */
+/*-----------------------------------*/
+
+body {
+	background: @body-bg;
+	background-size: 100%;
+	font-family: @font-family-base;
+	font-size: @font-size-base;
+	line-height: @line-height-base;
+	font-weight: @font-weight;
+	color: @font-color;
+	position: relative;
+}
+
+.body-wrap {
+	background: @body-wrap;
+	padding: @body-wrap-padding;
+}
+
+.body-wrap.footer {
+	padding: 0;
+}
+
+.margin-bottom-0 {margin-bottom: 0 !important;}
+.margin-bottom-10 {margin-bottom: 10px !important;}
+.margin-bottom-20 {margin-bottom: 20px !important;}
+.margin-bottom-30 {margin-bottom: 30px !important;}
+.margin-bottom-40 {margin-bottom: 40px !important;}
+.margin-bottom-50 {margin-bottom: 50px !important;}
+.margin-bottom-60 {margin-bottom: 60px !important;}
+
+// Links
+
+a {
+	color: @link-color;
+	.transition(color 0.2s ease);
+}
+
+a:hover, a:focus {
+	color: @link-hover-color;
+	text-decoration: none;
+}
+
+a:active {
+	background-color: transparent;
+}
+
+input, textarea, input[type="submit"]:focus, div {
+	outline: none;
+	font-family: @font-family-base;
+}
+
+.no-margin {margin: 0 !important;}
+.overflow-hidden {overflow: hidden !important;}
+
+// Middle 
+
+.content, .sidebar {
+	padding-top: 128px;
+	padding-bottom: 0;
+}
+
+@media (max-width: 767px) {
+	.content, .sidebar {
+		padding-top: 60px;
+	}
+}
+
+img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+// Paragraph 
+
+p {
+	line-height: @paragraph-line-height;
+	margin-bottom: @paragraph-margin-bottom;
+}
+
+// Images
+
+img.pull-right {margin: 0 0 20px 25px;}
+img.pull-left {margin: 0 25px 20px 0;}
+
+// Clear Margin
+
+.omega {
+	margin-right: 0 !important;
+}
+
+.alpha {
+	margin-left: 0 !important;
+}
+
+// Borders 
+
+.border-top {
+	border-top: 8px solid transparent;
+}
+
+.border-bottom {
+	border-bottom: 8px solid transparent;
+}
+
+.border-left {
+	border-left: 8px solid transparent;
+}
+
+.border-right {
+	border-right: 8px solid transparent;
+}
+
+[class^="border-"].green,
+[class*=" border-"].green {
+	border-color: #25bf75;
+}
+
+[class^="border-"].tomato,
+[class*=" border-"].tomato {
+	border-color: #e25f3c;
+}
+
+[class^="border-"].pink,
+[class*=" border-"].pink {
+	border-color: #fe5276;
+}
+
+// background colors
+.green-bg {background: @cyan-color !important;}
+.tomato-bg {background: @darktomato-color !important;}
+.pink-bg {background: @pink-color !important;}
+.violet-bg {background: @darkviolet-color !important;}
+.blue-bg {background: @blue-color !important;}
+.brown-bg {background: @lightbrown-color !important;}
+
+/*-----------------------------------*/
+/* Clear Floats */
+/*-----------------------------------*/
+
+html body * span.clear,
+html body * div.clear,
+html body * li.clear,
+html body * dd.clear {
+	background: none;
+	border: 0;
+	clear: both;
+	display: block;
+	float: none;
+	font-size: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+/*-----------------------------------*/
+/* Boxes */
+/*-----------------------------------*/
+
+.boxed {
+	background: @boxed-bg;
+	margin-bottom: 30px;
+	position: relative;
+	z-index: 1;
+}
+
+.boxed-dark {
+	background: @gray-color;
+	background: @boxed-dark;
+	margin-bottom: 30px;
+}
+
+.boxed .inner,
+.boxed-dark .inner {
+	padding: 30px 28px 38px;
+}
+
+.bordered {
+	border: 2px solid #f9f9f9;
+}
+
+.col-left {margin-right: -10px;}
+.col-right {margin-left: -10px;}
+
+@media @xs {
+	.col-left {margin-right: 0;}
+	.col-right {margin-left: 0;}
+}
+@media @xxs {
+	.boxed .inner, .boxed-dark .inner {
+		padding: 15px;
+	}
+}
+
+.content-sidebar {
+	.content {margin-right: 22px;}
+	.sidebar {margin-left: -22px;}
+	@media @sm {
+		.content {margin-right: 0;}
+		.sidebar {margin-left: 0;}
+	}
+}
+
+/* BS Slider Effects */
+/*-----------------------------------*/
+
+/*Fade Effect on BS Slider*/
+.fade-effect .item {
+	opacity: 0;
+	.transition(opacity 1s);
+	&.active {
+		opacity: 1;
+		&.left, &.right {
+			left: 0;
+			z-index: 2;
+			opacity: 0;
+		}
+	}
+}
+
+
+/*Shot Effect on BS Slider*/
+.shot-effect .item {
+	top: 0;
+	left: 0 !important;
+	.transition(top .9s cubic-bezier(0.95,0.1,0.25,1));
+
+	&.prev, &.next {
+		z-index: 3;
+		&.left, &.right {top: 0;}
+	}
+	&.prev {top: 100%;}
+	&.next {top: -100%;}
+}

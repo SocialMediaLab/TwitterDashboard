@@ -1,0 +1,237 @@
+<!doctype html>
+<!--[if lt IE 8 ]><html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+
+<%- include('partials/head') %>
+
+<body>
+  <div class="body-wrap">
+    <!--container-->
+    <div class="container">
+    	<div class="content">
+        <%- include('partials/header') %>
+
+        <div id="no_data"></div>
+        <div class="toggle-header">
+                    <h2>#<span class="hashtag_replace"></span> General Statistics</h2>
+            </div>
+
+      	<div class="row">
+  	    	<div class="col-sm-7 col-md-8 col-lg-8">
+            <%- include('partials/total') %>
+            <%- include('partials/sentiment') %>
+  	    	</div>
+
+          <div class="col-sm-5 col-md-4 col-lg-4">
+  	        <div class="col-right">
+              <%- include('partials/recent_tweets') %>
+  	        </div>
+  	    	</div>
+      	</div>
+
+        <!-- Conversation Statistics -->
+        <div class="row">
+          <div class="toggle collapsed">
+            <div class="toggle-header">
+                <a class="toggle-link collapsed" data-toggle="collapse" onclick="makeConversations()" href="#toggle2">
+                    <h2>#<span class="hashtag_replace"></span> Conversation Statistics</h2>
+                </a>
+            </div>
+            
+            <div id="toggle2" class="toggle-body collapse">
+              <div class="inner">
+                <div class="col-sm-6">
+                  <%- include('partials/subjectivity') %>
+                  <%- include('partials/hashtags') %>
+                </div>
+                <div class="col-sm-6">
+                  <%- include('partials/tot_sentiment') %>
+                  <%- include('partials/entities') %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      	<!-- Behavioral Statistics -->
+        <div class="row">
+          	<div class="toggle collapsed">
+	            <div class="toggle-header">
+	                <a class="toggle-link collapsed" data-toggle="collapse" onclick="makeUserBehavior()" href="#toggle1" hidefocus="true">
+	                    <h2>#<span class="hashtag_replace"></span> User Behavioral Statistics</h2>
+	                </a>
+	            </div>
+	            
+	            <div id="toggle1" class="toggle-body collapse">
+	              <div class="inner">
+	                <div class="col-sm-6">
+	                  <%- include('partials/content') %>
+	                </div>
+
+	                <div class="col-sm-6">
+                    <%- include('partials/hour') %>
+	                </div>
+	              </div>
+	            </div>
+        	</div>
+        </div>
+
+
+        <div class="row">
+          <div class="toggle collapsed">
+            <div class="toggle-header">
+                <a class="toggle-link collapsed" data-toggle="collapse" onclick="makeContributors()" href="#toggle3">
+                    <h2>#<span class="hashtag_replace"></span> Top Contributor Statistics</h2>
+                </a>
+            </div>
+            
+            <div id="toggle3" class="toggle-body collapse">
+              <div class="inner">
+                <div class="col-sm-6">
+                  <%- include('partials/contributors') %>
+                </div>
+                <div class="col-sm-6">
+
+                  <%- include('partials/mentions') %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <p id="credit">Dashboard designed and maintained by the Social Media Lab at Ryerson University.</p>
+      </div>
+    </div>
+  <!--/ container -->
+  </div>
+
+  <script type='text/javascript'>
+
+    let days = <%- JSON.stringify(days) %>
+    console.log(days);
+    const recentTweets = <%- JSON.stringify(tweetQueue) %>
+    console.log(recentTweets)
+    const dateString = <%- JSON.stringify(dates) %>
+    console.log(dateString)
+    const hashtag = <%- JSON.stringify(hashtag) %>
+
+    if (days.length < 1) {
+      alert("Insufficient data. Please let the collection script run for a few days first.")
+    }
+
+    //displayTweets();
+    formatTime();
+
+    google.charts.load('45.2', {'packages':['corechart', 'bar']});
+    google.charts.setOnLoadCallback(googleCallBack);
+
+    function googleCallBack() {
+      //makeRatedEntityChart()
+      makePostChart();
+      makeSentimentChart();
+    }
+
+    function makeUserBehavior() {
+      setTimeout(function() {
+        makeContentChart();
+        makeHourChart();
+      }, 100)
+    }
+
+    function makeConversations() {
+      setTimeout(function() {
+        makeSubjectivityChart(true);
+        makeTotSentiment();
+        makeHashtagChart();
+        makeEntityChart();
+      }, 100)
+    }
+
+    function makeContributors() {
+      setTimeout(function() {
+        makeMentionsChart();
+        makeContributorChart();
+      }, 100)
+    }
+
+
+    var textStyle = {
+      bold: false,
+      fontSize: 10
+    };
+    var chartColors = [ '#0d9aac', '#043345', '#00b6c7', '#009966', '#00ff99'];
+    //blue blue blue green green
+    var negativeColor = '#CD5C5C';
+    var positiveColor = '#009966';
+    var barOptions = {
+      'height':400,
+      'vAxis':{
+        textStyle: textStyle,
+        title: '',
+      },
+      bars: 'horizontal',
+      'legend':{'position':'none'},
+      'colors':chartColors,
+      chartArea: {width: '100%', height: '100%', left: '100%'},
+      hAxis: {textPosition: 'in', bold: false},
+      isStacked: true
+    };
+
+    function formatTime () {
+       var sel=document.getElementsByClassName('time_replace');
+       for (var i=0; i<sel.length; i++) {
+        sel[i].innerHTML=dateString; 
+       }
+    }
+
+    var sel = document.getElementsByClassName('hashtag_replace');
+    for (var i = 0; i < sel.length; i++) {
+      sel[i].innerHTML = hashtag;
+    }
+
+    var t = 0;
+    for (var i = 0; i < days.length; i++) t += days[i].total;
+    document.getElementById('total_replace').innerHTML = t;
+
+    function stringToDate(str) {
+      day = new Date(str.substring(0, 10))
+      day.setYear(2019);
+      return day;
+    };
+
+  function post(path, params, method='post') {
+
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    // const form = document.createElement('form');
+    // form.method = method;
+    // form.action = path;
+
+    // for (const key in params) {
+    //   if (params.hasOwnProperty(key)) {
+    //     const hiddenField = document.createElement('input');
+    //     hiddenField.type = 'hidden';
+    //     hiddenField.name = key;
+    //     hiddenField.value = params[key];
+
+    //     form.appendChild(hiddenField);
+    //   }
+    // }
+    $.ajax({
+        url: path,
+        data: params,
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        success: function(data){
+            console.log(data);
+        }
+    });
+
+  }
+
+  </script>
+</body>
+</html>
